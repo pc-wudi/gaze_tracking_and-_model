@@ -1,0 +1,211 @@
+\documentclass[sigconf, screen, review]{acmart}
+
+\usepackage{xspace}
+\usepackage[abbreviations]{glossaries-extra}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{wrapfig}
+
+\usepackage{xcolor, colortbl}
+\definecolor{acmgreen}{RGB}{0,128,0}
+
+\AtBeginDocument{%
+  \providecommand\BibTeX{{%
+    Bib\TeX}}}
+
+\setcopyright{acmlicensed}
+\copyrightyear{2018}
+\acmYear{2018}
+\acmDOI{XXXXXXX.XXXXXXX}
+
+\acmConference[Conference acronym 'XX]{Make sure to enter the correct
+  conference title from your rights confirmation email}{June 03--05,
+  2018}{Woodstock, NY}
+\acmISBN{978-1-4503-XXXX-X/2018/06}
+
+\newabbreviation{VAE}{VAE}{Variational Auto-Encoder}
+\newabbreviation{INR}{INR}{Implicit Neural Representations}
+\newabbreviation{PSNR}{PSNR}{Peak Signal-to-Noise Ratio}
+\newabbreviation{SSIM}{SSIM}{Structural Similarity Index Measure}
+\newabbreviation{3D}{3D}{Three-Dimensional}
+\newabbreviation{MLP}{MLP}{Multi-Layer Perceptron}
+\newabbreviation{CGH}{CGH}{Computer-Generated Holography}
+\newabbreviation{CNN}{CNN}{convolutional Neural Network}
+
+
+\global\long\def\CGH{\gls{CGH}\xspace}
+\global\long\def\CNN{\gls{CNN}\xspace}
+\global\long\def\VAE{\gls{VAE}\xspace}
+\global\long\def\INR{\gls{INR}\xspace}
+\global\long\def\PSNR{\gls{PSNR}\xspace}
+\global\long\def\SSIM{\gls{SSIM}\xspace}
+\global\long\def\TAESD{\textcolor{ColorTAESD}{\textbf{TAESD}}\xspace}
+\global\long\def\MLP{\textcolor{ColorMLP}{\textbf{\gls{MLP}}}\xspace}
+\global\long\def\vanillaMLP{\textcolor{ColorMLP}{\textbf{vanilla MLP}}\xspace}
+\global\long\def\SIREN{\textcolor{ColorSIREN}{\textbf{SIREN}}\xspace}
+\global\long\def\FILMSIREN{\textcolor{ColorFILMSIREN}{\textbf{FilmSIREN}}\xspace}
+
+\newcommand{\etal}{~et al.\@\xspace}
+\newcommand{\etc}{etc.\@\xspace}
+\newcommand{\eg}{e.g.\@\xspace}
+\newcommand{\Eg}{E.g.\@\xspace}
+\newcommand{\ie}{i.e.\@\xspace}
+\newcommand{\Ie}{I.e.\@\xspace}
+\newcommand{\Fig}{Fig.\@\xspace}
+\newcommand{\fig}{Fig.\@\xspace}
+\newcommand{\eq}{Eq.\@\xspace}
+\newcommand{\refSec}[1]{Sec.~\ref{sec:#1}}
+\newcommand{\refSupSec}[1]{Sec.~\ref{#1}}
+\newcommand{\refFig}[1]{Fig.~\ref{fig:#1}}
+\newcommand{\refFigFull}[1]{Figure~\ref{fig:#1}}
+\newcommand{\refEq}[1]{Eq.~(\ref{eq:#1})}
+\newcommand{\refTbl}[1]{Tbl.~\ref{tbl:#1}}
+\newcommand{\refObj}[1]{Objective~\ref{obj:#1}}
+\newcommand\paraspace{-2.0mm}
+\definecolor{ColorMLP}{rgb}{0.8470588235294118, 0.10588235294117647, 0.3764705882352941}
+\definecolor{ColorSIREN}{rgb}{0.11764705882352941, 0.5333333333333333, 0.8980392156862745}
+\definecolor{ColorFILMSIREN}{rgb}{1, 0.7568627450980392, 0.027450980392156862}
+\definecolor{ColorTAESD}{rgb}{0, 0.30196078431372547, 0.25098039215686274}
+\begin{document}
+
+
+\section*{Supplementary: Assessing Learned Models for Phase-only Hologram Compression}
+
+% \section{Neural Network Architecture and Evaluation metrics}
+% Our best experiment group compress phase-only holograms through coordinate-based SIREN networks that map normalized spatial coordinates \((x,y) \in [-1,1]^2\) 
+% to predict (R,G,B). The best architecture employs a input layer, 4 sine layers with 32 units neurons per layer and 2 sine layers with 16 units neurons and an output layer,
+% using periodic sine activations (\(\omega_0 = 30\)) to train. The total parameters are \textbf{4,899}, achieving compression ratio of \textbf{0.4} relative to 
+% raw patch dimensions (\(64 \times 64 \times 3\). Quantitative evaluations demonstrate strong fidelity preservation across all configurations, with peak PSNR/SSIM reaching 
+% \textbf{45.61\,dB/0.99} and the reconstructed hologram attains a PSNR of 34.54 dB, SSIM of 0.96, and LPIPS of 0.10. 
+% \begin{equation}
+%     \text{SSIM}(I,\hat{I}) = \frac{(2\mu_I\mu_{\hat{I}} + C_1)(2\sigma_{I\hat{I}} + C_2)}{(\mu_I^2 + \mu_{\hat{I}}^2 + C_1)(\sigma_I^2 + \sigma_{\hat{I}}^2 + C_2)}
+% \end{equation}
+
+% where $\mu$ and $\sigma$ represent local means and standard deviations computed over 11×11 Gaussian windows.
+
+\section{Experimental Design and Training Protocol}
+To validate the effectiveness of neural implicit representation in hologram compression, this study systematically compares 3 approaches: 1. \vanillaMLP as the baseline model; 2. \FILMSIREN; 3. \SIREN. Experiments utilize the central region of $512\times 512$ pixel 
+in the tested phased-only holograms, with training samples generated through a patch sampling strategy producing four patch sizes ($3 \times 64 \times 64$ to $3 \times 160 \times 160$) at 25\% overlap through 15000 
+epochs. Each training with the weights learned from the previous patch. All models employ the Adam optimizer (initial learning rate: 1e-4) with a step decay 
+scheduler (gamma=0.5 every 5,000 iterations), MSE loss function, and early stopping (threshold: 9e-6), trained on an NVIDIA RTX 4070 platform. Evaluation metrics include PSNR/SSIM, 
+and model parameter count. Additionally, for reconstructed hologram we add LIPIS to evaluate. With each configuration tested all patches to compute mean values and statistical deviations. By balancing model complexity and patch dimensions, 
+the experiments achieved a compression ratio of approximately 0.4, demonstrating efficient parameter utilization.
+
+
+
+% The training process employs early stopping when the loss plateaus (±0.00001 over 5000 iterations), typically converging within 15000 epochs.
+
+% \section{Advantages Over Conventional Methods}
+% Compared to JPEG2000 and Fourier-based compression, our neural approaches demonstrate superior high-frequency preservation (Figure 3). At 200 lp/mm spatial frequencies, FilmSIREN maintains 38.5 dB PSNR versus wavelet compression's 29.8 dB, while requiring 60% fewer parameters than dictionary learning methods. The MLP baseline achieves comparable performance to optimized RAHT (Region-Adaptive Hierarchical Transform) with 88K parameters versus RAHT's 210K coefficients. For 512×512 holograms, TAESD enables 48:1 compression ratios with <1 dB PSNR degradation, outperforming HEVC-Intra's 32:1 limit before severe artifact emergence.
+% \subsection{Experimental Setup}
+% \begin{itemize}
+% \item \textbf{Dataset}:  phase-modulated hologram (512$\times$512)
+% \item \textbf{Evaluation Protocol}:
+% \begin{equation}
+% \mathcal{Q} = \frac{1}{N}\sum_{i=1}^N \text{SSIM}(f_\theta(\mathbf{x}_i), \mathbf{y}_i)
+% \end{equation}
+% \end{itemize}
+
+\section{Model Architectures}
+\subsection{\vanillaMLP}
+\textbf{Storage Mechanism:}
+
+ $\sigma$ represent ReLU activation function,  $W_l \in \mathbb{R}^{d_l \times d_{l-1}}$ and  $b_l \in \mathbb{R}^{d_l}$ are weight matrix and bias respectively. 
+\begin{equation}
+\mathcal{F}_{\text{MLP}}(x,y) = W_n \sigma\left(\cdots W_2 \sigma(W_1 \phi(x,y) + b_1\right)\cdots) + b_n
+\end{equation}
+\text{Positional Encoding:} $L=10$: Number of frequency bands in positional encoding
+\begin{equation}
+\phi(x,y) = \bigoplus_{k=0}^{L-1} \left[\sin(2^k\pi x), \cos(2^k\pi x), \sin(2^k\pi y), \cos(2^k\pi y)\right]
+\end{equation}
+
+
+
+\subsection{\SIREN\cite{sitzmann2020}}
+\textbf{Storage Mechanism:}
+$\omega_0$: Global frequency scaling factor,
+ $n_{\text{in}}$: Input dimension,
+ $\mathcal{U}(a,b)$: Uniform distribution sampling.
+
+\begin{equation}
+\Phi_{\text{SIREN}}(x,y) = W_n \circ \sin \circ \cdots \circ W_2 \circ \sin \circ W_1(x,y)
+\end{equation}
+\text{Initialization Constraints: first layer}
+\begin{equation}
+w_{ij} \sim \mathcal{U}\left(-\sqrt{\frac{6}{n_{\text{in}}}}, \sqrt{\frac{6}{n_{\text{in}}}}\right)
+\end{equation}
+other sine layers
+\begin{equation}
+\omega_0 = 30 
+\end{equation}
+\begin{equation}
+w_{ij} \sim \mathcal{U}\left(-\frac{1}{n_{\text{in}}}, \frac{1}{n_{\text{in}}}\right)
+\end{equation}
+This strategy supports the fidelity compression of high-frequency features of holograms while maintaining phase continuity 
+by dynamically adjusting the parameter scales of each layer.
+
+\subsection{\FILMSIREN\cite{chan2021}}
+\textbf{Storage Architecture:}
+$L$: Number of FiLM layers,
+$d$: Hidden dimension size,
+$\omega_l \in \mathbb{R}^d$: Frequency modulation vector for layer $l$,
+$\phi_l \in \mathbb{R}^d$: Phase shift vector for layer $l$.
+\begin{equation}
+\mathcal{F}_{\text{FILM}}(x,z) = \mathrm{Sigmoid}\left(W_f \psi(x,\mathcal{M}(z))\right)
+\end{equation}
+\textbf{Frequency Modulation:}
+\begin{equation}
+\psi(x,m) = \prod_{l=1}^L \sin(\omega_l \cdot W_l x + \phi_l)
+\end{equation}
+\textbf{Modulation Network:}
+\begin{equation}
+\mathcal{M}: z \mapsto (\omega, \phi) \in R^{2Ld}
+\end{equation}
+
+\subsection{\TAESD\cite{min2019}}
+\textbf{Compression Pipeline:}
+\begin{equation}
+%\mathcal{E}(I) = \mathrm{ConvBlock}^4\left(\mathrm{Downsample}^3(I)\right) \in \RR^{4\times64\times64} 
+\mathcal{E}(I) = \mathrm{ConvBlock}^3\left(\mathrm{Downsample}^3(I)\right) \in \mathbb{R}^{16 \times 64 \times 64}
+\end{equation}
+\begin{equation}
+\mathcal{D}(z) = \mathrm{ConvBlock}^3\left(\mathrm{Upsample}^3(z)\right)
+\end{equation}
+
+\text{Latent Space Constraints:}
+\begin{equation}
+z = \mathrm{Clamp}\left(\mathcal{E}(I)/3\right) \times 3 \in [-3,3]^{16\times64\times64}
+\end{equation}
+% \section{Results}  
+% Our experiments evaluated MLP, SIREN, and FilmSIREN architectures on a 256$\times$256 image reconstruction task. As shown in Table~1, FilmSIREN achieved state-of-the-art performance, with the \texttt{hs256\_lr0.0001} configuration yielding the highest PSNR (42.11~dB $\pm$ 0.14) and near-perfect SSIM (0.9999 $\pm$ 0.0000), albeit requiring 1.28M parameters. MLP demonstrated competitive efficiency, attaining 41.41~dB PSNR with only 340k parameters at a higher learning rate (\texttt{hs256\_lr0.001}), but exhibited instability at lower rates (PSNR variance $\pm$17.29 for \texttt{hs128\_lr0.0001}). SIREN showed moderate performance (34.76~dB PSNR for \texttt{hs256\_lr0.0001}) but suffered catastrophic collapse at high learning rates (PSNR $\leq$8.44~dB). All models achieved real-time inference ($>$60~FPS) on an NVIDIA\textsuperscript{\textregistered} GTX 1080Ti GPU, with FilmSIREN's parameter-quality trade-off favoring high-fidelity applications.  
+
+\section{Additional Experimental}
+
+\begingroup
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.75\linewidth]{figures/supply.png}
+\caption{
+Four supplementary holograms are compressed to replicate the identical settings of the teaser image.
+(Source image: \href{https://commons.wikimedia.org/wiki/File:Opuntia_polyacantha_in_bloom._Palmer_Park_in_Colorado_Springs,_Colorado.jpg}{mark byzewski})
+(Source image: \href{https://commons.wikimedia.org/wiki/File:Citrus_swallowtail_Christmas_butterfly_(Princeps_papilio_demodocus)_04.jpg}{Charles J. Sharp (1951–)})
+(Source image: \href{https://commons.wikimedia.org/wiki/File:Arnside,_United_Kingdom_(Unsplash).jpg}{	Matt Jones mattrobinjones})
+(Source image: \href{https://commons.wikimedia.org/wiki/File:Bald_man_in_floral_shirt_(Unsplash).jpg}{Ton Henry binbin127})
+}
+\label{fig:4 Four additional holograms were statistically measured}
+\end{figure}
+
+In addition to the teaser image, we further validated the effectiveness of our approach by compressing and reconstructing four distinct holograms (cactus, moth, dog, and elderly face) 
+under identical settings. \TAESD exhibited significantly inferior performance in both reconstructed hologram quality (average PSNR: 4.6 dB, SSIM: 0.13, LIPIS: 0.70). \vanillaMLP showed 
+effective compression ability, achieving reconstructed metrics of PSNR=25.87 dB, SSIM=0.72, and LIPIS=0.30. Moreover, \FILMSIREN and \SIREN, further enhanced reconstruction precision and
+perceptual alignment: \FILMSIREN attained PSNR=29.09 dB, SSIM=0.89, LIPIS=0.13, while SIREN achieved state-of-the-art performance with PSNR=30.07 dB, SSIM=0.915, and LIPIS=0.07. Notably, 
+\SIREN consistently outperformed others in preserving more accuracy information (e.g., moth wing patterns, facial wrinkles) and dynamic details, aligning with conclusions from our poster analysis. 
+This confirms the high potential of implicit networks in maintaining holographic phase-amplitude coherence under compression.
+
+
+\bibliographystyle{ACM-Reference-Format}
+\bibliography{references}
+
+\end{document}
+\endinput
