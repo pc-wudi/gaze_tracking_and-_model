@@ -105,7 +105,10 @@
 
 
 \begin{abstract}
-   example abstract, \SIREN \cite{sitzmann2020}, and \FILMSIREN \cite{chan2021}, with \TAESD \cite{min2019} 
+   Based on what I have learnt so far, I would like to systematically organize 
+   the papers, researches, classes, books that I found and explored. This paper
+   will try to collect the recent Models, perspectives and theories in good conference or journals.
+   In addition, it is the note to record my idea and question to improve my understanding and probably prove my directions
 \end{abstract}
 
 \begin{CCSXML}
@@ -138,7 +141,7 @@
 \ccsdesc[300]{Hardware~Displays and imagers}
 \ccsdesc[300]{Hardware~Emerging optical and photonic technologies}
 
-\keywords{example}
+\keywords{eyes tracking, deep learning, computer graphics}
 % eample teaser
 % \begin{teaserfigure}
 %   \includegraphics[width=\textwidth]{figures/teaser.png}
@@ -176,8 +179,67 @@
 %
 example introduction
 
-\section{Method}
-\subsection{Optical Simulation via Physically-Based Rendering}
+\section{Theory}
+\subsection{eyes tracking}
+\subsubsection{background}
+To find the begining of this topic, I always wanna how to describe what we can see in real world
+and also what kinds of factors would influence them, so I find that Watson and Yelot (2012) conducted a systematic and comprehensive study to explore the 
+effects of visual conditions and other factors (monocular vision and binocular vision, 
+brightness, field size, age, adaptation status, cognitive load, etc.) 
+on the pupil's light response. To be more specific, this is waht they explore
+\begin{equation}
+    D_{sd}(F) = 7.75 - 5.75 \times \frac{(F/846)^{0.41}}{(F/846)^{0.41} + 2}
+    \label{eq:watson_yellott}
+\end{equation}
+
+where:
+\begin{itemize}
+    \item $D_{sd}(F)$ represents the purely physiological target pupil diameter, the size of which is driven entirely by the physical properties of ambient light.
+    \item $F$ denotes the effective retinal illuminance, measured in Trolands (Td).
+\end{itemize}
+
+The Watson-Yellott pupil dynamics formula (Equation \ref{eq:watson_yellott}) functions as the system's internal ``light meter.'' Within the \texttt{lens\_deform.comp} module, this equation is utilized to convert the intensity of the external stimulus light source into effective retinal illuminance, thereby calculating the target physiological pupil diameter strictly as a function of environmental lighting conditions.
+Based on that, to the next step, \cite{seyedmadani2025effects} demonstrate that 
+binocularity and eye-dominance-modulated retinal spatial non-uniformities jointly 
+shape the natural nonlinear variations in visual-motor tracking, providing a 
+crucial baseline for understanding visual neural mechanisms and clinically 
+detecting neuro-ophthalmological impairments.
+\subsubsection{simulation}
+Next step, I also find some equation or method to construct pupil expense and reflection in lens
+\begin{itemize}
+    \item \textbf{Asymmetric Damped Spring Filter:} 
+    $$ \alpha = 1 - \exp\left(-\frac{dt}{\tau}\right) $$
+    It simulates muscle dynamics, giving the pupil's light response realistic latency and biological inertia.
+    
+    \item \textbf{Paraxial Mirror Equation:} 
+    $$ v = \frac{uR}{2u - R} $$
+    It bypasses computationally expensive ray tracing to directly calculate the precise 3D coordinates of the Purkinje reflections.
+    
+    \item \textbf{Schlick's Fresnel Approximation:} 
+    $$ F(\theta) = R_0 + (1 - R_0)(1 - \cos\theta)^5 $$
+    It rapidly computes surface reflectance based on viewing angles, perfectly recreating the bright corneal and dim lenticular optical layers.
+\end{itemize}
+
+\section{Good model paper}
+This article \cite{li2026back} emphasizes the need to bring the model back to the first principles, 
+is, "let the denoising model truly perform denoising". Firstly, based on the 
+"manifold assumption", it is fundamentally inconsistent with the characteristics 
+of noise ($\epsilon$) and flow velocity ($v$). However, in fact, predicting a clean 
+image only requires the network to retain low-dimensional information and filter out 
+the noise. I think the advantage of this article lies in pointing out that the current
+diffusion models based on pixel space (Pixel-space) and the ViT architecture are 
+overly obsessed with calculating high-dimensional information. I also believe that 
+these methods are overly complex and difficult to understand and further optimize 
+except for continuously increasing computing power. Therefore, this article's 
+proposal of a sufficiently simple idea is worth reading. The problem is also obvious
+The article mentions that the quality of generated images is not as good as the 
+currently developed pre-trained models. Since he mentioned this, I think it should 
+more than what he said. Moreover, the model structure is too simple, and I think
+the old problem of overfitting should also occur \cite{li2026back}.
+\section{Introduction}
+
+\subsection{plan}
+
 The precise prediction of accommodation and vergence heavily depends on the quality of the synthesized ocular reflections. 
 Historically, researchers have employed Zemax for such optical simulations; however, we found that traditional ray-tracing software 
 is computationally exhaustive and yields suboptimal visual fidelity for dynamic Purkinje image generation.
