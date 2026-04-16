@@ -236,6 +236,20 @@ The article mentions that the quality of generated images is not as good as the
 currently developed pre-trained models. Since he mentioned this, I think it should 
 more than what he said. Moreover, the model structure is too simple, and I think
 the old problem of overfitting should also occur \cite{li2026back}.
+In addition to simplify high dimentional data, this paper also would like to explore
+form latent space optimization in terms of srable diffusion.
+In summary, This article aims to use a powerful pre-trained visual representation encoder to replace the traditional VAE.
+To be more specific, The main DiT heavily relies on the traditional VAE to compress.
+However, high compression contian potential loss in low dimention, to keep these information
+this paper propose frezzing pretrain model DINOv2, which use additional vit to transfer token to pixel
+Moreover, DiTDH is a wide and  shallow network. Therefore, the performance could beyond SD-VAE. So in my opinion, it is also a 
+good way to ispire us use a new direction in find the better bottleneck of vae straccture and improve model's information retrieval capability
+in the good way, this method reduce the difficulty of compressing and achieved a obvious better convergence speed
+On the other hand, it also need add  noise to improve the decoder's reconstruction
+in short, it loss precise reconstruction ability to some extent.
+
+my question is Will this method undermine the already powerful retrieval ability of the transformer?
+
 \section{Introduction}
 
 \subsection{plan}
