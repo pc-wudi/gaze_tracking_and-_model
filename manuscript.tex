@@ -1,1 +1,173 @@
+% \documentclass[sigconf, screen, review]{acmart}
+\documentclass[sigconf, screen]{acmart}
+\citestyle{acmauthoryear}
+\usepackage{xspace}
+% \usepackage[abbreviations]{glossaries-extra}
+% \usepackage[abbreviations]{glossaries}
+\usepackage{glossaries}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{wrapfig}
+\usepackage{url}
+\usepackage{xcolor, colortbl}
+\definecolor{acmgreen}{RGB}{0,128,0}
 
+\AtBeginDocument{%
+  \providecommand\BibTeX{{%
+    Bib\TeX}}}
+
+
+
+\setcopyright{rightsretained}
+\copyrightyear{2025}
+\acmYear{2025}
+\acmConference{SIGGRAPH}
+\acmISBN{979-8-4007-1549-5/2025/08}
+
+
+\newacronym{VAE}{VAE}{Variational Auto-Encoder}
+\newacronym{INR}{INR}{Implicit Neural Representations}
+\newacronym{PSNR}{PSNR}{Peak Signal-to-Noise Ratio}
+\newacronym{SSIM}{SSIM}{Structural Similarity Index Measure}
+\newacronym{3D}{3D}{Three-Dimensional}
+\newacronym{MLP}{MLP}{Multi-Layer Perceptron}
+\newacronym{CGH}{CGH}{Computer-Generated Holography}
+\newacronym{CNN}{CNN}{Convolutional Neural Network}
+
+
+\global\long\def\CGH{\acrshort{CGH}\xspace}
+\global\long\def\CNN{\acrshort{CNN}\xspace}
+\global\long\def\VAE{\acrshort{VAE}\xspace}
+\global\long\def\INR{\acrshort{INR}\xspace}
+\global\long\def\PSNR{\acrshort{PSNR}\xspace}
+\global\long\def\SSIM{\acrshort{SSIM}\xspace}
+\global\long\def\TAESD{\textcolor{ColorTAESD}{\textbf{TAESD}}\xspace}
+\global\long\def\MLP{\textcolor{ColorMLP}{\textbf{\acrshort{MLP}}}\xspace}
+% \global\long\def\vanillaMLP{\textcolor{ColorMLP}{\textbf{vanilla MLP}}\xspace}
+\global\long\def\SIREN{\textcolor{ColorSIREN}{\textbf{SIREN}}\xspace}
+\global\long\def\FILMSIREN{\textcolor{ColorFILMSIREN}{\textbf{FilmSIREN}}\xspace}
+
+
+\newcommand{\etal}{~et al.\@\xspace}
+\newcommand{\etc}{etc.\@\xspace}
+\newcommand{\eg}{e.g.\@\xspace}
+\newcommand{\Eg}{E.g.\@\xspace}
+\newcommand{\ie}{i.e.\@\xspace}
+\newcommand{\Ie}{I.e.\@\xspace}
+\newcommand{\Fig}{Fig.\@\xspace}
+\newcommand{\fig}{Fig.\@\xspace}
+\newcommand{\eq}{Eq.\@\xspace}
+\newcommand{\refSec}[1]{Sec.~\ref{sec:#1}}
+\newcommand{\refSupSec}[1]{Sec.~\ref{#1}}
+\newcommand{\refFig}[1]{Fig.~\ref{fig:#1}}
+\newcommand{\refFigFull}[1]{Figure~\ref{fig:#1}}
+\newcommand{\refEq}[1]{Eq.~(\ref{eq:#1})}
+\newcommand{\refTbl}[1]{Tbl.~\ref{tbl:#1}}
+\newcommand{\refObj}[1]{Objective~\ref{obj:#1}}
+\newcommand\paraspace{-2.0mm}
+
+\definecolor{ColorMLP}{rgb}{0.8470588235294118, 0.10588235294117647, 0.3764705882352941}
+\definecolor{ColorSIREN}{rgb}{0.11764705882352941, 0.5333333333333333, 0.8980392156862745}
+\definecolor{ColorFILMSIREN}{rgb}{1, 0.7568627450980392, 0.027450980392156862}
+\definecolor{ColorTAESD}{rgb}{0, 0.30196078431372547, 0.25098039215686274}
+
+\newcommand{\phaseonlyhologram}{P\xspace}
+\newcommand{\wavelengths}{\lambda\xspace}
+\newcommand{\pixelpitch}{px\xspace}
+\newcommand{\bottleneck}{\alpha\xspace}
+
+\newcommand{\colorOutputField}[1]{\textcolor{ColorOutputField}{#1}}
+
+\settopmatter{authorsperrow=4}
+
+\begin{document}
+
+\title{Assessing Learned Models for Phase-only Hologram Compression}
+
+\author{Zicong Peng}
+\affiliation{%
+  \institution{KOC University}
+  \city{Istanbul}
+  \country{tr}
+}
+\email{zpeng25@ku.edu.tr}
+
+
+\author{Kaan Akşit}
+\affiliation{%
+  \institution{University College London}
+  \city{London}
+  \country{UK}
+}
+\email{k.aksit@ucl.ac.uk}
+
+\renewcommand{\shortauthors}{Peng et al.}
+
+
+\begin{abstract}
+   Based on what I have learnt so far, I would like to systematically organize 
+   the papers, researches, classes, books that I found and explored. This paper
+   will try to collect the recent Models, perspectives and theories in good conference or journals.
+   In addition, it is the note to record my idea and question to improve my understanding and probably prove my directions
+\end{abstract}
+
+\begin{CCSXML}
+<ccs2012>
+   <concept>
+       <concept_id>10010147.10010371.10010395</concept_id>
+       <concept_desc>Computing methodologies~Image compression</concept_desc>
+       <concept_significance>500</concept_significance>
+       </concept>
+   <concept>
+       <concept_id>10003752.10003809.10010031.10002975</concept_id>
+       <concept_desc>Theory of computation~Data compression</concept_desc>
+       <concept_significance>500</concept_significance>
+       </concept>
+   <concept>
+       <concept_id>10010583.10010588.10010591</concept_id>
+       <concept_desc>Hardware~Displays and imagers</concept_desc>
+       <concept_significance>300</concept_significance>
+       </concept>
+   <concept>
+       <concept_id>10010583.10010786.10010810</concept_id>
+       <concept_desc>Hardware~Emerging optical and photonic technologies</concept_desc>
+       <concept_significance>300</concept_significance>
+       </concept>
+ </ccs2012>
+\end{CCSXML}
+
+\ccsdesc[500]{Computing methodologies~Image compression}
+\ccsdesc[500]{Theory of computation~Data compression}
+\ccsdesc[300]{Hardware~Displays and imagers}
+\ccsdesc[300]{Hardware~Emerging optical and photonic technologies}
+
+\keywords{eyes tracking, deep learning, computer graphics}
+% eample teaser
+% \begin{teaserfigure}
+%   \includegraphics[width=\textwidth]{figures/teaser.png}
+%   \caption{
+%     example image
+%     (Source image: \href{https://openverse.org/image/df8f4a77-6b7f-434f-a38a-abe5cf1f4f79?q=text&p=1}{photosteve101}).
+%           }
+%   \Description{}
+%   \label{fig:teaser}
+% \end{teaserfigure}
+
+% \received{20 February 2007}
+% \received[revised]{12 March 2009}
+% \received[accepted]{5 June 2009}
+
+
+\maketitle
+
+
+
+
+\section{Introduction}
+\section{Related works}
+In the domains of augmented reality (AR) and physiological eye tracking, the extraction of deep physiological features via high-fidelity physical simulations and implicit neural representations has emerged as a critical research frontier. Recent studies have demonstrated the efficacy of computer graphics-based synthetic data in bridging the reality gap. This is achieved through the development of near-eye physical ray-tracing rendering pipelines \cite{RIT-Eyes} and 3D realistic reconstruction models equipped with relighting capabilities \cite{Realistic_nerf_eyes}.
+
+Building upon these advancements, deep optical features---particularly Purkinje images, which encode critical information regarding crystalline lens deformation---have been leveraged alongside machine learning and miniature multi-camera arrays to achieve highly precise tracking of dynamic accommodation and vergence \cite{Dynamic_accommodation_Purkinje, Improved_vergence_and_accommodation}. However, capturing these subtle optical signals in real-world systems is frequently hindered by severe sampling noise \cite{Anti-noise_computational_imaging}. Furthermore, the downstream requirement to drive complex hardware execution mechanisms, such as variable-focus lenses \cite{Fluidic_Lenses}, necessitates a highly robust and mathematically pure underlying physical simulation framework.
+
+To address these challenges, this paper proposes a novel framework utilizing Blender to construct a 3D anatomical eye model that supports complex refractive optical paths. By harnessing a rigorous optical rendering engine, this approach enables direct noise isolation and the precise extraction of high-dimensional deep features, including higher-order Purkinje reflections. Ultimately, this framework provides essential physical data priors for the design of next-generation, noise-robust perception networks and AR hardware systems.
+\section{Results and Discussions}
