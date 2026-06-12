@@ -1,4 +1,4 @@
-This is BibTeX, Version 0.99e
+This is BibTeX, Version 0.99d
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: manuscript.aux
 Reallocating 'name_of_file' (item size: 1) to 21 items.
@@ -14,49 +14,57 @@ Reallocating 'glb_str_ptr' (item size: 4) to 20 items.
 Reallocating 'global_strs' (item size: 1) to 4000000 items.
 Reallocating 'singl_function' (item size: 4) to 100 items.
 Reallocating 'wiz_functions' (item size: 4) to 9000 items.
-Warning--empty publisher in chan2021
-Warning--empty address in chan2021
-Warning--empty publisher in min2019
-Warning--empty address in min2019
-You've used 3 entries,
+Warning--empty publisher in Realistic_nerf_eyes
+Warning--empty address in Realistic_nerf_eyes
+Warning--page numbers missing in both pages and numpages fields in Realistic_nerf_eyes
+Warning--no number and no volume in Fluidic_Lenses
+Warning--page numbers missing in both pages and numpages fields in Fluidic_Lenses
+Warning--empty publisher in RIT-Eyes
+Warning--empty address in RIT-Eyes
+Warning--page numbers missing in both pages and numpages fields in RIT-Eyes
+Warning--no number and no volume in Improved_vergence_and_accommodation
+Warning--page numbers missing in both pages and numpages fields in Improved_vergence_and_accommodation
+Warning--no number and no volume in Anti-noise_computational_imaging
+Warning--page numbers missing in both pages and numpages fields in Anti-noise_computational_imaging
+You've used 6 entries,
             6056 wiz_defined-function locations,
-            1505 strings with 18695 characters,
-and the built_in function-call counts, 4182 in all, are:
-= -- 515
-> -- 125
+            1520 strings with 19219 characters,
+and the built_in function-call counts, 6539 in all, are:
+= -- 874
+> -- 236
 < -- 0
-+ -- 43
-- -- 44
-* -- 289
-:= -- 385
-add.period$ -- 17
-call.type$ -- 3
-change.case$ -- 24
-chr.to.int$ -- 3
-cite$ -- 7
-duplicate$ -- 372
-empty$ -- 258
-format.name$ -- 56
-if$ -- 1002
++ -- 79
+- -- 81
+* -- 459
+:= -- 630
+add.period$ -- 28
+call.type$ -- 6
+change.case$ -- 46
+chr.to.int$ -- 6
+cite$ -- 18
+duplicate$ -- 551
+empty$ -- 397
+format.name$ -- 97
+if$ -- 1646
 int.to.chr$ -- 2
 int.to.str$ -- 1
-missing$ -- 14
-newline$ -- 71
-num.names$ -- 21
-pop$ -- 144
+missing$ -- 26
+newline$ -- 85
+num.names$ -- 42
+pop$ -- 269
 preamble$ -- 1
-purify$ -- 48
+purify$ -- 94
 quote$ -- 0
-skip$ -- 143
+skip$ -- 174
 stack$ -- 0
-substring$ -- 345
-swap$ -- 44
+substring$ -- 351
+swap$ -- 30
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 76
-warning$ -- 4
-while$ -- 22
+type$ -- 124
+warning$ -- 12
+while$ -- 29
 width$ -- 0
-write$ -- 103
-(There were 4 warnings)
+write$ -- 145
+(There were 12 warnings)

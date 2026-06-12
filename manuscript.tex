@@ -1,5 +1,5 @@
-% \documentclass[sigconf, screen, review]{acmart}
-\documentclass[sigconf, screen]{acmart}
+\documentclass[sigconf, screen, review]{acmart}
+% \documentclass[sigconf, screen]{acmart}
 \citestyle{acmauthoryear}
 \usepackage{xspace}
 % \usepackage[abbreviations]{glossaries-extra}
@@ -10,6 +10,8 @@
 \usepackage{wrapfig}
 \usepackage{url}
 \usepackage{xcolor, colortbl}
+\usepackage[abbreviations]{glossaries-extra}
+
 \definecolor{acmgreen}{RGB}{0,128,0}
 
 \AtBeginDocument{%
@@ -33,7 +35,7 @@
 \newacronym{MLP}{MLP}{Multi-Layer Perceptron}
 \newacronym{CGH}{CGH}{Computer-Generated Holography}
 \newacronym{CNN}{CNN}{Convolutional Neural Network}
-
+\newabbreviation{DCT}{DCT}{Discrete Cosine Transform}
 
 \global\long\def\CGH{\acrshort{CGH}\xspace}
 \global\long\def\CNN{\acrshort{CNN}\xspace}
@@ -47,6 +49,7 @@
 \global\long\def\SIREN{\textcolor{ColorSIREN}{\textbf{SIREN}}\xspace}
 \global\long\def\FILMSIREN{\textcolor{ColorFILMSIREN}{\textbf{FilmSIREN}}\xspace}
 
+\global\long\def\DCT{\gls{DCT}\xspace}
 
 \newcommand{\etal}{~et al.\@\xspace}
 \newcommand{\etc}{etc.\@\xspace}
@@ -171,3 +174,7 @@ Building upon these advancements, deep optical features---particularly Purkinje 
 
 To address these challenges, this paper proposes a novel framework utilizing Blender to construct a 3D anatomical eye model that supports complex refractive optical paths. By harnessing a rigorous optical rendering engine, this approach enables direct noise isolation and the precise extraction of high-dimensional deep features, including higher-order Purkinje reflections. Ultimately, this framework provides essential physical data priors for the design of next-generation, noise-robust perception networks and AR hardware systems.
 \section{Results and Discussions}
+\bibliographystyle{ACM-Reference-Format}
+\bibliography{references}
+
+\end{document}
