@@ -168,11 +168,59 @@
 
 \section{Introduction}
 \section{Related works}
+
 In the domains of augmented reality (AR) and physiological eye tracking, the extraction of deep physiological features via high-fidelity physical simulations and implicit neural representations has emerged as a critical research frontier. Recent studies have demonstrated the efficacy of computer graphics-based synthetic data in bridging the reality gap. This is achieved through the development of near-eye physical ray-tracing rendering pipelines \cite{RIT-Eyes} and 3D realistic reconstruction models equipped with relighting capabilities \cite{Realistic_nerf_eyes}.
 
 Building upon these advancements, deep optical features---particularly Purkinje images, which encode critical information regarding crystalline lens deformation---have been leveraged alongside machine learning and miniature multi-camera arrays to achieve highly precise tracking of dynamic accommodation and vergence \cite{Dynamic_accommodation_Purkinje, Improved_vergence_and_accommodation}. However, capturing these subtle optical signals in real-world systems is frequently hindered by severe sampling noise \cite{Anti-noise_computational_imaging}. Furthermore, the downstream requirement to drive complex hardware execution mechanisms, such as variable-focus lenses \cite{Fluidic_Lenses}, necessitates a highly robust and mathematically pure underlying physical simulation framework.
 
 To address these challenges, this paper proposes a novel framework utilizing Blender to construct a 3D anatomical eye model that supports complex refractive optical paths. By harnessing a rigorous optical rendering engine, this approach enables direct noise isolation and the precise extraction of high-dimensional deep features, including higher-order Purkinje reflections. Ultimately, this framework provides essential physical data priors for the design of next-generation, noise-robust perception networks and AR hardware systems.
+
+\subsection{捕捉近眼图像与眼动追踪数据}
+Most near-eye eye trackers estimate gaze or vergence from extracting visible image features such as 
+the pupil, iris, and corneal glints. 
+
+However, these methods mainly describe eye rotation and provide limited information about accommodation 
+and convergence, the key factors in the vergence--accommodation conflict (VAC)\cite{lu2020purkinje,nair2020riteyes}. 
+
+Therefore, Purkinje-image-based methods seek to recover accommodation-related information from intraocular 
+reflections: Lu et al. used a multi-camera, multi-LED AR-glasses prototype to track higher-order Purkinje 
+images and reported a best vergence error of (0.3782^\circ) and an accommodation-depth error of 
+(1.108,\mathrm{cm}) \cite{lu2020purkinje}. Ozhan et al. further combined a Purkinje imaging setup with a 
+ZEMAX eye model and learning-based regression, achieving (0.17,\mathrm{D}) accommodation RMSE and (0.18^\circ) 
+vergence RMSE with subject-specific data, and (0.32,\mathrm{D}) / (0.32^\circ) under leave-one-subject-out 
+evaluation with two-point calibration \cite{ozhan2023dynamicaccommodation}.
+
+These works suggest that higher-order Purkinje reflections can serve as physically meaningful cues for accommodation-aware eye tracking, 
+but their weak intensity, defocus, and strong dependence on LED--camera--eye geometry make them difficult to capture robustly. Motivated by this limitation, 
+we first build a controllable Blender/LuxCore optical eye model to analyze the formation, visibility, and stability of P1--P4 under near-eye infrared imaging conditions.
+
+
+另一方面，RIT-Eyes 说明了使用图形学渲染生成近眼图像数据的价值。该系统通过合成眼部图像来训练和测试眼动追踪网络，并加入了可变形虹膜、非球面角膜、视网膜回反射、眼睑运动和眨眼等因素 \cite{nair2020riteyes}. 不过，RIT-Eyes 更偏向生成带标注的训练数据，而本项目更关注 Purkinje 图像的物理形成过程。因此，我们的工作不是简单生成“看起来像眼睛”的图像，而是要显式建模角膜、晶状体、折射率、红外光源、相机位置和焦平面，以解释为什么某些设置下 P1 明显而 P3/P4 难以捕捉。
+
+\subsection{可重光照眼球重建与神经眼球表示}
+
+眼球建模的难点在于它同时包含透明折射、高光反射、虹膜纹理、巩膜散射和眼周皮肤等复杂外观。EyeNeRF 提出 hybrid representation，将显式参数化眼球表面与隐式体表示结合起来：显式眼球表面用于处理角膜折射和高频高光反射，隐式表示用于建模眼周区域和眼内复杂外观 \cite{li2022eyenerf}. 这对本项目有直接启发：角膜和晶状体这类光学界面不能只用普通外观材质代替，而应该作为真实的反射/折射表面显式建模。
+
+\textit{Reconstructing Realistic and Relightable Eyes} 进一步强调了 near-field illumination 对眼球重建和重光照的重要性。该工作使用 hybrid mesh + NeRF 表示重建可重光照眼睛，并支持眼动追踪中常见的近场 point lights 和 structured/fringe projectors \cite{khademi2026relightableeyes}. 这说明近眼红外 LED 不能简单近似成环境光；光源位置、相机位置、角膜形状和折射路径都会改变 glints 的位置与强度。与这些 photorealistic eye reconstruction 工作不同，本项目的目标不是 avatar 或 novel-view synthesis，而是建立一个可解释的物理仿真环境，用来分析 Purkinje 图像在不同光学条件下的可见性。
+
+\subsection{可微光学设计、弱光图像增强与端到端物理仿真}
+
+可微光学设计为本项目未来优化 LED、相机和辅助透镜布局提供了方法参考。\textit{End-to-end Optimization of Fluidic Lenses} 将流体透镜形状、differentiable ray tracing 和 neural reconstruction 放在同一个端到端 pipeline 中，使 loss 可以反传到透镜设计参数 \cite{na2024fluidiclenses}. \textit{End-to-End Hybrid Refractive-Diffractive Lens Design with Differentiable Ray-Wave Model} 则结合 ray tracing 和 wave propagation，同时模拟折射像差和衍射相位调制，并支持光学系统与重建网络的联合优化 \cite{yang2024hybridlens}. 这些工作说明，光学仿真不应该只作为后处理工具，而可以成为系统设计的一部分。对应到本项目，未来可以把 P3/P4 的亮度、清晰度、与 P1 的分离距离和是否落入相机视场作为优化目标，反向指导 LED 和 camera placement。
+
+真实实验中，高阶 Purkinje 图像往往非常弱，尤其 P3/P4 可能受到低亮度、离焦、传感器噪声和低对比度影响。因此，弱光图像增强和 synthetic-to-real 方法可以作为后续辅助模块。\textit{Anti-noise Computational Imaging Using Unsupervised Deep Learning} 说明了在缺少 clean ground truth 的情况下，也可以利用无监督深度学习改善计算成像重建质量 \cite{zhai2022antinoise}. 扩散模型风格迁移和 physics-informed diffusion 也提供了未来方向：前者可以缩小 Blender/LuxCore 合成图与真实红外图像之间的 domain gap \cite{chigot2025diffusionstyletransfer}，后者强调生成模型应满足物理约束，而不是只追求视觉真实 \cite{bastek2025pidm}. 不过在当前阶段，核心仍应是先建立可信的 Blender/LuxCore 光学眼球模型，再考虑学习型增强或 domain adaptation。
+\section{Background}
+
+1. Blender-based Optical Eye Modeling and Purkinje Image Simulation
+
+Purkinje images are specular reflections formed at different refractive surfaces of the eye, including the anterior and posterior corneal surfaces and the anterior and posterior crystalline lens surfaces. Compared with conventional pupil-center-corneal-reflection eye tracking, higher-order Purkinje images provide richer optical information because they are affected not only by gaze direction but also by the geometry and deformation of the crystalline lens \cite{lu2020purkinje}. This makes them especially relevant for AR/VR applications, where both vergence and accommodation are important for understanding visual comfort and accommodation--vergence conflict. However, higher-order reflections such as P3 and P4 are usually weak, defocused, and sensitive to the relative placement of the light source, camera, and eye \cite{lu2020purkinje}. Therefore, a controllable optical simulation environment is necessary before building a reliable physical capture system.
+
+In this project, we first construct a physically interpretable eye model in Blender/LuxCore to study the formation of Purkinje images under near-eye infrared illumination. Inspired by synthetic near-eye rendering systems such as RIT-Eyes, the simulation aims to reproduce controllable near-eye image formation rather than only generate visually plausible eye images \cite{nair2020riteyes}. We explicitly model the cornea, crystalline lens, iris, and sclera, with special attention to refractive interfaces and material indices of refraction. This design is also consistent with recent relightable eye reconstruction work, where explicit eye surfaces are used to model corneal refraction and high-frequency specular reflections, while more flexible neural or volumetric representations are used for complex appearance \cite{li2022eyenerf,khademi2026relightableeyes}. Unlike avatar-oriented eye reconstruction, our simulation focuses on explaining how LED position, camera position, focal length, aperture, and optical surface geometry affect the visibility and separability of P1--P4.
+
+2. Real Near-eye Capture with IR LED, IR Camera, and Head Stabilization
+
+After building the simulation model, we use a real near-eye capture setup to validate whether the simulated Purkinje patterns can be observed under controlled physical conditions. The experimental setup consists of an infrared LED as the active illumination source, an IR-sensitive camera as the imaging sensor, and a headrest to stabilize the subject's head and reduce motion between the eye, camera, and light source. This physical constraint is important because Purkinje reflections are highly sensitive to small changes in geometry; even slight head movement can shift the relative positions of the cornea, crystalline lens, camera, and LED, making higher-order reflections difficult to detect consistently. Prior Purkinje-image-based AR tracking systems also emphasize that camera and LED placement must be carefully designed to capture useful higher-order reflections \cite{lu2020purkinje}.
+
+The real capture stage is intended to complement the Blender/LuxCore simulation. The simulation provides a controlled way to test optical hypotheses, while the physical setup reveals practical issues such as sensor noise, weak reflection intensity, defocus, ambient light interference, and alignment error. These problems are especially important for P3/P4, which are much weaker than the first corneal reflection. Work on end-to-end optical design suggests that imaging hardware and computational processing should be considered jointly rather than separately \cite{na2024fluidiclenses,yang2024hybridlens}. In future extensions, the observed brightness, sharpness, and spatial separation of Purkinje images could be used as optimization targets for camera--LED placement. In addition, unsupervised anti-noise computational imaging may be useful for enhancing weak IR reflections when clean ground-truth images are unavailable \cite{zhai2022antinoise}. Thus, the proposed workflow combines physically based simulation and controlled real-world acquisition to support reliable Purkinje image analysis.
 \section{Results and Discussions}
 \bibliographystyle{ACM-Reference-Format}
 \bibliography{references}
