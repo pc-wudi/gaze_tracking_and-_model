@@ -175,12 +175,10 @@ Building upon these advancements, deep optical features---particularly Purkinje 
 
 To address these challenges, this paper proposes a novel framework utilizing Blender to construct a 3D anatomical eye model that supports complex refractive optical paths. By harnessing a rigorous optical rendering engine, this approach enables direct noise isolation and the precise extraction of high-dimensional deep features, including higher-order Purkinje reflections. Ultimately, this framework provides essential physical data priors for the design of next-generation, noise-robust perception networks and AR hardware systems.
 
-\subsection{捕捉近眼图像与眼动追踪数据}
-Most near-eye eye trackers estimate gaze or vergence from extracting visible image features such as 
-the pupil, iris, and corneal glints. 
-
-However, these methods mainly describe eye rotation and provide limited information about accommodation 
-and convergence, the key factors in the vergence--accommodation conflict (VAC)\cite{lu2020purkinje,nair2020riteyes}. 
+\subsection{捕捉近眼图像与合成眼动追踪数据}
+Recent AR depth-perception studies have used commercial eye trackers and calibrated haploscope-style optical 
+setups to measure vergence responses under controlled depth changes, highlighting the need for objective and 
+reproducible eye-based measurements in VAC-related experiments \cite{sturgeon2025vergence,bontha2024arhaploscope}.
 
 Therefore, Purkinje-image-based methods seek to recover accommodation-related information from intraocular 
 reflections: Lu et al. used a multi-camera, multi-LED AR-glasses prototype to track higher-order Purkinje 
@@ -194,9 +192,17 @@ These works suggest that higher-order Purkinje reflections can serve as physical
 but their weak intensity, defocus, and strong dependence on LED--camera--eye geometry make them difficult to capture robustly. Motivated by this limitation, 
 we first build a controllable Blender/LuxCore optical eye model to analyze the formation, visibility, and stability of P1--P4 under near-eye infrared imaging conditions.
 
-
-另一方面，RIT-Eyes 说明了使用图形学渲染生成近眼图像数据的价值。该系统通过合成眼部图像来训练和测试眼动追踪网络，并加入了可变形虹膜、非球面角膜、视网膜回反射、眼睑运动和眨眼等因素 \cite{nair2020riteyes}. 不过，RIT-Eyes 更偏向生成带标注的训练数据，而本项目更关注 Purkinje 图像的物理形成过程。因此，我们的工作不是简单生成“看起来像眼睛”的图像，而是要显式建模角膜、晶状体、折射率、红外光源、相机位置和焦平面，以解释为什么某些设置下 P1 明显而 P3/P4 难以捕捉。
-
+On the other hands, synthetic near-eye rendering provides a complementary route for studying camera--
+illumination configurations: RIT-Eyes rendered three Blender/Cycles datasets with 154,800 path-traced 
+near-eye images in total, including S-NVGaze, S-OpenEDS, and S-General, and evaluated SegNet and RITnet on cross-dataset eye-region segmentation, reporting a global mIoU of 86.06 
+with scores ranging from 77.54 to 94.59 \cite{nair2020riteyes}. 
+In addtion, EyeNeRF uses an explicit eyeball surface together with an implicit volumetric representation, 
+while relightable-eye reconstruction combines an explicit cornea mesh with NeRF-style light transport 
+under near-field point lights and structured illumination \cite{li2022eyenerf,khademi2026relightableeyes};
+To sum up, these recent works show that both physical Purkinje tracking and synthetic eye rendering rely 
+on accurate modeling of ocular geometry, illumination, and camera configuration.
+ However, existing rendering or neural-representation pipelines are mainly designed for gaze estimation, 
+ segmentation, or photorealistic synthesis, whereas our work focuses on physically analyzing how higher-order Purkinje images emerge under controlled near-eye IR imaging conditions.
 \subsection{可重光照眼球重建与神经眼球表示}
 
 眼球建模的难点在于它同时包含透明折射、高光反射、虹膜纹理、巩膜散射和眼周皮肤等复杂外观。EyeNeRF 提出 hybrid representation，将显式参数化眼球表面与隐式体表示结合起来：显式眼球表面用于处理角膜折射和高频高光反射，隐式表示用于建模眼周区域和眼内复杂外观 \cite{li2022eyenerf}. 这对本项目有直接启发：角膜和晶状体这类光学界面不能只用普通外观材质代替，而应该作为真实的反射/折射表面显式建模。
