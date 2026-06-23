@@ -199,21 +199,42 @@ with scores ranging from 77.54 to 94.59 \cite{nair2020riteyes}.
 In addtion, EyeNeRF uses an explicit eyeball surface together with an implicit volumetric representation, 
 while relightable-eye reconstruction combines an explicit cornea mesh with NeRF-style light transport 
 under near-field point lights and structured illumination \cite{li2022eyenerf,khademi2026relightableeyes};
+
+
 To sum up, these recent works show that both physical Purkinje tracking and synthetic eye rendering rely 
 on accurate modeling of ocular geometry, illumination, and camera configuration.
  However, existing rendering or neural-representation pipelines are mainly designed for gaze estimation, 
  segmentation, or photorealistic synthesis, whereas our work focuses on physically analyzing how higher-order Purkinje images emerge under controlled near-eye IR imaging conditions.
-\subsection{可重光照眼球重建与神经眼球表示}
+\subsection{可重光照眼球重建与端到端物理仿真}
+Excerp for physical capture, for the optical eyes modeling, the main problem including the complicated geometry of outsurface of cornea.
+For example, eyenerf propose a hybrid representation, conbine explicit eyeball model to handle high-frequency high-gloss
+, in the mean time, Training the Nerf model for implicit representation enables the modeling of the surrounding eye area 
+and the complex appearance within the eye\cite{li2022eyenerf}. In addition, 
 
-眼球建模的难点在于它同时包含透明折射、高光反射、虹膜纹理、巩膜散射和眼周皮肤等复杂外观。EyeNeRF 提出 hybrid representation，将显式参数化眼球表面与隐式体表示结合起来：显式眼球表面用于处理角膜折射和高频高光反射，隐式表示用于建模眼周区域和眼内复杂外观 \cite{li2022eyenerf}. 这对本项目有直接启发：角膜和晶状体这类光学界面不能只用普通外观材质代替，而应该作为真实的反射/折射表面显式建模。
+\textit{Reconstructing Realistic and Relightable Eyes} highlight the importance of near-field illuminationb to eyes modelling 
+this use hybrid mesh + NeRF Rebuild the ocular system with reflective light capabilities and support the common near-field point lights 
+and structured/fringe projectors \cite{khademi2026relightableeyes}. 
 
-\textit{Reconstructing Realistic and Relightable Eyes} 进一步强调了 near-field illumination 对眼球重建和重光照的重要性。该工作使用 hybrid mesh + NeRF 表示重建可重光照眼睛，并支持眼动追踪中常见的近场 point lights 和 structured/fringe projectors \cite{khademi2026relightableeyes}. 这说明近眼红外 LED 不能简单近似成环境光；光源位置、相机位置、角膜形状和折射路径都会改变 glints 的位置与强度。与这些 photorealistic eye reconstruction 工作不同，本项目的目标不是 avatar 或 novel-view synthesis，而是建立一个可解释的物理仿真环境，用来分析 Purkinje 图像在不同光学条件下的可见性。
+The differentiable optical design provides a reference method for optimizing the layout of LEDs, cameras and auxiliary lenses in the future of this project. \textit{End-to-end Optimization of Fluidic Lenses}
+By integrating the fluid lens shape, differentiable ray tracing, and neural reconstruction into the same 
+end-to-end pipeline, the loss can be back-propagated to the lens design parameters \cite{na2024fluidiclenses}. 
+The work "End-to-End Hybrid Refractive-Diffractive Lens Design with Differentiable Ray-Wave Model" combines ray 
+tracing and wave propagation, simultaneously simulating refractive aberrations and diffraction phase modulation, 
+and supports the joint optimization of the optical system and the reconstruction network \cite{yang2024hybridlens}.
+ These works illustrate that optical simulation should not merely be a post-processing tool, but can become a 
+ part of the system design. Corresponding to this project, in the future, the brightness, clarity, separation 
+ distance from P1, and whether it falls within the camera field of view of P3/P4 can be set as optimization 
+ targets, and be used to guide the placement of LED and camera in reverse.
 
-\subsection{可微光学设计、弱光图像增强与端到端物理仿真}
+真实实验中，高阶 Purkinje 图像往往非常弱，尤其 P3/P4 可能受到低亮度、离焦、传感器噪声和低对比度影响。因此，
+弱光图像增强和 synthetic-to-real 方法可以作为后续辅助模块。\textit{Anti-noise Computational Imaging Using 
+Unsupervised Deep Learning} 说明了在缺少 clean ground truth 的情况下，也可以利用无监督深度学习改善计算成像重建质量
+ \cite{zhai2022antinoise}. 扩散模型风格迁移和 physics-informed diffusion 也提供了未来方向：前者可以缩小 
+ Blender/LuxCore 合成图与真实红外图像之间的 domain gap \cite{chigot2025diffusionstyletransfer}，
+ 后者强调生成模型应满足物理约束，而不是只追求视觉真实 \cite{bastek2025pidm}. 不过在当前阶段，核心仍应是先建立可信的 
+ Blender/LuxCore 光学眼球模型，再考虑学习型增强或 domain adaptation。
 
-可微光学设计为本项目未来优化 LED、相机和辅助透镜布局提供了方法参考。\textit{End-to-end Optimization of Fluidic Lenses} 将流体透镜形状、differentiable ray tracing 和 neural reconstruction 放在同一个端到端 pipeline 中，使 loss 可以反传到透镜设计参数 \cite{na2024fluidiclenses}. \textit{End-to-End Hybrid Refractive-Diffractive Lens Design with Differentiable Ray-Wave Model} 则结合 ray tracing 和 wave propagation，同时模拟折射像差和衍射相位调制，并支持光学系统与重建网络的联合优化 \cite{yang2024hybridlens}. 这些工作说明，光学仿真不应该只作为后处理工具，而可以成为系统设计的一部分。对应到本项目，未来可以把 P3/P4 的亮度、清晰度、与 P1 的分离距离和是否落入相机视场作为优化目标，反向指导 LED 和 camera placement。
-
-真实实验中，高阶 Purkinje 图像往往非常弱，尤其 P3/P4 可能受到低亮度、离焦、传感器噪声和低对比度影响。因此，弱光图像增强和 synthetic-to-real 方法可以作为后续辅助模块。\textit{Anti-noise Computational Imaging Using Unsupervised Deep Learning} 说明了在缺少 clean ground truth 的情况下，也可以利用无监督深度学习改善计算成像重建质量 \cite{zhai2022antinoise}. 扩散模型风格迁移和 physics-informed diffusion 也提供了未来方向：前者可以缩小 Blender/LuxCore 合成图与真实红外图像之间的 domain gap \cite{chigot2025diffusionstyletransfer}，后者强调生成模型应满足物理约束，而不是只追求视觉真实 \cite{bastek2025pidm}. 不过在当前阶段，核心仍应是先建立可信的 Blender/LuxCore 光学眼球模型，再考虑学习型增强或 domain adaptation。
+ 
 \section{Background}
 
 1. Blender-based Optical Eye Modeling and Purkinje Image Simulation
