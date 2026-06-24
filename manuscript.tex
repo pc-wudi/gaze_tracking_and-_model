@@ -85,24 +85,24 @@
 
 \begin{document}
 
-\title{Assessing Learned Models for Phase-only Hologram Compression}
+\title{Real time Accommodation Measurement}
 
-\author{Zicong Peng}
-\affiliation{%
-  \institution{KOC University}
-  \city{Istanbul}
-  \country{tr}
-}
-\email{zpeng25@ku.edu.tr}
+% \author{Zicong Peng}
+% \affiliation{%
+%   \institution{KOC University}
+%   \city{Istanbul}
+%   \country{tr}
+% }
+% \email{zpeng25@ku.edu.tr}
 
 
-\author{Kaan Akşit}
-\affiliation{%
-  \institution{University College London}
-  \city{London}
-  \country{UK}
-}
-\email{k.aksit@ucl.ac.uk}
+% \author{Kaan Akşit}
+% \affiliation{%
+%   \institution{University College London}
+%   \city{London}
+%   \country{UK}
+% }
+% \email{k.aksit@ucl.ac.uk}
 
 \renewcommand{\shortauthors}{Peng et al.}
 
@@ -169,24 +169,24 @@
 \section{Introduction}
 \section{Related works}
 
-In the domains of augmented reality (AR) and physiological eye tracking, the extraction of deep physiological features via high-fidelity physical simulations and implicit neural representations has emerged as a critical research frontier. Recent studies have demonstrated the efficacy of computer graphics-based synthetic data in bridging the reality gap. This is achieved through the development of near-eye physical ray-tracing rendering pipelines \cite{RIT-Eyes} and 3D realistic reconstruction models equipped with relighting capabilities \cite{Realistic_nerf_eyes}.
+% In the domains of augmented reality (AR) and physiological eye tracking, the extraction of deep physiological features via high-fidelity physical simulations and implicit neural representations has emerged as a critical research frontier. Recent studies have demonstrated the efficacy of computer graphics-based synthetic data in bridging the reality gap. This is achieved through the development of near-eye physical ray-tracing rendering pipelines \cite{RIT-Eyes} and 3D realistic reconstruction models equipped with relighting capabilities \cite{Realistic_nerf_eyes}.
 
-Building upon these advancements, deep optical features---particularly Purkinje images, which encode critical information regarding crystalline lens deformation---have been leveraged alongside machine learning and miniature multi-camera arrays to achieve highly precise tracking of dynamic accommodation and vergence \cite{Dynamic_accommodation_Purkinje, Improved_vergence_and_accommodation}. However, capturing these subtle optical signals in real-world systems is frequently hindered by severe sampling noise \cite{Anti-noise_computational_imaging}. Furthermore, the downstream requirement to drive complex hardware execution mechanisms, such as variable-focus lenses \cite{Fluidic_Lenses}, necessitates a highly robust and mathematically pure underlying physical simulation framework.
+% Building upon these advancements, deep optical features---particularly Purkinje images, which encode critical information regarding crystalline lens deformation---have been leveraged alongside machine learning and miniature multi-camera arrays to achieve highly precise tracking of dynamic accommodation and vergence \cite{Dynamic_accommodation_Purkinje, Improved_vergence_and_accommodation}. However, capturing these subtle optical signals in real-world systems is frequently hindered by severe sampling noise \cite{Anti-noise_computational_imaging}. Furthermore, the downstream requirement to drive complex hardware execution mechanisms, such as variable-focus lenses \cite{Fluidic_Lenses}, necessitates a highly robust and mathematically pure underlying physical simulation framework.
 
-To address these challenges, this paper proposes a novel framework utilizing Blender to construct a 3D anatomical eye model that supports complex refractive optical paths. By harnessing a rigorous optical rendering engine, this approach enables direct noise isolation and the precise extraction of high-dimensional deep features, including higher-order Purkinje reflections. Ultimately, this framework provides essential physical data priors for the design of next-generation, noise-robust perception networks and AR hardware systems.
+% To address these challenges, this paper proposes a novel framework utilizing Blender to construct a 3D anatomical eye model that supports complex refractive optical paths. By harnessing a rigorous optical rendering engine, this approach enables direct noise isolation and the precise extraction of high-dimensional deep features, including higher-order Purkinje reflections. Ultimately, this framework provides essential physical data priors for the design of next-generation, noise-robust perception networks and AR hardware systems.
 
 \subsection{Capture near-eye images and synthesize eye movement tracking data}
 Recent AR depth-perception studies have used commercial eye trackers and calibrated haploscope-style optical 
 setups to measure vergence responses under controlled depth changes, highlighting the need for objective and 
-reproducible eye-based measurements in VAC-related experiments \cite{sturgeon2025vergence,bontha2024arhaploscope}.
+reproducible eye-based measurements in VAC-related experiments \cite{AR_Vergence_Depth_OST,AR_Haploscope_Replication}.
 
-Therefore, Purkinje-image-based methods seek to recover accommodation-related information from intraocular 
-reflections: Lu et al. used a multi-camera, multi-LED AR-glasses prototype to track higher-order Purkinje 
-images and reported a best vergence error of (0.3782^\circ) and an accommodation-depth error of 
-(1.108,\mathrm{cm}) \cite{lu2020purkinje}. Ozhan et al. further combined a Purkinje imaging setup with a 
-ZEMAX eye model and learning-based regression, achieving (0.17,\mathrm{D}) accommodation RMSE and (0.18^\circ) 
-vergence RMSE with subject-specific data, and (0.32,\mathrm{D}) / (0.32^\circ) under leave-one-subject-out 
-evaluation with two-point calibration \cite{ozhan2023dynamicaccommodation}.
+Therefore, Purkinje-image-based methods seek to recover accommodation related information from intraocular
+reflections: Lu et al. used a multi-camera, multi-LED AR-glasses prototype to track higher-order Purkinje
+images and reported a best vergence error of \(0.3782^\circ\) and an accommodation-depth error of
+\(1.108\,\mathrm{cm}\) \cite{Improved_vergence_and_accommodation}. Ozhan et al. further combined a Purkinje imaging setup with a
+ZEMAX eye model and learning-based regression, achieving \(0.17\,\mathrm{D}\) accommodation RMSE and \(0.18^\circ\)
+vergence RMSE with subject-specific data, and \(0.32\,\mathrm{D}\) / \(0.32^\circ\) under leave-one-subject-out
+evaluation with two-point calibration \cite{Dynamic_accommodation_Purkinje}.
 
 These works suggest that higher-order Purkinje reflections can serve as physically meaningful cues for accommodation-aware eye tracking, 
 but their weak intensity, defocus, and strong dependence on LED--camera--eye geometry make them difficult to capture robustly. Motivated by this limitation, 
@@ -195,10 +195,10 @@ we first build a controllable Blender/LuxCore optical eye model to analyze the f
 On the other hands, synthetic near-eye rendering provides a complementary route for studying camera--
 illumination configurations: RIT-Eyes rendered three Blender/Cycles datasets with 154,800 path-traced 
 near-eye images in total, including S-NVGaze, S-OpenEDS, and S-General, and evaluated SegNet and RITnet on cross-dataset eye-region segmentation, reporting a global mIoU of 86.06 
-with scores ranging from 77.54 to 94.59 \cite{nair2020riteyes}. 
+with scores ranging from 77.54 to 94.59 \cite{RIT-Eyes}. 
 In addtion, EyeNeRF uses an explicit eyeball surface together with an implicit volumetric representation, 
 while relightable-eye reconstruction combines an explicit cornea mesh with NeRF-style light transport 
-under near-field point lights and structured illumination \cite{li2022eyenerf,khademi2026relightableeyes};
+under near-field point lights and structured illumination \cite{EyeNeRF}\cite{Realistic_nerf_eyes};
 
 
 To sum up, these recent works show that both physical Purkinje tracking and synthetic eye rendering rely 
@@ -209,45 +209,45 @@ on accurate modeling of ocular geometry, illumination, and camera configuration.
 Excerp for physical capture, for the optical eyes modeling, the main problem including the complicated geometry of outsurface of cornea.
 For example, eyenerf propose a hybrid representation, conbine explicit eyeball model to handle high-frequency high-gloss
 , in the mean time, Training the Nerf model for implicit representation enables the modeling of the surrounding eye area 
-and the complex appearance within the eye\cite{li2022eyenerf}. In addition, 
+and the complex appearance within the eye\cite{EyeNeRF}. In addition, 
 
 \textit{Reconstructing Realistic and Relightable Eyes} highlight the importance of near-field illuminationb to eyes modelling 
 this use hybrid mesh + NeRF Rebuild the ocular system with reflective light capabilities and support the common near-field point lights 
-and structured/fringe projectors \cite{khademi2026relightableeyes}. 
+and structured/fringe projectors \cite{Realistic_nerf_eyes}. 
 
 Differentiable optical design provides a useful reference for future optimization of the LED--camera 
 layout in our system. \textit{End-to-end Optimization of Fluidic Lenses} integrates fluidic lens geometry, 
 differentiable ray tracing, and neural reconstruction into a single end-to-end pipeline, allowing the loss 
-to be back-propagated to lens design parameters \cite{na2024fluidiclenses}. Similarly, 
+to be back-propagated to lens design parameters \cite{Fluidic_Lenses}. Similarly, 
 \textit{End-to-End Hybrid Refractive-Diffractive Lens Design with Differentiable Ray-Wave Model} combines 
 ray tracing with wave propagation to jointly optimize refractive-diffractive optics and the reconstruction 
-network \cite{yang2024hybridlens}. These works suggest that optical simulation can be part of the design loop;
+network \cite{Hybrid_Refractive_Diffractive_Lens}. These works suggest that optical simulation can be part of the design loop;
  in our case, future optimization could use the brightness, sharpness, separation from P1, and field-of-view 
  coverage of P3/P4 as objectives for LED and camera placement.
 
 In real captures, higher-order Purkinje images, especially P3 and P4, are relatively faint and sensitive 
 to defocus and sensor noise. Related enhancement and adaptation methods suggest possible post-processing 
 tools: unsupervised anti-noise computational imaging reconstructed \(64 \times 64\) images at \(20\) fps 
-with only a \(5\%\) sampling ratio \cite{zhai2022antinoise}, diffusion-based style transfer reduced 
+with only a \(5\%\) sampling ratio \cite{Anti-noise_computational_imaging}, diffusion-based style transfer reduced 
 synthetic-to-real FID to \(54.56\) compared with \(65.31\) and \(73.26\) for prior 
-baselines \cite{chigot2025diffusionstyletransfer}, and physics-informed diffusion reduced physical 
+baselines \cite{Diffusion_Style_Transfer}, and physics-informed diffusion reduced physical 
 residuals by about two orders of magnitude in a Darcy-flow task and by \(33\%\)--\(35\%\) in topology 
-optimization \cite{bastek2025pidm}.
+optimization \cite{Physics_Informed_Diffusion}.
 
  
 \section{Background}
 \subsection{Optical basis of Purkinje images and VAC}
 
 
-In natural vision, vergence and accommodation are coupled: the eyes rotate toward a target while the crystalline lens changes optical power to focus it on the retina. In AR/VR displays, virtual depth cues may drive vergence to a distance different from the display focal plane, causing the vergence--accommodation conflict (VAC). As holographic and metasurface-waveguide AR displays move toward more realistic 3D imagery, measuring both vergence and accommodation becomes important for evaluating depth perception and visual comfort \cite{gopakumar2024holographicAR}.
+In natural vision, vergence and accommodation are coupled: the eyes rotate toward a target while the crystalline lens changes optical power to focus it on the retina. In AR/VR displays, virtual depth cues may drive vergence to a distance different from the display focal plane, causing the vergence--accommodation conflict (VAC). As holographic and metasurface-waveguide AR displays move toward more realistic 3D imagery, measuring both vergence and accommodation becomes important for evaluating depth perception and visual comfort \cite{Holographic_AR_Metasurface}.
 
-Conventional eye trackers estimate gaze or vergence from pupil, iris, limbus, or corneal-glint features, which mainly describe eye rotation and provide limited access to accommodation \cite{lu2020purkinje,nair2020riteyes}. Purkinje images offer a more direct optical cue: P1/P2 are mainly associated with the cornea, while P3/P4 originate from the crystalline lens surfaces and are related to accommodation \cite{lu2020purkinje,ozhan2023dynamicaccommodation}. Because P3/P4 are faint, easily defocused, and sensitive to LED--camera--eye geometry, we first study their formation in a controllable optical eye model before real IR capture.
+Conventional eye trackers estimate gaze or vergence from pupil, iris, limbus, or corneal-glint features, which mainly describe eye rotation and provide limited access to accommodation \cite{RIT-Eyes}. Purkinje images offer a more direct optical cue: P1/P2 are mainly associated with the cornea, while P3/P4 originate from the crystalline lens surfaces and are related to accommodation \cite{Improved_vergence_and_accommodation}\cite{Dynamic_accommodation_Purkinje}. Because P3/P4 are faint, easily defocused, and sensitive to LED--camera--eye geometry, we first study their formation in a controllable optical eye model before real IR capture.
 \subsection{Simulation-to-capture pipeline for near-eye Purkinje imaging}
 
 
-A reliable Purkinje imaging pipeline requires the eye to be modeled as an optical system rather than an appearance object. Since P1--P4 are generated by reflection and refraction at corneal and lenticular surfaces, Arizona/ZEMAX-style schematic eye models are useful because they make accommodation, refractive interfaces, and ray paths physically controllable \cite{lu2020purkinje,ozhan2023dynamicaccommodation}. This also explains why eye-rendering methods often keep the eyeball or cornea as an explicit mesh: specular highlights, corneal refraction, and near-field glints are tied to surface geometry, while NeRF-like fields are more suitable for view synthesis, relighting, and periocular appearance modeling \cite{nair2020riteyes,li2022eyenerf,khademi2026relightableeyes}.
+A reliable Purkinje imaging pipeline requires the eye to be modeled as an optical system rather than an appearance object. Since P1--P4 are generated by reflection and refraction at corneal and lenticular surfaces, Arizona/ZEMAX-style schematic eye models are useful because they make accommodation, refractive interfaces, and ray paths physically controllable \cite{Improved_vergence_and_accommodation}\cite{Dynamic_accommodation_Purkinje}. This also explains why eye-rendering methods often keep the eyeball or cornea as an explicit mesh: specular highlights, corneal refraction, and near-field glints are tied to surface geometry, while NeRF-like fields are more suitable for view synthesis, relighting, and periocular appearance modeling \cite{nair2020riteyes,li2022eyenerf,khademi2026relightableeyes}.
 
-The same optical constraints determine capture quality. LED and camera placement must preserve a stable eye box while avoiding eyelid/eyelash occlusion, glint overlap, saturation, and defocus; otherwise weak P3/P4 reflections can merge with P1, fall outside the field of view, or become unresolvable at the sensor resolution. Thus, the key background principle is that eye geometry, near-field illumination, camera focus/FOV, resolution, and reconstruction representation must be designed together before reliable Purkinje capture and later NeRF/3D Gaussian reconstruction can be expected \cite{kerbl2023gaussiansplatting}.
+The same optical constraints determine capture quality. LED and camera placement must preserve a stable eye box while avoiding eyelid/eyelash occlusion, glint overlap, saturation, and defocus; otherwise weak P3/P4 reflections can merge with P1, fall outside the field of view, or become unresolvable at the sensor resolution. Thus, the key background principle is that eye geometry, near-field illumination, camera focus/FOV, resolution, and reconstruction representation must be designed together before reliable Purkinje capture and later NeRF/3D Gaussian reconstruction can be expected \cite{Gaussian_Splatting}
 \section{Results and Discussions}
 \bibliographystyle{ACM-Reference-Format}
 \bibliography{references}
