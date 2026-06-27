@@ -36,7 +36,7 @@
 \newacronym{CGH}{CGH}{Computer-Generated Holography}
 \newacronym{CNN}{CNN}{Convolutional Neural Network}
 \newabbreviation{DCT}{DCT}{Discrete Cosine Transform}
-\newabbreviation{VAC}{VAC}{Vergance-Accommodation Conflict}
+\newabbreviation{VAC}{VAC}{Vergence-Accommodation Conflict}
 \global\long\def\CGH{\acrshort{CGH}\xspace}
 \global\long\def\CNN{\acrshort{CNN}\xspace}
 \global\long\def\VAE{\acrshort{VAE}\xspace}
@@ -86,7 +86,7 @@
 
 \begin{document}
 
-\title{Real time Accommodation Measurement}
+\title{Near-Eye Purkinje Image Simulation and Capture for Accommodation-Aware Eye Tracking}
 
 % \author{Zicong Peng}
 % \affiliation{%
@@ -136,12 +136,11 @@
  </ccs2012>
 \end{CCSXML}
 
-\ccsdesc[500]{Computing methodologies~Image compression}
-\ccsdesc[500]{Theory of computation~Data compression}
-\ccsdesc[300]{Hardware~Displays and imagers}
-\ccsdesc[300]{Hardware~Emerging optical and photonic technologies}
+\ccsdesc[500]{Human-centered computing~Mixed / augmented reality}
+\ccsdesc[500]{Computing methodologies~Rendering}
+\ccsdesc[300]{Computing methodologies~Computer vision}
 
-\keywords{eyes tracking, deep learning, computer graphics}
+\keywords{eye tracking, deep learning, computer graphics}
 % eample teaser
 % \begin{teaserfigure}
 %   \includegraphics[width=\textwidth]{figures/teaser.png}
@@ -172,22 +171,33 @@
 
 % To address these challenges, this paper proposes a novel framework utilizing Blender to construct a 3D anatomical eye model that supports complex refractive optical paths. By harnessing a rigorous optical rendering engine, this approach enables direct noise isolation and the precise extraction of high-dimensional deep features, including higher-order Purkinje reflections. Ultimately, this framework provides essential physical data priors for the design of next-generation, noise-robust perception networks and AR hardware systems.
 
-\subsection{Tracking eye and gaze}
-In stereoscopic displays, the \VAC arises because the eyes converge to the depicted 3D depth 
-while accommodation and retinal blur remain tied to the physical display surface, 
-which can impair fusion and cause visual discomfort. \cite{VAC}
-Recent \gls{VAC}-related depth-perception studies therefore use eye-tracking and controlled optical setups to measure vergence responses under different perceived depths, 
-highlighting the need for objective and reproducible eye-based measurements 
-in VAC-related experiments \cite{AR_Vergence_Depth_OST,AR_Haploscope_Replication}.
-Therefore, Purkinje-image-based methods seek to recover accommodative cues from intraocular
-reflections: Lu et al.\shortcite{Improved_vergence_and_accommodation} used a multi-camera AR-glasses prototype to track higher-order Purkinje
-images and reported a best vergence error of \(0.3782^\circ\) and an accommodation-depth error of
-\(1.108\,\mathrm{cm}\) \cite{Improved_vergence_and_accommodation}. Ozhan et al.\shortcite{Dynamic_accommodation_Purkinje}further use a Purkinje imaging setup with a
-\gls{MLP}-based regression model, achieving \(0.17\,\mathrm{D}\) accommodation RMSE and \(0.18^\circ\)
-vergence RMSE with subject-specific data, and \(0.32\,\mathrm{D}\) / \(0.32^\circ\) with two-point calibration \cite{Dynamic_accommodation_Purkinje}.
-These works suggest that higher-order Purkinje reflections can serve as physically meaningful cues for accommodation-aware eye tracking, 
-but their weak intensity, defocus, and strong dependence on LED--camera--eye geometry make them difficult to capture robustly. Motivated by this limitation, 
-we first build a controllable Blender/LuxCore optical eye model to analyze the formation, visibility, and stability of P1--P4 under near-eye infrared imaging conditions.
+\subsection{Eye and Gaze Tracking}
+In stereoscopic and near-eye displays, the \VAC arises when the eyes converge to a virtual 
+3D depth while the crystalline lens remains focused on the physical display plane. 
+This mismatch can reduce fusion performance and cause visual discomfort \cite{VAC}. 
+Recent \gls{VAC}-related depth-perception studies therefore use eye-tracking and 
+controlled optical setups to measure vergence responses under different 
+perceived-depth conditions, highlighting the need for objective and reproducible 
+eye-based measurements in \gls{VAC}-related experiments \cite{AR_Vergence_Depth_OST,AR_Haploscope_Replication}.
+However, vergence alone does not fully describe the accommodative state of the eye. 
+Accommodation is harder to measure directly, especially in compact near-eye systems. 
+Higher-order Purkinje images provide a promising optical cue because they arise from 
+reflections at ocular interfaces, including the crystalline lens surfaces, and vary 
+with the lens geometry during accommodation. Lu et al.\shortcite{Improved_vergence_and_accommodation} 
+use a multi-camera, multi-LED AR-glasses prototype to track higher-order Purkinje images,
+extending conventional pupil--corneal-reflection tracking toward accommodation-aware sensing in a near-eye form factor. 
+Ozhan et al.\shortcite{Dynamic_accommodation_Purkinje} 
+extend this direction by collecting multi-subject Purkinje measurements and combining a 
+Purkinje imaging setup with a \gls{MLP}-based regression model to estimate dynamic vergence 
+and accommodation across users.
+
+These works suggest that higher-order Purkinje reflections can serve as physically meaningful 
+cues for accommodation-aware eye tracking, but they also reveal a practical challenge: 
+P3 and P4 are faint, easily defocused, and highly sensitive to LED--camera--eye geometry. 
+Motivated by this limitation, we first build a controllable Blender/LuxCore optical eye 
+model to analyze the formation, visibility, and stability of P1--P4 under near-eye infrared
+ imaging conditions.
+
 
 \begin{table}[t]
 \centering
