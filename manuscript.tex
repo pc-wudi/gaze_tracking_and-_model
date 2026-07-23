@@ -236,46 +236,59 @@ No. & Ref. & Camera & Illum. & Method & Algorithm & Target & Mode & Accuracy \\
 \end{tabular}
 \end{table*}
 
+\subsection{Computational Eye Modeling}
 
-\subsection{Reconstructive surgery of the eyeball with adjustable lighting and end-to-end physical simulation}
-Excerp for physical capture, for the optical eyes modeling, the main problem including the complicated geometry of outsurface of cornea.
-For example, eyenerf propose a hybrid representation, conbine explicit eyeball model to handle high-frequency high-gloss
-, in the mean time, Training the Nerf model for implicit representation enables the modeling of the surrounding eye area 
-and the complex appearance within the eye\cite{EyeNeRF}. In addition, 
+Computational eye models are widely used to generate labeled data for gaze estimation. UnityEyes, NVGaze, and RIT-Eyes synthesize controllable variations in gaze, ocular geometry, appearance, and illumination for training eye-tracking models \cite{UnityEyes,NVGaze,RIT-Eyes}. These systems capture visible eye-region cues effectively, but they primarily target eye rotation, pupil localization, and segmentation rather than accommodation-dependent changes within the crystalline lens.
 
-Khademi et al.  \shortcite{Realistic_nerf_eyes} highlight the importance of near-field illuminationb to eyes modelling 
-this use hybrid mesh + NeRF Rebuild the ocular system with reflective light capabilities and support the common near-field point lights 
-and structured/fringe projectors \cite{Realistic_nerf_eyes}. 
+Neural eye representations improve visual realism and relighting. EyeNeRF combines an explicit eyeball surface with implicit volumetric representations for view synthesis, gaze animation, corneal refraction, and relighting \cite{EyeNeRF}. Khademi et al. extend a similar hybrid formulation to near-field point sources and structured illumination \cite{Realistic_nerf_eyes}. However, these methods focus on photorealistic appearance and do not explicitly predict P3/P4 formation or accommodation-dependent internal ocular geometry.
 
-Differentiable optical design provides a useful reference for future optimization of the LED--camera 
-layout in our system. s Na et al. \shortcite{Fluidic_Lenses} integrates fluidic lens geometry, 
-differentiable ray tracing, and neural reconstruction into a single end-to-end pipeline, allowing the loss 
-to be back-propagated to lens design parameters \cite{Fluidic_Lenses}. Similarly, 
-Yang et al.  \shortcite{Hybrid_Refractive_Diffractive_Lens} combines 
-ray tracing with wave propagation to jointly optimize refractive-diffractive optics and the reconstruction 
-network \cite{Hybrid_Refractive_Diffractive_Lens}. These works suggest that optical simulation can be part of the design loop;
- in our case, future optimization could use the brightness, sharpness, separation from P1, and field-of-view 
- coverage of P3/P4 as objectives for LED and camera placement.
+Purkinje-based systems model internal reflections more directly. Wu et al., Idrizovi{'c} et al., and OpenIrisDPI use P1 and P4 for accurate eye-rotation tracking \cite{Wu2023Purkinje,WideRange_Purkinje,OpenIrisDPI}. Lu et al. further model higher-order reflections with multiple cameras and infrared LEDs to estimate vergence and accommodation \cite{Improved_vergence_and_accommodation}. Ozhan et al. simulate P1--P4 across accommodation and vergence states, validate the predictions against real captures, and use the resulting features for dynamic estimation \cite{Dynamic_accommodation_Purkinje}. Our work follows this direction by using a controllable optical eye model to predict how accommodation, vergence, and LED--camera geometry affect P1--P4 formation.
 
-In real captures, higher-order Purkinje images, especially P3 and P4, are relatively faint and sensitive 
-to defocus and sensor noise. Related enhancement and adaptation methods suggest possible post-processing 
-tools: unsupervised anti-noise computational imaging reconstructed \(64 \times 64\) images at \(20\) fps 
-with only a \(5\%\) sampling ratio \cite{Anti-noise_computational_imaging}, diffusion-based style transfer reduced 
-synthetic-to-real FID to \(54.56\) compared with \(65.31\) and \(73.26\) for prior 
-baselines \cite{Diffusion_Style_Transfer}, and physics-informed diffusion reduced physical 
-residuals by about two orders of magnitude in a Darcy-flow task and by \(33\%\)--\(35\%\) in topology 
-optimization \cite{Physics_Informed_Diffusion}.
+\subsection{Physics-Based Optical Design}
 
- 
-\section{Background}
-\subsection{Optical basis of Purkinje images and VAC}
+Differentiable optical design provides a possible framework for optimizing the illumination and imaging layout of a Purkinje capture system. Na et al. show that image-domain losses can be propagated through differentiable ray tracing to physical optical parameters \cite{Fluidic_Lenses}. For our system, the same principle could be applied to LED position, camera pose, focal distance, aperture, and field of view.
 
+The optimization criteria should follow the capture behavior of higher-order Purkinje reflections. Lu et al. show that P3 is weaker than P1, lies on a different focal plane, and may leave the camera field of view as gaze changes; their system therefore uses multiple cameras and infrared LEDs \cite{Improved_vergence_and_accommodation}. Ozhan et al. further show that the camera--LED--eye geometry affects the observed P3/P4 locations and configure the system to improve reflection separation while avoiding vignetting \cite{Dynamic_accommodation_Purkinje}. These results suggest optimizing P3/P4 visibility, sharpness, field-of-view coverage, and separation from other reflections.
 
-In natural vision, vergence and accommodation are coupled: the eyes rotate toward a target while the crystalline lens changes optical power to focus it on the retina. In AR/VR displays, virtual depth cues may drive vergence to a distance different from the display focal plane, causing the vergence--accommodation conflict (VAC). As holographic and metasurface-waveguide AR displays move toward more realistic 3D imagery, measuring both vergence and accommodation becomes important for evaluating depth perception and visual comfort \cite{Holographic_AR_Metasurface}.
+The selected layout must also remain practical to assemble, calibrate, and evaluate at the sensor level. Prior work on replicating a controllable AR haploscope highlights the implementation challenges of physical optical platforms \cite{AR_Haploscope_Replication} and Wu et al. show that reliable P1/P4 measurement depends on sufficient image resolution and accurate reflection localization \cite{Wu2023Purkinje}. These considerations motivate evaluating optical layout, calibration, and sensor-level detectability together.
 
-Conventional eye trackers estimate gaze or vergence from pupil, iris, limbus, or corneal-glint features, which mainly describe eye rotation and provide limited access to accommodation \cite{RIT-Eyes}. Purkinje images offer a more direct optical cue: P1/P2 are mainly associated with the cornea, while P3/P4 originate from the crystalline lens surfaces and are related to accommodation \cite{Improved_vergence_and_accommodation}\cite{Dynamic_accommodation_Purkinje}. Because P3/P4 are faint, easily defocused, and sensitive to LED--camera--eye geometry, we first study their formation in a controllable optical eye model before real IR capture.
+The present work does not perform end-to-end differentiable optimization. Instead, it uses geometric-optics simulation to compare candidate LED--camera configurations and to predict whether P1--P4 remain visible, sharp, and separable under realizable capture conditions. Differentiable layout optimization and synthetic-to-real adaptation are left as future extensions.
+
+\section{Optical Background}
+
+\subsection{Accommodation-Dependent Purkinje Image Formation}
+
+The four principal Purkinje images are produced by specular reflections
+at the major refractive interfaces of the eye. P1 is formed at the
+anterior corneal surface, P2 at the posterior corneal surface, P3 at
+the anterior crystalline-lens surface, and P4 at the posterior
+crystalline-lens surface. The observed position of a higher-order
+reflection is not determined by its reflecting surface alone. Before
+reaching the camera, the corresponding rays pass through and are
+refracted by preceding ocular interfaces; their image-space positions
+therefore depend on the complete optical path through the eye.
+
+Accommodation changes the optical power of the eye by altering
+crystalline-lens geometry. In accommodation-dependent schematic eye
+models, these changes are represented through lens-surface curvature,
+lens thickness, lens position, asphericity, and effective refractive
+index \cite{Navarro1985Accommodation}. P3 and P4 therefore respond more
+directly to accommodation than the corneal reflections P1 and P2.
+Their displacement and magnification also depend on eye rotation and
+on the relative positions of the illumination source, eye, and camera
+\cite{Improved_vergence_and_accommodation,
+Dynamic_accommodation_Purkinje}.
+
+The existence of a valid reflection path does not guarantee a usable
+image feature. P3 and P4 generally have lower contrast than P1 and are
+more sensitive to defocus, partial occlusion, competing glints, and
+sensor noise. Camera aperture and focal distance determine their spot
+size and sharpness at the sensor, while the pupil, iris, and eyelids
+restrict which reflection paths remain visible. Their detectability is
+therefore a joint property of ocular geometry, illumination, camera
+placement, and sensor configuration.
+
 \subsection{Simulation-to-capture pipeline for near-eye Purkinje imaging}
-
 
 A reliable Purkinje imaging pipeline requires the eye to be modeled as an optical system rather than an appearance object. Since P1--P4 are generated by reflection and refraction at corneal and lenticular surfaces, Arizona/ZEMAX-style schematic eye models are useful because they make accommodation, refractive interfaces, and ray paths physically controllable \cite{Improved_vergence_and_accommodation}\cite{Dynamic_accommodation_Purkinje}. This also explains why eye-rendering methods often keep the eyeball or cornea as an explicit mesh: specular highlights, corneal refraction, and near-field glints are tied to surface geometry, while NeRF-like fields are more suitable for view synthesis, relighting, and periocular appearance modeling \cite{nair2020riteyes,li2022eyenerf,khademi2026relightableeyes}.
 Existing Purkinje imaging systems also provide practical guidance for hardware geometry. Both Lu et al. and Ozhan et al. place infrared LEDs close to the camera optical axis to maximize Purkinje visibility while keeping the reflections inside the camera field of view. At the same time, camera positions must balance the visibility of higher-order Purkinje images against eyelid and eyelash occlusions, glint overlap, and sensor saturation. These observations suggest that LED and camera placement is not arbitrary but jointly determines the brightness, separation, and detectability of P1--P4.
