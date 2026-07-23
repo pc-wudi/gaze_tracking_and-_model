@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.3) (preloaded format=pdflatex 2025.4.18)  12 JUN 2026 22:44
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.3) (preloaded format=pdflatex 2025.4.18)  23 JUL 2026 08:47
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1182,42 +1182,6 @@ LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
 (Font)              scaled to size 10.95pt on input line 29.
 
-! Undefined control sequence.
-<argument> \ACM@sect@format {\vanillaMLP 
-                                         }
-l.37 \subsection{\vanillaMLP}
-                             
-? 
-! Undefined control sequence.
-<argument> ...on \hskip 1em\relax \fi \vanillaMLP 
-                                                  \@glsxtrnotinmark 
-l.37 \subsection{\vanillaMLP}
-                             
-? 
-! Undefined control sequence.
-<argument> ...on \hskip 1em\relax \fi \vanillaMLP 
-                                                  \@glsxtrnotinmark }\__mark...
-l.37 \subsection{\vanillaMLP}
-                             
-? 
-! Undefined control sequence.
-<argument> ...on \hskip 1em\relax \fi \vanillaMLP 
-                                                  \@glsxtrnotinmark }\__mark...
-l.37 \subsection{\vanillaMLP}
-                             
-? 
-! Undefined control sequence.
-<argument> ...bsection\endcsname }\fi \vanillaMLP 
-                                                  
-l.37 \subsection{\vanillaMLP}
-                             
-? 
-! Undefined control sequence.
-<argument> ...bsection\endcsname }\fi \vanillaMLP 
-                                                  }{\thepage }{\@currentHref...
-l.37 \subsection{\vanillaMLP}
-                             
-? 
 (supplementary.bbl
 
 Package natbib Warning: Empty `thebibliography' environment on input line 39.
@@ -1242,22 +1206,22 @@ LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-03-26>
  ***********
 Package rerunfilecheck Info: File `supplementary.out' has not changed.
-(rerunfilecheck)             Checksum: E81986132F02482D5EBD1D19E7D1E2E5;775.
+(rerunfilecheck)             Checksum: 2E7F506936F04FEB1E1F4DF649FC6567;695.
  ) 
 Here is how much of TeX's memory you used:
- 30773 strings out of 469959
- 564369 string characters out of 5469834
+ 30770 strings out of 469959
+ 564329 string characters out of 5469834
  1106027 words of memory out of 5000000
- 56963 multiletter control sequences out of 15000+600000
+ 56961 multiletter control sequences out of 15000+600000
  665404 words of font info for 86 fonts, out of 8000000 for 9000
  1302 hyphenation exceptions out of 8191
  90i,5n,131p,2533b,633s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/25217/AppData/Local/Programs/MiKTeX/fonts/type1/public/libertine/Li
 nLibertineT.pfb><C:/Users/25217/AppData/Local/Programs/MiKTeX/fonts/type1/publi
 c/libertine/LinLibertineTB.pfb>
-Output written on supplementary.pdf (1 page, 118718 bytes).
+Output written on supplementary.pdf (1 page, 118290 bytes).
 PDF statistics:
- 52 PDF objects out of 1000 (max. 8388607)
- 9 named destinations out of 1000 (max. 500000)
- 16441 words of extra memory for PDF output out of 17280 (max. 10000000)
+ 48 PDF objects out of 1000 (max. 8388607)
+ 8 named destinations out of 1000 (max. 500000)
+ 16433 words of extra memory for PDF output out of 17280 (max. 10000000)
 
