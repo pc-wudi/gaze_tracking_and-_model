@@ -38,15 +38,7 @@
 \newabbreviation{DCT}{DCT}{Discrete Cosine Transform}
 \newabbreviation{VAC}{VAC}{Vergence-Accommodation Conflict}
 
-\newacronym{3DGS}{3DGS}{3D Gaussian Splatting}
-\newacronym{SH}{SH}{Spherical Harmonics}
-\newacronym{DPI}{DPI}{Dual Purkinje Image}
-\newacronym{NIR}{NIR}{Near-Infrared}
-\newacronym{IR}{IR}{Infrared}
-\newacronym{DOF}{DoF}{Depth of Field}
-\newacronym{FOV}{FoV}{Field of View}
-\newacronym{AR}{AR}{Augmented Reality}
-\newacronym{VR}{VR}{Virtual Reality}
+
 \global\long\def\CGH{\acrshort{CGH}\xspace}
 \global\long\def\CNN{\acrshort{CNN}\xspace}
 \global\long\def\VAE{\acrshort{VAE}\xspace}
@@ -59,16 +51,25 @@
 \global\long\def\FILMSIREN{\textcolor{ColorFILMSIREN}{\textbf{FilmSIREN}}\xspace}
 
 
-\global\long\def\GS{\acrshort{3DGS}\xspace}
-\global\long\def\SH{\acrshort{SH}\xspace}
-\global\long\def\DPI{\acrshort{DPI}\xspace}
-\global\long\def\NIR{\acrshort{NIR}\xspace}
-\global\long\def\IR{\acrshort{IR}\xspace}
-\global\long\def\DOF{\acrshort{DOF}\xspace}
-\global\long\def\FOV{\acrshort{FOV}\xspace}
-\global\long\def\AR{\acrshort{AR}\xspace}
-\global\long\def\VR{\acrshort{VR}\xspace}
-\global\long\def\DCT{\gls{DCT}\xspace}
+\newabbreviation{3DGS}{3DGS}{3D Gaussian Splatting}
+\newabbreviation{SH}{SH}{Spherical Harmonics}
+\newabbreviation{DPI}{DPI}{Dual Purkinje Image}
+\newabbreviation{NIR}{NIR}{Near-Infrared}
+\newabbreviation{IR}{IR}{Infrared}
+\newabbreviation{DOF}{DoF}{Depth of Field}
+\newabbreviation{FOV}{FoV}{Field of View}
+\newabbreviation{AR}{AR}{Augmented Reality}
+\newabbreviation{VR}{VR}{Virtual Reality}
+
+\global\long\def\GS{\gls{3DGS}\xspace}
+\global\long\def\SH{\gls{SH}\xspace}
+\global\long\def\DPI{\gls{DPI}\xspace}
+\global\long\def\NIR{\gls{NIR}\xspace}
+\global\long\def\IR{\gls{IR}\xspace}
+\global\long\def\DOF{\gls{DOF}\xspace}
+\global\long\def\FOV{\gls{FOV}\xspace}
+\global\long\def\AR{\gls{AR}\xspace}
+\global\long\def\VR{\gls{VR}\xspace}
 \global\long\def\VAC{\gls{VAC}\xspace}
 
 \newcommand{\etal}{~et al.\@\xspace}
@@ -190,7 +191,7 @@ To clearly show the technical features of previous works, Table 1 categorizes an
 based on their hardware setups, algorithms, operating modes, and tracking accuracy.
 
 \subsection{Eye Accommodation Tracking}
-In stereoscopic and near-eye displays, the \VAC \cite{VAC}arises when the eyes converge to a virtual 
+In stereoscopic and near-eye displays, the \VAC{}~ \cite{VAC}arises when the eyes converge to a virtual 
 3D depth while the crystalline lens remains focused on the physical display plane. 
 This mismatch can reduce fusion performance and cause visual discomfort . 
 Recent \VAC{}-related depth-perception studies therefore use eye-tracking and 
@@ -218,7 +219,12 @@ model to analyze the formation, visibility, and stability of P1--P4 under near-e
 
 \begin{table*}[t]
 \centering
-\caption{Comparison of different eye and accommodation tracking methodologies. Accuracy is categorized into High (\textcolor{green!60!black}{High}), Mid (\textcolor{orange!90!black}{Mid}, representing accuracy between $0.5^\circ$ and $1.5^\circ$), and Low (\textcolor{red!70!black}{Low}).}
+\caption{Comparison of different eye and accommodation tracking methodologies.
+Accuracy is qualitatively categorized into High
+(\textcolor{green!60!black}{High}), Mid
+(\textcolor{orange!90!black}{Mid}), and Low
+(\textcolor{red!70!black}{Low}) according to the reported performance
+for the corresponding tracking task.}
 \label{tab:literature_review}
 \begin{tabular}{c c c c l l c c c}
 \toprule
@@ -252,6 +258,17 @@ No. & Ref. & Camera & Illum. & Method & Algorithm & Target & Mode & Accuracy \\
 9 & \cite{Realistic_nerf_eyes}
 & Multiple & Visible & NeRF & Learning & Vergence & Near-eye & \textcolor{red!70!black}{Low} \\
 
+10 & \cite{Depth_fixation_DPI}
+& Single & IR & DPI & Regression & Depth & Desktop & \textcolor{orange!90!black}{Mid} \\
+
+11 & \cite{Keratoconus_Purkinje}
+& Single & IR & Purkinje & Geometric & Cornea & Synthetic & \textcolor{red!70!black}{Low} \\
+
+12 & \cite{High_resolution_dDPI_2022}
+& Single & IR & DPI & Geometric & Vergence & Desktop & \textcolor{green!60!black}{High} \\
+
+13 & \cite{Digital_Eye_Tracker_Prototyper}
+& Multiple & IR & NeRF & Learning & Gaze & Synthetic & \textcolor{orange!90!black}{Mid} \\
 \bottomrule
 \end{tabular}
 \end{table*}
@@ -278,8 +295,7 @@ The present work does not perform end-to-end differentiable optimization. Instea
 
 \subsection{Challenges of reconstructing Purkinje reflections via \GS{}.}
 Standard \GS{} struggles to consistently preserve Purkinje reflections because its reconstruction formulation does not fully match their physical image-formation process. 
-\GS{} represents view-dependent appearance by using low-order \SH{} \cite{Gaussian_Splatting}, while remaining limited 
-for high-frequency specular reflections~\cite{GaussianShader,SpecTReGS}. More importantly, P3 and P4 are formed through transmission and reflection
+\GS{} represents view-dependent appearance by using low-order \SH{} \cite{Gaussian_Splatting}, but accurately modeling high-frequency, view-dependent specular appearance remains challenging~\cite{GaussianShader,SpecTReGS}. More importantly, P3 and P4 are formed through transmission and reflection
 across the multiple ocular interfaces of eyes, whereas rasterization-based \GS{} does not explicitly model these secondary optical paths~\cite{3DGUT}. 
 In addition, Lu et al. \cite{Improved_vergence_and_accommodation} and Wu et al. \cite{Dual_Purkinje_Tracker} show that P3 is formed at a different optical 
 focal plane from P1 and P4, while higher-order Purkinje reflections are relatively weak and therefore more susceptible to defocus and low contrast. 
@@ -290,8 +306,7 @@ characterized as dynamic optical signals governed by ocular optics rather than s
 
 \subsection{Capturing Purkinje image}
 \DPI{} tracking can provide higher precision than conventional pupil--corneal-reflection tracking by using the relative motion of P1 and P4 rather than the pupil center~\cite{OpenIrisDPI,Dual_Purkinje_Tracker}.
-However, obtaining reliable Purkinje features from real eye images remains challenging.
-Wu et al.~\cite{Dual_Purkinje_Tracker} show that P1 and P4 can be imaged together while P3 is out of focus and P2 largely overlaps with P1; similarly, Ahn et al.~\cite{Depth_fixation_DPI} report that P4 is substantially smaller and darker than P1, making its detection less reliable.
+However, obtaining reliable Purkinje features from real eye images remains challenging. Wu et al.~\cite{Dual_Purkinje_Tracker} show that P1 and P4 can be imaged together while P3 is out of focus and P2 largely overlaps with P1; similarly, Ahn et al.~\cite{Depth_fixation_DPI} report that P4 is substantially smaller and darker than P1, making its detection less reliable.
 Therefore, the existence of a valid reflection path does not necessarily guarantee a usable image feature, as its visibility further depends on optical focus, reflection strength, occlusion, and imaging noise~\cite{Dual_Purkinje_Tracker,Depth_fixation_DPI}.
 Camera and illumination configuration also affect whether these reflections remain observable across different eye orientations, making Purkinje detectability a joint consequence of ocular geometry and the imaging configuration~\cite{Dual_Purkinje_Tracker,Improved_vergence_and_accommodation}.
 Nevertheless, Purkinje geometry carries useful information about the underlying ocular surfaces, with previous phakometric studies showing that the position and geometry of these reflections can be used to infer ocular surface curvature and alignment~\cite{Purkinje_Surface_Measurement}.
