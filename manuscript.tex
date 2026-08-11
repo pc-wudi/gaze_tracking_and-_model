@@ -37,6 +37,16 @@
 \newacronym{CNN}{CNN}{Convolutional Neural Network}
 \newabbreviation{DCT}{DCT}{Discrete Cosine Transform}
 \newabbreviation{VAC}{VAC}{Vergence-Accommodation Conflict}
+
+\newacronym{3DGS}{3DGS}{3D Gaussian Splatting}
+\newacronym{SH}{SH}{Spherical Harmonics}
+\newacronym{DPI}{DPI}{Dual Purkinje Image}
+\newacronym{NIR}{NIR}{Near-Infrared}
+\newacronym{IR}{IR}{Infrared}
+\newacronym{DOF}{DoF}{Depth of Field}
+\newacronym{FOV}{FoV}{Field of View}
+\newacronym{AR}{AR}{Augmented Reality}
+\newacronym{VR}{VR}{Virtual Reality}
 \global\long\def\CGH{\acrshort{CGH}\xspace}
 \global\long\def\CNN{\acrshort{CNN}\xspace}
 \global\long\def\VAE{\acrshort{VAE}\xspace}
@@ -48,6 +58,16 @@
 \global\long\def\SIREN{\textcolor{ColorSIREN}{\textbf{SIREN}}\xspace}
 \global\long\def\FILMSIREN{\textcolor{ColorFILMSIREN}{\textbf{FilmSIREN}}\xspace}
 
+
+\global\long\def\GS{\acrshort{3DGS}\xspace}
+\global\long\def\SH{\acrshort{SH}\xspace}
+\global\long\def\DPI{\acrshort{DPI}\xspace}
+\global\long\def\NIR{\acrshort{NIR}\xspace}
+\global\long\def\IR{\acrshort{IR}\xspace}
+\global\long\def\DOF{\acrshort{DOF}\xspace}
+\global\long\def\FOV{\acrshort{FOV}\xspace}
+\global\long\def\AR{\acrshort{AR}\xspace}
+\global\long\def\VR{\acrshort{VR}\xspace}
 \global\long\def\DCT{\gls{DCT}\xspace}
 \global\long\def\VAC{\gls{VAC}\xspace}
 
@@ -256,37 +276,25 @@ The present work does not perform end-to-end differentiable optimization. Instea
 
 \section{Optical Background}
 
-\subsection{Accommodation-Dependent Purkinje Image Formation}
+\subsection{Challenges of reconstructing Purkinje reflections via \GS{}.}
+Standard \GS{} struggles to consistently preserve Purkinje reflections because its reconstruction formulation does not fully match their physical image-formation process. 
+\GS{} represents view-dependent appearance by using low-order \SH{} \cite{Gaussian_Splatting}, while remaining limited 
+for high-frequency specular reflections~\cite{GaussianShader,SpecTReGS}. More importantly, P3 and P4 are formed through transmission and reflection
+across the multiple ocular interfaces of eyes, whereas rasterization-based \GS{} does not explicitly model these secondary optical paths~\cite{3DGUT}. 
+In addition, Lu et al. \cite{Improved_vergence_and_accommodation} and Wu et al. \cite{Dual_Purkinje_Tracker} show that P3 is formed at a different optical 
+focal plane from P1 and P4, while higher-order Purkinje reflections are relatively weak and therefore more susceptible to defocus and low contrast. 
+Finally, Purkinje locations vary jointly with accommodation, vergence, subject-specific ocular geometry, and camera--illumination 
+configuration \cite{Improved_vergence_and_accommodation,Dynamic_accommodation_Purkinje}. Purkinje reflections are better 
+characterized as dynamic optical signals governed by ocular optics rather than stable surface textures, making it difficult for standard \GS{} to reconstruct them consistently with their underlying physical behavior.
 
-The four principal Purkinje images are produced by specular reflections
-at the major refractive interfaces of the eye. P1 is formed at the
-anterior corneal surface, P2 at the posterior corneal surface, P3 at
-the anterior crystalline-lens surface, and P4 at the posterior
-crystalline-lens surface. The observed position of a higher-order
-reflection is not determined by its reflecting surface alone. Before
-reaching the camera, the corresponding rays pass through and are
-refracted by preceding ocular interfaces; their image-space positions
-therefore depend on the complete optical path through the eye.
 
-Accommodation changes the optical power of the eye by altering
-crystalline-lens geometry. In accommodation-dependent schematic eye
-models, these changes are represented through lens-surface curvature,
-lens thickness, lens position, asphericity, and effective refractive
-index \cite{Navarro1985Accommodation}. P3 and P4 therefore respond more
-directly to accommodation than the corneal reflections P1 and P2.
-Their displacement and magnification also depend on eye rotation and
-on the relative positions of the illumination source, eye, and camera
-\cite{Improved_vergence_and_accommodation,
-Dynamic_accommodation_Purkinje}.
-
-The existence of a valid reflection path does not guarantee a usable
-image feature. P3 and P4 generally have lower contrast than P1 and are
-more sensitive to defocus, partial occlusion, competing glints, and
-sensor noise. Camera aperture and focal distance determine their spot
-size and sharpness at the sensor, while the pupil, iris, and eyelids
-restrict which reflection paths remain visible. Their detectability is
-therefore a joint property of ocular geometry, illumination, camera
-placement, and sensor configuration.
+\subsection{Capturing Purkinje image}
+\DPI{} tracking can provide higher precision than conventional pupil--corneal-reflection tracking by using the relative motion of P1 and P4 rather than the pupil center~\cite{OpenIrisDPI,Dual_Purkinje_Tracker}.
+However, obtaining reliable Purkinje features from real eye images remains challenging.
+Wu et al.~\cite{Dual_Purkinje_Tracker} show that P1 and P4 can be imaged together while P3 is out of focus and P2 largely overlaps with P1; similarly, Ahn et al.~\cite{Depth_fixation_DPI} report that P4 is substantially smaller and darker than P1, making its detection less reliable.
+Therefore, the existence of a valid reflection path does not necessarily guarantee a usable image feature, as its visibility further depends on optical focus, reflection strength, occlusion, and imaging noise~\cite{Dual_Purkinje_Tracker,Depth_fixation_DPI}.
+Camera and illumination configuration also affect whether these reflections remain observable across different eye orientations, making Purkinje detectability a joint consequence of ocular geometry and the imaging configuration~\cite{Dual_Purkinje_Tracker,Improved_vergence_and_accommodation}.
+Nevertheless, Purkinje geometry carries useful information about the underlying ocular surfaces, with previous phakometric studies showing that the position and geometry of these reflections can be used to infer ocular surface curvature and alignment~\cite{Purkinje_Surface_Measurement}.
 
 \subsection{Simulation-to-capture pipeline for near-eye Purkinje imaging}
 
