@@ -15,6 +15,10 @@
 \citation{RIT-Eyes}
 \citation{EyeNeRF}
 \citation{Realistic_nerf_eyes}
+\citation{Depth_fixation_DPI}
+\citation{Keratoconus_Purkinje}
+\citation{High_resolution_dDPI_2022}
+\citation{Digital_Eye_Tracker_Prototyper}
 \citation{UnityEyes,NVGaze,RIT-Eyes}
 \citation{EyeNeRF}
 \citation{Realistic_nerf_eyes}
@@ -36,18 +40,32 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Physics-Based Optical Design}{1}{subsection.2.3}\protected@file@percent }
 \citation{AR_Haploscope_Replication}
 \citation{Wu2023Purkinje}
-\citation{Navarro1985Accommodation}
+\citation{Gaussian_Splatting}
+\citation{GaussianShader,SpecTReGS}
+\citation{3DGUT}
+\citation{Improved_vergence_and_accommodation}
+\citation{Dual_Purkinje_Tracker}
 \citation{Improved_vergence_and_accommodation,Dynamic_accommodation_Purkinje}
+\citation{OpenIrisDPI,Dual_Purkinje_Tracker}
+\citation{Dual_Purkinje_Tracker}
+\citation{Depth_fixation_DPI}
+\citation{Dual_Purkinje_Tracker,Depth_fixation_DPI}
+\citation{Dual_Purkinje_Tracker,Improved_vergence_and_accommodation}
+\citation{Purkinje_Surface_Measurement}
 \citation{Improved_vergence_and_accommodation}
 \citation{Dynamic_accommodation_Purkinje}
 \citation{nair2020riteyes,li2022eyenerf,khademi2026relightableeyes}
 \citation{Gaussian_Splatting}
-\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Comparison of different eye and accommodation tracking methodologies. Accuracy is categorized into High (\textcolor {green!60!black}{High}), Mid (\textcolor {orange!90!black}{Mid}, representing accuracy between $0.5^\circ $ and $1.5^\circ $), and Low (\textcolor {red!70!black}{Low}).}}{2}{table.caption.5}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Comparison of different eye and accommodation tracking methodologies. Accuracy is qualitatively categorized into High (\textcolor {green!60!black}{High}), Mid (\textcolor {orange!90!black}{Mid}), and Low (\textcolor {red!70!black}{Low}) according to the reported performance for the corresponding tracking task.}}{2}{table.caption.5}\protected@file@percent }
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
-\newlabel{tab:literature_review}{{1}{2}{Comparison of different eye and accommodation tracking methodologies. Accuracy is categorized into High (\textcolor {green!60!black}{High}), Mid (\textcolor {orange!90!black}{Mid}, representing accuracy between $0.5^\circ $ and $1.5^\circ $), and Low (\textcolor {red!70!black}{Low})}{table.caption.5}{}}
+\newlabel{tab:literature_review}{{1}{2}{Comparison of different eye and accommodation tracking methodologies. Accuracy is qualitatively categorized into High (\textcolor {green!60!black}{High}), Mid (\textcolor {orange!90!black}{Mid}), and Low (\textcolor {red!70!black}{Low}) according to the reported performance for the corresponding tracking task}{table.caption.5}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {3}Optical Background}{2}{section.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Accommodation-Dependent Purkinje Image Formation}{2}{subsection.3.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Simulation-to-capture pipeline for near-eye Purkinje imaging}{2}{subsection.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Challenges of reconstructing Purkinje reflections via \gls {3DGS}\xspace  {}.}{2}{subsection.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Capturing Purkinje image}{2}{subsection.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Simulation-to-capture pipeline for near-eye Purkinje imaging}{2}{subsection.3.3}\protected@file@percent }
+\citation{Gaussian_Splatting,GaussianShader}
+\citation{Gaussian_Splatting}
+\citation{Gaussian_Splatting}
 \bibstyle{ACM-Reference-Format}
 \bibdata{references}
 \bibcite{AR_Haploscope_Replication}{{1}{2024}{{Bontha and Arefin}}{{}}}
@@ -61,6 +79,13 @@
 \bibcite{Improved_vergence_and_accommodation}{{9}{2020}{{Lu et~al\mbox  {.}}}{{}}}
 \bibcite{Single_Camera_Two_Lights}{{10}{2002}{{Morimoto et~al\mbox  {.}}}{{}}}
 \bibcite{Fluidic_Lenses}{{11}{2024}{{Na et~al\mbox  {.}}}{{}}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Method}{3}{section.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}3D Gaussian Splatting}{3}{subsection.4.1}\protected@file@percent }
+\newlabel{eq:gaussian_primitive}{{1}{3}{3D Gaussian Splatting}{equation.1}{}}
+\newlabel{eq:3dgs_covariance}{{2}{3}{3D Gaussian Splatting}{equation.2}{}}
+\newlabel{eq:3dgs_loss}{{3}{3}{3D Gaussian Splatting}{equation.3}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Results and Discussions}{3}{section.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{References}{3}{section*.7}\protected@file@percent }
 \bibcite{RIT-Eyes}{{12}{2020}{{Nair et~al\mbox  {.}}}{{}}}
 \bibcite{Navarro1985Accommodation}{{13}{1985}{{Navarro et~al\mbox  {.}}}{{}}}
 \bibcite{Dynamic_accommodation_Purkinje}{{14}{2023}{{Ozhan et~al\mbox  {.}}}{{}}}
@@ -75,7 +100,5 @@
 \newlabel{tocindent3}{0pt}
 \newlabel{tocindent4}{0pt}
 \newlabel{tocindent5}{0pt}
-\@writefile{toc}{\contentsline {section}{\numberline {4}Results and Discussions}{3}{section.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{References}{3}{section*.7}\protected@file@percent }
-\newlabel{TotPages}{{3}{3}{}{page.3}{}}
-\gdef \@abspage@last{3}
+\newlabel{TotPages}{{4}{4}{}{page.4}{}}
+\gdef \@abspage@last{4}
