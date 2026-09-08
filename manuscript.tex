@@ -25,7 +25,13 @@
 \acmYear{2025}
 \acmConference{SIGGRAPH}
 \acmISBN{979-8-4007-1549-5/2025/08}
+\definecolor{GoodBG}{RGB}{218,242,222}
+\definecolor{MidBG}{RGB}{255,239,196}
+\definecolor{LowBG}{RGB}{248,218,218}
 
+\newcommand{\good}[1]{\colorbox{GoodBG}{\strut #1}}
+\newcommand{\okay}[1]{\colorbox{MidBG}{\strut #1}}
+\newcommand{\poor}[1]{\colorbox{LowBG}{\strut #1}}
 
 \newacronym{VAE}{VAE}{Variational Auto-Encoder}
 \newacronym{INR}{INR}{Implicit Neural Representations}
@@ -179,6 +185,17 @@
 
 \maketitle
 
+\section{Problem}
+
+\subsection{Challenges of reconstructing Purkinje reflections via \GS{}.}
+
+\GS{} represents view-dependent appearance by using low-order \SH{} \cite{Gaussian_Splatting}, therefore, accurately modeling high-frequency, view-dependent specular appearance remains challenging~\cite{GaussianShader,SpecTReGS}. More importantly, P3 and P4 are formed through transmission and reflection
+across the multiple ocular interfaces of eyes, whereas rasterization-based \GS{} does not explicitly model these secondary optical paths~\cite{3DGUT} (see Fig. X). 
+In addition, Lu et al. \cite{Improved_vergence_and_accommodation} and Wu et al. \cite{Dual_Purkinje_Tracker} show that P3 is formed at a different optical 
+focal plane from P1 and P4, while higher-order Purkinje reflections are relatively weak and therefore more susceptible to defocus and low contrast. 
+Finally, Purkinje locations vary jointly with accommodation, vergence, subject-specific ocular geometry, and camera--illumination 
+configuration \cite{Improved_vergence_and_accommodation,Dynamic_accommodation_Purkinje}. Purkinje reflections are better 
+characterized as dynamic optical signals governed by ocular optics rather than stable surface textures, making it difficult for standard \GS{} to reconstruct them consistently with their underlying physical behavior.
 
 
 
@@ -218,57 +235,175 @@ model to analyze the formation, visibility, and stability of P1--P4 under near-e
  imaging conditions.
 
 \begin{table*}[t]
+
+% Local definitions used only by this table
+\definecolor{GoodBG}{RGB}{190,245,190}
+\definecolor{MidBG}{RGB}{255,247,190}
+\definecolor{BadBG}{RGB}{255,190,190}
+
+\newcommand{\G}[1]{\cellcolor{GoodBG}#1}
+\newcommand{\M}[1]{\cellcolor{MidBG}#1}
+\newcommand{\R}[1]{\cellcolor{BadBG}#1}
+
 \centering
-\caption{Comparison of different eye and accommodation tracking methodologies.
-Accuracy is qualitatively categorized into High
-(\textcolor{green!60!black}{High}), Mid
-(\textcolor{orange!90!black}{Mid}), and Low
-(\textcolor{red!70!black}{Low}) according to the reported performance
-for the corresponding tracking task.}
+\caption{
+Comparison of representative approaches related to vergence and
+accommodation sensing.
+Method denotes the primary sensing principle or eye representation,
+while Estimator denotes the strategy used to infer the target quantity.
+V/A Target specifies whether accommodation (A), vergence (V), both,
+or neither are directly estimated in the reported work.
+Near-eye indicates whether the method is demonstrated in a physical
+near-eye configuration.
+Green indicates favorable suitability for compact joint
+vergence--accommodation tracking, yellow indicates moderate suitability,
+and red indicates limited suitability.
+}
 \label{tab:literature_review}
-\begin{tabular}{c c c c l l c c c}
+
+\small
+\begin{tabular}{lccccccc}
 \toprule
-No. & Ref. & Camera & Illum. & Method & Algorithm & Target & Mode & Accuracy \\
+Ref. &
+Camera &
+Illum. &
+Method &
+Estimator &
+V/A Target &
+Near-eye &
+Accuracy \\
 \midrule
 
-1 & \cite{Dual_Purkinje_Tracker}
-& Multiple & IR & DPI & Geometric & Vergence & Desktop & \textcolor{orange!90!black}{Mid} \\
+\cite{Dual_Purkinje_Tracker}
+& \G{Single}
+& \G{IR}
+& \G{Purkinje}
+& \M{Model-based}
+& \R{Neither}
+& \R{No}
+& \G{High}
+\\
 
-2 & \cite{Single_Camera_Two_Lights}
-& Single & IR & PCCR & Geometric & Vergence & Desktop & \textcolor{orange!90!black}{Mid} \\
+\cite{Single_Camera_Two_Lights}
+& \G{Single}
+& \G{NIR}
+& \M{PCCR}
+& \M{Model-based}
+& \R{Neither}
+& \R{No}
+& \M{Mid}
+\\
 
-3 & \cite{AR_Vergence_Depth_OST}
-& Multiple & IR & PCCR & Geometric & Vergence & Near-eye & \textcolor{orange!90!black}{Mid} \\
+\cite{AR_Vergence_Depth_OST}
+& \G{Built-in}
+& \M{Built-in}
+& \M{Gaze}
+& \M{Model-based}
+& \M{V only}
+& \G{Yes}
+& \M{Mid}
+\\
 
-4 & \cite{AR_Haploscope_Replication}
-& Multiple & IR & Mocap & Geometric & Vergence & Near-eye & \textcolor{red!70!black}{Low} \\
+\cite{AR_Haploscope_Replication}
+& \R{None}
+& \R{None}
+& \R{Haploscope}
+& \R{N/A}
+& \R{Neither}
+& \G{Yes}
+& \R{N/A}
+\\
 
-5 & \cite{Improved_vergence_and_accommodation}
-& Multiple & IR & Purkinje & Learning & Both & Near-eye & \textcolor{green!60!black}{High} \\
+\cite{Improved_vergence_and_accommodation}
+& \M{Multiple}
+& \G{IR}
+& \G{Purkinje}
+& \G{Data-driven}
+& \G{Both}
+& \G{Yes}
+& \G{High}
+\\
 
-6 & \cite{Dynamic_accommodation_Purkinje}
-& Single & IR & Purkinje & Hybrid & Both & Desktop & \textcolor{green!60!black}{High} \\
+\cite{Dynamic_accommodation_Purkinje}
+& \G{Single}
+& \G{NIR}
+& \G{Purkinje}
+& \G{Data-driven}
+& \G{Both}
+& \R{No}
+& \G{High}
+\\
 
-7 & \cite{RIT-Eyes}
-& Single & None & Ray Tracing & Rendering & Vergence & Synthetic & \textcolor{orange!90!black}{Mid} \\
+\cite{RIT-Eyes}
+& \R{Virtual}
+& \M{RGB/IR}
+& \M{Eye model}
+& \R{N/A}
+& \R{Neither}
+& \M{Synthetic}
+& \R{N/A}
+\\
 
-8 & \cite{EyeNeRF}
-& Multiple & Visible & NeRF & Learning & Vergence & Near-eye & \textcolor{red!70!black}{Low} \\
+\cite{EyeNeRF}
+& \R{Multiple}
+& \R{Visible}
+& \M{Eye model}
+& \R{N/A}
+& \R{Neither}
+& \R{No}
+& \R{N/A}
+\\
 
-9 & \cite{Realistic_nerf_eyes}
-& Multiple & Visible & NeRF & Learning & Vergence & Near-eye & \textcolor{red!70!black}{Low} \\
+\cite{Realistic_nerf_eyes}
+& \R{Multiple}
+& \M{Controlled}
+& \M{Eye model}
+& \R{N/A}
+& \R{Neither}
+& \R{No}
+& \R{N/A}
+\\
 
-10 & \cite{Depth_fixation_DPI}
-& Single & IR & DPI & Regression & Depth & Desktop & \textcolor{orange!90!black}{Mid} \\
+\cite{Depth_fixation_DPI}
+& \G{Single}
+& \G{IR}
+& \G{Purkinje}
+& \G{Data-driven}
+& \R{Neither}
+& \R{No}
+& \M{Mid}
+\\
 
-11 & \cite{Keratoconus_Purkinje}
-& Single & IR & Purkinje & Geometric & Cornea & Synthetic & \textcolor{red!70!black}{Low} \\
+\cite{Keratoconus_Purkinje}
+& \R{Virtual}
+& \M{Simulated}
+& \G{Purkinje}
+& \M{Model-based}
+& \R{Neither}
+& \R{No}
+& \R{N/A}
+\\
 
-12 & \cite{High_resolution_dDPI_2022}
-& Single & IR & DPI & Geometric & Vergence & Desktop & \textcolor{green!60!black}{High} \\
+\cite{High_resolution_dDPI_2022}
+& \G{Single}
+& \G{IR}
+& \G{Purkinje}
+& \M{Model-based}
+& \R{Neither}
+& \R{No}
+& \G{High}
+\\
 
-13 & \cite{Digital_Eye_Tracker_Prototyper}
-& Multiple & IR & NeRF & Learning & Gaze & Synthetic & \textcolor{orange!90!black}{Mid} \\
+\cite{Digital_Eye_Tracker_Prototyper}
+& \R{Virtual}
+& \M{Simulated}
+& \M{Eye model}
+& \R{N/A}
+& \R{Neither}
+& \M{Synthetic}
+& \R{N/A}
+\\
+
 \bottomrule
 \end{tabular}
 \end{table*}
@@ -293,15 +428,6 @@ The present work does not perform end-to-end differentiable optimization. Instea
 
 \section{Optical Background}
 
-\subsection{Challenges of reconstructing Purkinje reflections via \GS{}.}
-Standard \GS{} struggles to consistently preserve Purkinje reflections because its reconstruction formulation does not fully match their physical image-formation process. 
-\GS{} represents view-dependent appearance by using low-order \SH{} \cite{Gaussian_Splatting}, but accurately modeling high-frequency, view-dependent specular appearance remains challenging~\cite{GaussianShader,SpecTReGS}. More importantly, P3 and P4 are formed through transmission and reflection
-across the multiple ocular interfaces of eyes, whereas rasterization-based \GS{} does not explicitly model these secondary optical paths~\cite{3DGUT}. 
-In addition, Lu et al. \cite{Improved_vergence_and_accommodation} and Wu et al. \cite{Dual_Purkinje_Tracker} show that P3 is formed at a different optical 
-focal plane from P1 and P4, while higher-order Purkinje reflections are relatively weak and therefore more susceptible to defocus and low contrast. 
-Finally, Purkinje locations vary jointly with accommodation, vergence, subject-specific ocular geometry, and camera--illumination 
-configuration \cite{Improved_vergence_and_accommodation,Dynamic_accommodation_Purkinje}. Purkinje reflections are better 
-characterized as dynamic optical signals governed by ocular optics rather than stable surface textures, making it difficult for standard \GS{} to reconstruct them consistently with their underlying physical behavior.
 
 
 \subsection{Capturing Purkinje image}
@@ -313,11 +439,26 @@ Nevertheless, Purkinje geometry carries useful information about the underlying 
 
 \subsection{Simulation-to-capture pipeline for near-eye Purkinje imaging}
 
-A reliable Purkinje imaging pipeline requires the eye to be modeled as an optical system rather than an appearance object. Since P1--P4 are generated by reflection and refraction at corneal and lenticular surfaces, Arizona/ZEMAX-style schematic eye models are useful because they make accommodation, refractive interfaces, and ray paths physically controllable \cite{Improved_vergence_and_accommodation}\cite{Dynamic_accommodation_Purkinje}. This also explains why eye-rendering methods often keep the eyeball or cornea as an explicit mesh: specular highlights, corneal refraction, and near-field glints are tied to surface geometry, while NeRF-like fields are more suitable for view synthesis, relighting, and periocular appearance modeling \cite{nair2020riteyes,li2022eyenerf,khademi2026relightableeyes}.
+A reliable Purkinje imaging pipeline requires the eye to be modeled as an optical system rather than an appearance object. Since P1--P4 are generated by reflection and refraction at corneal and lenticular surfaces, Arizona/ZEMAX-style schematic eye models are useful because they make accommodation, refractive interfaces, and ray paths physically controllable \cite{Improved_vergence_and_accommodation}\cite{Dynamic_accommodation_Purkinje}. This also explains why eye-rendering methods often keep the eyeball or cornea as an explicit mesh: specular highlights, corneal refraction, and near-field glints are tied to surface geometry, while NeRF-like fields are more suitable for view synthesis, relighting, and periocular appearance modeling \cite{RIT-Eyes,EyeNeRF,Realistic_nerf_eyes}.
 Existing Purkinje imaging systems also provide practical guidance for hardware geometry. Both Lu et al. and Ozhan et al. place infrared LEDs close to the camera optical axis to maximize Purkinje visibility while keeping the reflections inside the camera field of view. At the same time, camera positions must balance the visibility of higher-order Purkinje images against eyelid and eyelash occlusions, glint overlap, and sensor saturation. These observations suggest that LED and camera placement is not arbitrary but jointly determines the brightness, separation, and detectability of P1--P4.
 Once the capture geometry is determined, synthetic rendering provides an efficient way to evaluate different configurations before physical experiments. RIT-Eyes demonstrates that physically based rendering can generate realistic near-eye images under controllable illumination, while EyeNeRF and subsequent hybrid eye representations further show that explicit corneal geometry is necessary for reproducing specular reflections and refraction, whereas implicit neural representations are better suited for modeling complex periocular appearance and relighting. These observations motivate the use of explicit optical eye models for Purkinje simulation before subsequent NeRF or 3D Gaussian reconstruction, fall outside the field of view, or become unresolvable at the sensor resolution. Thus, the key background principle is that eye geometry, near-field illumination, camera focus/FOV, resolution, and reconstruction representation must be designed together before reliable Purkinje capture and later NeRF/3D Gaussian reconstruction can be expected \cite{Gaussian_Splatting}
+
 \section{Method}
 
+We adopt 3D Gaussian Splatting (3DGS) as the base representation for reconstructing the eye scene \cite{Gaussian_Splatting}. The scene is represented by a set of anisotropic 3D Gaussians, each parameterized by its position \(\boldsymbol{\mu}\), covariance \(\boldsymbol{\Sigma}\) defined by scale and rotation, opacity \(\alpha\), and spherical harmonics (SH) coefficients for view-dependent appearance \cite{Gaussian_Splatting,GaussianShader}.
+
+During rendering, the 3D Gaussians are projected onto the image plane, depth-sorted, and accumulated using front-to-back \(\alpha\)-compositing \cite{Gaussian_Splatting}:
+
+\[
+\mathbf{C}(\mathbf{p})
+=
+\sum_i
+T_i(\mathbf{p})
+\alpha_i(\mathbf{p})
+\mathbf{c}_i(\mathbf{v}),
+\]
+
+where \(\mathbf{c}_i(\mathbf{v})\) denotes the view-dependent color predicted from the SH coefficients. Training jointly optimizes Gaussian positions, scales, rotations, opacities, and SH coefficients using a combination of \(L_1\) and D-SSIM reconstruction losses, while adaptive densification increases the number of Gaussians in regions requiring higher representational capacity \cite{Gaussian_Splatting}. We use this standard 3DGS formulation as our baseline and subsequently introduce Purkinje-specific local supervision.
 \subsection{3D Gaussian Splatting}
 
 3D Gaussian Splatting is an explicit 3D scene representation and differentiable rendering method designed for novel view synthesis. The core idea is modeling the geometric structure and viewpoint-dependent appearance of a scene in 3D space using a set of optimizable Gaussian primitives expressed as
@@ -363,8 +504,7 @@ Once the Gaussian primitives are initialized and parameterized, they are project
 where $\mathcal{L}_{1}$ measures the pixel-wise photometric difference between the rendered and ground-truth images, $\mathcal{L}_{\mathrm{D\text{-}SSIM}}$ measures their local structural dissimilarity, and $\lambda$ controls the relative contribution of the two terms. The reconstruction loss is back-propagated to jointly optimize the Gaussian positions, scales, rotations, opacities, and SH coefficients.
 
 In parallel with parameter optimization, 3DGS performs adaptive density control to dynamically refine the Gaussian population. Gaussians with large positional gradients are cloned when they are sufficiently small and split when they have a large spatial extent, introducing additional primitives in under-reconstructed regions. Conversely, Gaussians with very low opacity or excessively large spatial or screen-space extent are periodically removed. By alternating differentiable rendering, gradient-based optimization, and adaptive density control, the initially sparse Gaussian representation progressively evolves into a dense scene representation capable of high-quality novel-view rendering \cite{Gaussian_Splatting}.
-
-
+\section{Results and Discussions}
 \section{Results and Discussions}
 \bibliographystyle{ACM-Reference-Format}
 \bibliography{references}

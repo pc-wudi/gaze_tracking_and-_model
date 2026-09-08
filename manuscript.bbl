@@ -2,7 +2,7 @@
 %%% Do NOT edit. File created by BibTeX with style
 %%% ACM-Reference-Format-Journals [18-Jan-2012].
 
-\begin{thebibliography}{18}
+\begin{thebibliography}{25}
 
 %%% ====================================================================
 %%% NOTE TO THE USER: you can override these defaults by providing
@@ -35,6 +35,32 @@
 \providecommand\bibinfo[2]{#2}
 \providecommand\natexlab[1]{#1}
 \providecommand\showeprint[2][]{arXiv:#2}
+
+\bibitem[Ahn and Lee(2025)]%
+        {Depth_fixation_DPI}
+\bibfield{author}{\bibinfo{person}{Jinyeong Ahn} {and}
+  \bibinfo{person}{Eui~Chul Lee}.} \bibinfo{year}{2025}\natexlab{}.
+\newblock \showarticletitle{A Study on Correlation of Depth Fixation with
+  Distance Between Dual Purkinje Images and Pupil Size}.
+\newblock \bibinfo{journal}{\emph{Electronics}} \bibinfo{volume}{14},
+  \bibinfo{number}{9} (\bibinfo{year}{2025}), \bibinfo{pages}{1799}.
+\newblock
+\href{https://doi.org/10.3390/electronics14091799}{doi:\nolinkurl{10.3390/electronics14091799}}
+
+
+\bibitem[Barry et~al\mbox{.}(2001)]%
+        {Purkinje_Surface_Measurement}
+\bibfield{author}{\bibinfo{person}{Jean-Cyriaque Barry}, \bibinfo{person}{Mark
+  Dunne}, {and} \bibinfo{person}{Thomas Kirschkamp}.}
+  \bibinfo{year}{2001}\natexlab{}.
+\newblock \showarticletitle{Phakometric Measurement of Ocular Surface Radius of
+  Curvature and Alignment: Evaluation of Method with Physical Model Eyes}.
+\newblock \bibinfo{journal}{\emph{Ophthalmic and Physiological Optics}}
+  \bibinfo{volume}{21}, \bibinfo{number}{6} (\bibinfo{year}{2001}),
+  \bibinfo{pages}{450--460}.
+\newblock
+\href{https://doi.org/10.1046/j.1475-1313.2001.00612.x}{doi:\nolinkurl{10.1046/j.1475-1313.2001.00612.x}}
+
 
 \bibitem[Bontha and Arefin(2024)]%
         {AR_Haploscope_Replication}
@@ -85,6 +111,19 @@
   \bibinfo{pages}{135950F}.
 \newblock
 \href{https://doi.org/10.1117/12.3065468}{doi:\nolinkurl{10.1117/12.3065468}}
+
+
+\bibitem[Jiang et~al\mbox{.}(2024)]%
+        {GaussianShader}
+\bibfield{author}{\bibinfo{person}{Yingwenqi Jiang}, \bibinfo{person}{Jiadong
+  Tu}, \bibinfo{person}{Yuan Liu}, \bibinfo{person}{Xifeng Gao},
+  \bibinfo{person}{Xiaoxiao Long}, \bibinfo{person}{Wenping Wang}, {and}
+  \bibinfo{person}{Yuexin Ma}.} \bibinfo{year}{2024}\natexlab{}.
+\newblock \showarticletitle{GaussianShader: 3D Gaussian Splatting with Shading
+  Functions for Reflective Surfaces}. In \bibinfo{booktitle}{\emph{Proceedings
+  of the IEEE/CVF Conference on Computer Vision and Pattern Recognition
+  (CVPR)}}. \bibinfo{pages}{5322--5332}.
+\newblock
 
 
 \bibitem[Kerbl et~al\mbox{.}(2023)]%
@@ -141,6 +180,22 @@
 \href{https://doi.org/10.1145/3528223.3530130}{doi:\nolinkurl{10.1145/3528223.3530130}}
 
 
+\bibitem[Lin et~al\mbox{.}(2026)]%
+        {Digital_Eye_Tracker_Prototyper}
+\bibfield{author}{\bibinfo{person}{Esther Y.~H. Lin}, \bibinfo{person}{Yimin
+  Ding}, \bibinfo{person}{Jogendra Kundu}, \bibinfo{person}{Yatong An},
+  \bibinfo{person}{Mohamed~T. El-Haddad}, {and} \bibinfo{person}{Alexander
+  Fix}.} \bibinfo{year}{2026}\natexlab{}.
+\newblock \showarticletitle{Digitally Prototype Your Eye Tracker: Simulating
+  Hardware Performance Using 3D Synthetic Data}. In
+  \bibinfo{booktitle}{\emph{Proceedings of the 2026 Symposium on Eye Tracking
+  Research and Applications}} \emph{(\bibinfo{series}{ETRA '26})}.
+  \bibinfo{publisher}{Association for Computing Machinery}, Article
+  \bibinfo{articleno}{6}, \bibinfo{numpages}{7}~pages.
+\newblock
+\href{https://doi.org/10.1145/3797246.3803040}{doi:\nolinkurl{10.1145/3797246.3803040}}
+
+
 \bibitem[Lu et~al\mbox{.}(2020)]%
         {Improved_vergence_and_accommodation}
 \bibfield{author}{\bibinfo{person}{Conny Lu}, \bibinfo{person}{Praneeth
@@ -195,20 +250,6 @@
 \href{https://doi.org/10.1145/3385955.3407935}{doi:\nolinkurl{10.1145/3385955.3407935}}
 
 
-\bibitem[Navarro et~al\mbox{.}(1985)]%
-        {Navarro1985Accommodation}
-\bibfield{author}{\bibinfo{person}{R. Navarro}, \bibinfo{person}{J.
-  Santamar{\'i}a}, {and} \bibinfo{person}{J. Besc{\'o}s}.}
-  \bibinfo{year}{1985}\natexlab{}.
-\newblock \showarticletitle{Accommodation-Dependent Model of the Human Eye with
-  Aspherics}.
-\newblock \bibinfo{journal}{\emph{Journal of the Optical Society of America A}}
-  \bibinfo{volume}{2}, \bibinfo{number}{8} (\bibinfo{year}{1985}),
-  \bibinfo{pages}{1273--1280}.
-\newblock
-\href{https://doi.org/10.1364/JOSAA.2.001273}{doi:\nolinkurl{10.1364/JOSAA.2.001273}}
-
-
 \bibitem[Ozhan et~al\mbox{.}(2023)]%
         {Dynamic_accommodation_Purkinje}
 \bibfield{author}{\bibinfo{person}{Faik~Ozan Ozhan}, \bibinfo{person}{Ugur
@@ -235,6 +276,19 @@
 \href{https://doi.org/10.1016/j.jneumeth.2026.110693}{doi:\nolinkurl{10.1016/j.jneumeth.2026.110693}}
 
 
+\bibitem[Sharifzadeh(2024)]%
+        {Keratoconus_Purkinje}
+\bibfield{author}{\bibinfo{person}{Mohsen Sharifzadeh}.}
+  \bibinfo{year}{2024}\natexlab{}.
+\newblock \bibinfo{title}{A Theoretical Approach for Diagnosing Keratoconus
+  Using Purkinje Image Geometry: An Accessible Method for Low-Cost and Early
+  Detection}.
+\newblock
+\href{https://doi.org/10.1364/opticaopen.27115606}{doi:\nolinkurl{10.1364/opticaopen.27115606}}
+\newblock
+\shownote{Preprint, Version 2}.
+
+
 \bibitem[Sturgeon et~al\mbox{.}(2025)]%
         {AR_Vergence_Depth_OST}
 \bibfield{author}{\bibinfo{person}{Matthew Sturgeon}, \bibinfo{person}{Dakota
@@ -246,6 +300,21 @@
   In \bibinfo{booktitle}{\emph{2025 IEEE International Symposium on Mixed and
   Augmented Reality (ISMAR)}}. \bibinfo{publisher}{IEEE},
   \bibinfo{pages}{1376--1386}.
+\newblock
+
+
+\bibitem[Tang et~al\mbox{.}(2025)]%
+        {SpecTReGS}
+\bibfield{author}{\bibinfo{person}{Jiajun Tang}, \bibinfo{person}{Fan Fei},
+  \bibinfo{person}{Zhihao Li}, \bibinfo{person}{Xiao Tang},
+  \bibinfo{person}{Shiyong Liu}, \bibinfo{person}{Youyu Chen},
+  \bibinfo{person}{Binxiao Huang}, \bibinfo{person}{Zhenyu Chen},
+  \bibinfo{person}{Xiaofei Wu}, {and} \bibinfo{person}{Boxin Shi}.}
+  \bibinfo{year}{2025}\natexlab{}.
+\newblock \showarticletitle{SpecTRe-GS: Modeling Highly Specular Surfaces with
+  Reflected Nearby Objects by Tracing Rays in 3D Gaussian Splatting}. In
+  \bibinfo{booktitle}{\emph{Proceedings of the IEEE/CVF Conference on Computer
+  Vision and Pattern Recognition (CVPR)}}. \bibinfo{pages}{16133--16142}.
 \newblock
 
 
@@ -264,6 +333,19 @@
 \href{https://doi.org/10.1145/2857491.2857492}{doi:\nolinkurl{10.1145/2857491.2857492}}
 
 
+\bibitem[Wu et~al\mbox{.}(2025)]%
+        {3DGUT}
+\bibfield{author}{\bibinfo{person}{Qi Wu}, \bibinfo{person}{Janick~Martinez
+  Esturo}, \bibinfo{person}{Ashkan Mirzaei}, \bibinfo{person}{Nicolas
+  Mo{\"e}nne-Loccoz}, {and} \bibinfo{person}{Zan Gojcic}.}
+  \bibinfo{year}{2025}\natexlab{}.
+\newblock \showarticletitle{3DGUT: Enabling Distorted Cameras and Secondary
+  Rays in Gaussian Splatting}. In \bibinfo{booktitle}{\emph{Proceedings of the
+  IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)}}.
+  \bibinfo{pages}{26036--26046}.
+\newblock
+
+
 \bibitem[Wu et~al\mbox{.}(2023)]%
         {Wu2023Purkinje}
 \bibfield{author}{\bibinfo{person}{Ruei-Jr Wu}, \bibinfo{person}{Ashley~M.
@@ -276,6 +358,21 @@
   \bibinfo{number}{5} (\bibinfo{year}{2023}), \bibinfo{pages}{4}.
 \newblock
 \href{https://doi.org/10.1167/jov.23.5.4}{doi:\nolinkurl{10.1167/jov.23.5.4}}
+
+
+\bibitem[Wu et~al\mbox{.}(2022)]%
+        {High_resolution_dDPI_2022}
+\bibfield{author}{\bibinfo{person}{Ruei-Jr Wu}, \bibinfo{person}{Paul Jolly},
+  \bibinfo{person}{Soma Mizobuchi}, \bibinfo{person}{Ashley~M. Clark},
+  \bibinfo{person}{Zhetuo Zhao}, \bibinfo{person}{Bin Yang},
+  \bibinfo{person}{Janis Intoy}, \bibinfo{person}{Michele~A. Cox}, {and}
+  \bibinfo{person}{Michele Rucci}.} \bibinfo{year}{2022}\natexlab{}.
+\newblock \showarticletitle{High-resolution oculomotor measurements via a
+  digital Dual Purkinje Image eye-tracker}.
+\newblock \bibinfo{journal}{\emph{Journal of Vision}} \bibinfo{volume}{22},
+  \bibinfo{number}{14} (\bibinfo{year}{2022}), \bibinfo{pages}{4203}.
+\newblock
+\href{https://doi.org/10.1167/jov.22.14.4203}{doi:\nolinkurl{10.1167/jov.22.14.4203}}
 
 
 \end{thebibliography}

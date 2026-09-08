@@ -2,6 +2,12 @@
 \providecommand\hyper@newdestlabel[2]{}
 \providecommand\HyField@AuxAddToFields[1]{}
 \providecommand\HyField@AuxAddToCoFields[2]{}
+\citation{Gaussian_Splatting}
+\citation{GaussianShader,SpecTReGS}
+\citation{3DGUT}
+\citation{Improved_vergence_and_accommodation}
+\citation{Dual_Purkinje_Tracker}
+\citation{Improved_vergence_and_accommodation,Dynamic_accommodation_Purkinje}
 \citation{VAC}
 \citation{AR_Vergence_Depth_OST,AR_Haploscope_Replication}
 \citation{Improved_vergence_and_accommodation}
@@ -22,77 +28,81 @@
 \citation{UnityEyes,NVGaze,RIT-Eyes}
 \citation{EyeNeRF}
 \citation{Realistic_nerf_eyes}
+\providecommand\@newglossary[4]{}
+\@newglossary{main}{glg}{gls}{glo}
+\@newglossary{abbreviations}{glg-abr}{gls-abr}{glo-abr}
+\providecommand\@glsxtr@savepreloctag[2]{}
+\@writefile{toc}{\contentsline {section}{Abstract}{1}{section*.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {1}Problem}{1}{section.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.1}Challenges of reconstructing Purkinje reflections via \gls {3DGS}\xspace  {}.}{1}{subsection.1.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {2}Introduction}{1}{section.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3}Related works}{1}{section.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Eye Accommodation Tracking}{1}{subsection.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Computational Eye Modeling}{1}{subsection.3.2}\protected@file@percent }
 \citation{Wu2023Purkinje,WideRange_Purkinje,OpenIrisDPI}
 \citation{Improved_vergence_and_accommodation}
 \citation{Dynamic_accommodation_Purkinje}
 \citation{Fluidic_Lenses}
 \citation{Improved_vergence_and_accommodation}
 \citation{Dynamic_accommodation_Purkinje}
-\providecommand\@newglossary[4]{}
-\@newglossary{main}{glg}{gls}{glo}
-\@newglossary{abbreviations}{glg-abr}{gls-abr}{glo-abr}
-\providecommand\@glsxtr@savepreloctag[2]{}
-\@writefile{toc}{\contentsline {section}{Abstract}{1}{section*.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{1}{section.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {2}Related works}{1}{section.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Eye Accommodation Tracking}{1}{subsection.2.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Computational Eye Modeling}{1}{subsection.2.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Physics-Based Optical Design}{1}{subsection.2.3}\protected@file@percent }
 \citation{AR_Haploscope_Replication}
 \citation{Wu2023Purkinje}
-\citation{Gaussian_Splatting}
-\citation{GaussianShader,SpecTReGS}
-\citation{3DGUT}
-\citation{Improved_vergence_and_accommodation}
-\citation{Dual_Purkinje_Tracker}
-\citation{Improved_vergence_and_accommodation,Dynamic_accommodation_Purkinje}
 \citation{OpenIrisDPI,Dual_Purkinje_Tracker}
 \citation{Dual_Purkinje_Tracker}
 \citation{Depth_fixation_DPI}
 \citation{Dual_Purkinje_Tracker,Depth_fixation_DPI}
 \citation{Dual_Purkinje_Tracker,Improved_vergence_and_accommodation}
 \citation{Purkinje_Surface_Measurement}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces  Comparison of representative approaches related to vergence and accommodation sensing. Method denotes the primary sensing principle or eye representation, while Estimator denotes the strategy used to infer the target quantity. V/A Target specifies whether accommodation (A), vergence (V), both, or neither are directly estimated in the reported work. Near-eye indicates whether the method is demonstrated in a physical near-eye configuration. Green indicates favorable suitability for compact joint vergence--accommodation tracking, yellow indicates moderate suitability, and red indicates limited suitability. }}{2}{table.caption.5}\protected@file@percent }
+\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
+\newlabel{tab:literature_review}{{1}{2}{Comparison of representative approaches related to vergence and accommodation sensing. Method denotes the primary sensing principle or eye representation, while Estimator denotes the strategy used to infer the target quantity. V/A Target specifies whether accommodation (A), vergence (V), both, or neither are directly estimated in the reported work. Near-eye indicates whether the method is demonstrated in a physical near-eye configuration. Green indicates favorable suitability for compact joint vergence--accommodation tracking, yellow indicates moderate suitability, and red indicates limited suitability}{table.caption.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Physics-Based Optical Design}{2}{subsection.3.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4}Optical Background}{2}{section.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Capturing Purkinje image}{2}{subsection.4.1}\protected@file@percent }
 \citation{Improved_vergence_and_accommodation}
 \citation{Dynamic_accommodation_Purkinje}
-\citation{nair2020riteyes,li2022eyenerf,khademi2026relightableeyes}
+\citation{RIT-Eyes,EyeNeRF,Realistic_nerf_eyes}
 \citation{Gaussian_Splatting}
-\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Comparison of different eye and accommodation tracking methodologies. Accuracy is qualitatively categorized into High (\textcolor {green!60!black}{High}), Mid (\textcolor {orange!90!black}{Mid}), and Low (\textcolor {red!70!black}{Low}) according to the reported performance for the corresponding tracking task.}}{2}{table.caption.5}\protected@file@percent }
-\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
-\newlabel{tab:literature_review}{{1}{2}{Comparison of different eye and accommodation tracking methodologies. Accuracy is qualitatively categorized into High (\textcolor {green!60!black}{High}), Mid (\textcolor {orange!90!black}{Mid}), and Low (\textcolor {red!70!black}{Low}) according to the reported performance for the corresponding tracking task}{table.caption.5}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {3}Optical Background}{2}{section.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Challenges of reconstructing Purkinje reflections via \gls {3DGS}\xspace  {}.}{2}{subsection.3.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Capturing Purkinje image}{2}{subsection.3.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Simulation-to-capture pipeline for near-eye Purkinje imaging}{2}{subsection.3.3}\protected@file@percent }
+\citation{Gaussian_Splatting}
+\citation{Gaussian_Splatting,GaussianShader}
+\citation{Gaussian_Splatting}
+\citation{Gaussian_Splatting}
 \citation{Gaussian_Splatting,GaussianShader}
 \citation{Gaussian_Splatting}
 \citation{Gaussian_Splatting}
 \bibstyle{ACM-Reference-Format}
 \bibdata{references}
-\bibcite{AR_Haploscope_Replication}{{1}{2024}{{Bontha and Arefin}}{{}}}
-\bibcite{Dual_Purkinje_Tracker}{{2}{1973}{{Cornsweet and Crane}}{{}}}
-\bibcite{VAC}{{3}{2008}{{Hoffman et~al\mbox  {.}}}{{}}}
-\bibcite{WideRange_Purkinje}{{4}{2025}{{Idrizovi{\'c} et~al\mbox  {.}}}{{}}}
-\bibcite{Gaussian_Splatting}{{5}{2023}{{Kerbl et~al\mbox  {.}}}{{}}}
-\bibcite{Realistic_nerf_eyes}{{6}{2026}{{Khademi et~al\mbox  {.}}}{{}}}
-\bibcite{NVGaze}{{7}{2019}{{Kim et~al\mbox  {.}}}{{}}}
-\bibcite{EyeNeRF}{{8}{2022}{{Li et~al\mbox  {.}}}{{}}}
-\bibcite{Improved_vergence_and_accommodation}{{9}{2020}{{Lu et~al\mbox  {.}}}{{}}}
-\bibcite{Single_Camera_Two_Lights}{{10}{2002}{{Morimoto et~al\mbox  {.}}}{{}}}
-\bibcite{Fluidic_Lenses}{{11}{2024}{{Na et~al\mbox  {.}}}{{}}}
-\@writefile{toc}{\contentsline {section}{\numberline {4}Method}{3}{section.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}3D Gaussian Splatting}{3}{subsection.4.1}\protected@file@percent }
+\bibcite{Depth_fixation_DPI}{{1}{2025}{{Ahn and Lee}}{{}}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Simulation-to-capture pipeline for near-eye Purkinje imaging}{3}{subsection.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5}Method}{3}{section.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}3D Gaussian Splatting}{3}{subsection.5.1}\protected@file@percent }
 \newlabel{eq:gaussian_primitive}{{1}{3}{3D Gaussian Splatting}{equation.1}{}}
 \newlabel{eq:3dgs_covariance}{{2}{3}{3D Gaussian Splatting}{equation.2}{}}
 \newlabel{eq:3dgs_loss}{{3}{3}{3D Gaussian Splatting}{equation.3}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {5}Results and Discussions}{3}{section.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{References}{3}{section*.7}\protected@file@percent }
-\bibcite{RIT-Eyes}{{12}{2020}{{Nair et~al\mbox  {.}}}{{}}}
-\bibcite{Navarro1985Accommodation}{{13}{1985}{{Navarro et~al\mbox  {.}}}{{}}}
-\bibcite{Dynamic_accommodation_Purkinje}{{14}{2023}{{Ozhan et~al\mbox  {.}}}{{}}}
-\bibcite{OpenIrisDPI}{{15}{2026}{{Ressmeyer et~al\mbox  {.}}}{{}}}
-\bibcite{AR_Vergence_Depth_OST}{{16}{2025}{{Sturgeon et~al\mbox  {.}}}{{}}}
-\bibcite{UnityEyes}{{17}{2016}{{Wood et~al\mbox  {.}}}{{}}}
-\bibcite{Wu2023Purkinje}{{18}{2023}{{Wu et~al\mbox  {.}}}{{}}}
+\bibcite{Purkinje_Surface_Measurement}{{2}{2001}{{Barry et~al\mbox  {.}}}{{}}}
+\bibcite{AR_Haploscope_Replication}{{3}{2024}{{Bontha and Arefin}}{{}}}
+\bibcite{Dual_Purkinje_Tracker}{{4}{1973}{{Cornsweet and Crane}}{{}}}
+\bibcite{VAC}{{5}{2008}{{Hoffman et~al\mbox  {.}}}{{}}}
+\bibcite{WideRange_Purkinje}{{6}{2025}{{Idrizovi{\'c} et~al\mbox  {.}}}{{}}}
+\bibcite{GaussianShader}{{7}{2024}{{Jiang et~al\mbox  {.}}}{{}}}
+\bibcite{Gaussian_Splatting}{{8}{2023}{{Kerbl et~al\mbox  {.}}}{{}}}
+\bibcite{Realistic_nerf_eyes}{{9}{2026}{{Khademi et~al\mbox  {.}}}{{}}}
+\bibcite{NVGaze}{{10}{2019}{{Kim et~al\mbox  {.}}}{{}}}
+\bibcite{EyeNeRF}{{11}{2022}{{Li et~al\mbox  {.}}}{{}}}
+\bibcite{Digital_Eye_Tracker_Prototyper}{{12}{2026}{{Lin et~al\mbox  {.}}}{{}}}
+\bibcite{Improved_vergence_and_accommodation}{{13}{2020}{{Lu et~al\mbox  {.}}}{{}}}
+\bibcite{Single_Camera_Two_Lights}{{14}{2002}{{Morimoto et~al\mbox  {.}}}{{}}}
+\bibcite{Fluidic_Lenses}{{15}{2024}{{Na et~al\mbox  {.}}}{{}}}
+\bibcite{RIT-Eyes}{{16}{2020}{{Nair et~al\mbox  {.}}}{{}}}
+\bibcite{Dynamic_accommodation_Purkinje}{{17}{2023}{{Ozhan et~al\mbox  {.}}}{{}}}
+\bibcite{OpenIrisDPI}{{18}{2026}{{Ressmeyer et~al\mbox  {.}}}{{}}}
+\bibcite{Keratoconus_Purkinje}{{19}{2024}{{Sharifzadeh}}{{}}}
+\bibcite{AR_Vergence_Depth_OST}{{20}{2025}{{Sturgeon et~al\mbox  {.}}}{{}}}
+\bibcite{SpecTReGS}{{21}{2025}{{Tang et~al\mbox  {.}}}{{}}}
+\bibcite{UnityEyes}{{22}{2016}{{Wood et~al\mbox  {.}}}{{}}}
+\bibcite{3DGUT}{{23}{2025}{{Wu et~al\mbox  {.}}}{{}}}
+\bibcite{Wu2023Purkinje}{{24}{2023}{{Wu et~al\mbox  {.}}}{{}}}
+\bibcite{High_resolution_dDPI_2022}{{25}{2022}{{Wu et~al\mbox  {.}}}{{}}}
 \newlabel{tocindent-1}{0pt}
 \newlabel{tocindent0}{0pt}
 \newlabel{tocindent1}{4.185pt}
@@ -100,5 +110,8 @@
 \newlabel{tocindent3}{0pt}
 \newlabel{tocindent4}{0pt}
 \newlabel{tocindent5}{0pt}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Results and Discussions}{4}{section.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {7}Results and Discussions}{4}{section.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{References}{4}{section*.7}\protected@file@percent }
 \newlabel{TotPages}{{4}{4}{}{page.4}{}}
 \gdef \@abspage@last{4}
