@@ -2,7 +2,7 @@
 %%% Do NOT edit. File created by BibTeX with style
 %%% ACM-Reference-Format-Journals [18-Jan-2012].
 
-\begin{thebibliography}{44}
+\begin{thebibliography}{34}
 
 %%% ====================================================================
 %%% NOTE TO THE USER: you can override these defaults by providing
@@ -87,19 +87,6 @@
 \newblock
 
 
-\bibitem[Chirre et~al\mbox{.}(2015)]%
-        {Chirre_2015_BOE}
-\bibfield{author}{\bibinfo{person}{Emmanuel Chirre}, \bibinfo{person}{Pedro~M.
-  Prieto}, {and} \bibinfo{person}{Pablo Artal}.}
-  \bibinfo{year}{2015}\natexlab{}.
-\newblock \showarticletitle{Dynamics of the near response under natural viewing
-  conditions with an open-view sensor}.
-\newblock \bibinfo{journal}{\emph{Biomedical Optics Express}}
-  \bibinfo{volume}{6}, \bibinfo{number}{10} (\bibinfo{year}{2015}),
-  \bibinfo{pages}{4200--4211}.
-\newblock
-
-
 \bibitem[Cornsweet and Crane(1973)]%
         {Dual_Purkinje_Tracker}
 \bibfield{author}{\bibinfo{person}{T.~N. Cornsweet} {and}
@@ -120,19 +107,6 @@
 \newblock \showarticletitle{Accurate three-dimensional eyetracker}.
 \newblock \bibinfo{journal}{\emph{Applied Optics}} \bibinfo{volume}{17},
   \bibinfo{number}{5} (\bibinfo{year}{1978}), \bibinfo{pages}{691--705}.
-\newblock
-
-
-\bibitem[Gambra et~al\mbox{.}(2013)]%
-        {Gambra_2013_OE}
-\bibfield{author}{\bibinfo{person}{Enrique Gambra}, \bibinfo{person}{Sergio
-  Ortiz}, \bibinfo{person}{Pablo Perez-Merino}, \bibinfo{person}{Michalina
-  Gora}, \bibinfo{person}{Maciej Wojtkowski}, {and} \bibinfo{person}{Susana
-  Marcos}.} \bibinfo{year}{2013}\natexlab{}.
-\newblock \showarticletitle{Static and dynamic crystalline lens accommodation
-  evaluated using quantitative {3-D} {OCT}}.
-\newblock \bibinfo{journal}{\emph{Optics Express}} \bibinfo{volume}{21},
-  \bibinfo{number}{8} (\bibinfo{year}{2013}), \bibinfo{pages}{10522--10536}.
 \newblock
 
 
@@ -163,12 +137,12 @@
 \href{https://doi.org/10.1117/12.3065468}{doi:\nolinkurl{10.1117/12.3065468}}
 
 
-\bibitem[Jiang et~al\mbox{.}(2024a)]%
+\bibitem[Jiang et~al\mbox{.}(2024)]%
         {GaussianShader}
 \bibfield{author}{\bibinfo{person}{Yingwenqi Jiang}, \bibinfo{person}{Jiadong
   Tu}, \bibinfo{person}{Yuan Liu}, \bibinfo{person}{Xifeng Gao},
   \bibinfo{person}{Xiaoxiao Long}, \bibinfo{person}{Wenping Wang}, {and}
-  \bibinfo{person}{Yuexin Ma}.} \bibinfo{year}{2024}\natexlab{a}.
+  \bibinfo{person}{Yuexin Ma}.} \bibinfo{year}{2024}\natexlab{}.
 \newblock \showarticletitle{GaussianShader: 3D Gaussian Splatting with Shading
   Functions for Reflective Surfaces}. In \bibinfo{booktitle}{\emph{Proceedings
   of the IEEE/CVF Conference on Computer Vision and Pattern Recognition
@@ -176,54 +150,17 @@
 \newblock
 
 
-\bibitem[Jiang et~al\mbox{.}(2024b)]%
-        {GaussianShader_2024}
-\bibfield{author}{\bibinfo{person}{Yingwenqi Jiang}, \bibinfo{person}{Jiadong
-  Tu}, \bibinfo{person}{Yuan Liu}, \bibinfo{person}{Xifeng Gao},
-  \bibinfo{person}{Xiaoxiao Long}, \bibinfo{person}{Wenping Wang}, {and}
-  \bibinfo{person}{Yuexin Ma}.} \bibinfo{year}{2024}\natexlab{b}.
-\newblock \showarticletitle{{GaussianShader}: {3D} {G}aussian splatting with
-  shading functions for reflective surfaces}. In
-  \bibinfo{booktitle}{\emph{Proc. IEEE/CVF Conference on Computer Vision and
-  Pattern Recognition (CVPR)}}.
-\newblock
-
-
-\bibitem[Kasthurirangan and Glasser(2005)]%
-        {Kasthurirangan_2005}
-\bibfield{author}{\bibinfo{person}{Sanjeev Kasthurirangan} {and}
-  \bibinfo{person}{Adrian Glasser}.} \bibinfo{year}{2005}\natexlab{}.
-\newblock \showarticletitle{Characteristics of pupil responses during
-  far-to-near and near-to-far accommodation}.
-\newblock \bibinfo{journal}{\emph{Ophthalmic and Physiological Optics}}
-  \bibinfo{volume}{25}, \bibinfo{number}{4} (\bibinfo{year}{2005}),
-  \bibinfo{pages}{328--339}.
-\newblock
-
-
-\bibitem[Kerbl et~al\mbox{.}(2023a)]%
+\bibitem[Kerbl et~al\mbox{.}(2023)]%
         {Gaussian_Splatting}
 \bibfield{author}{\bibinfo{person}{Bernhard Kerbl}, \bibinfo{person}{Georgios
   Kopanas}, \bibinfo{person}{Thomas Leimk{\"u}hler}, {and}
-  \bibinfo{person}{George Drettakis}.} \bibinfo{year}{2023}\natexlab{a}.
+  \bibinfo{person}{George Drettakis}.} \bibinfo{year}{2023}\natexlab{}.
 \newblock \showarticletitle{3D Gaussian Splatting for Real-Time Radiance Field
   Rendering}.
 \newblock \bibinfo{journal}{\emph{ACM Transactions on Graphics}}
   \bibinfo{volume}{42}, \bibinfo{number}{4} (\bibinfo{year}{2023}).
 \newblock
 \href{https://doi.org/10.1145/3592433}{doi:\nolinkurl{10.1145/3592433}}
-
-
-\bibitem[Kerbl et~al\mbox{.}(2023b)]%
-        {Kerbl_3DGS_2023}
-\bibfield{author}{\bibinfo{person}{Bernhard Kerbl}, \bibinfo{person}{Georgios
-  Kopanas}, \bibinfo{person}{Thomas Leimk{\"u}hler}, {and}
-  \bibinfo{person}{George Drettakis}.} \bibinfo{year}{2023}\natexlab{b}.
-\newblock \showarticletitle{{3D} {G}aussian splatting for real-time radiance
-  field rendering}.
-\newblock \bibinfo{journal}{\emph{ACM Transactions on Graphics}}
-  \bibinfo{volume}{42}, \bibinfo{number}{4} (\bibinfo{year}{2023}).
-\newblock
 
 
 \bibitem[Khademi et~al\mbox{.}(2026)]%
@@ -237,26 +174,13 @@
 \newblock
 
 
-\bibitem[Kim et~al\mbox{.}(2019a)]%
-        {NVGaze_2019}
-\bibfield{author}{\bibinfo{person}{Joohwan Kim}, \bibinfo{person}{Michael
-  Stengel}, \bibinfo{person}{Alexander Majercik}, \bibinfo{person}{Shalini
-  De~Mello}, \bibinfo{person}{David Dunn}, \bibinfo{person}{Samuli Laine},
-  \bibinfo{person}{Morgan McGuire}, {and} \bibinfo{person}{David Luebke}.}
-  \bibinfo{year}{2019}\natexlab{a}.
-\newblock \showarticletitle{{NVGaze}: An anatomically-informed dataset for
-  low-latency, near-eye gaze estimation}. In \bibinfo{booktitle}{\emph{Proc.
-  CHI Conference on Human Factors in Computing Systems}}.
-\newblock
-
-
-\bibitem[Kim et~al\mbox{.}(2019b)]%
+\bibitem[Kim et~al\mbox{.}(2019)]%
         {NVGaze}
 \bibfield{author}{\bibinfo{person}{Joohwan Kim}, \bibinfo{person}{Michael
   Stengel}, \bibinfo{person}{Alexander Majercik}, \bibinfo{person}{Shalini
   De~Mello}, \bibinfo{person}{David Dunn}, \bibinfo{person}{Samuli Laine},
   \bibinfo{person}{Morgan McGuire}, {and} \bibinfo{person}{David Luebke}.}
-  \bibinfo{year}{2019}\natexlab{b}.
+  \bibinfo{year}{2019}\natexlab{}.
 \newblock \showarticletitle{{NVGaze}: An Anatomically-Informed Dataset for
   Low-Latency, Near-Eye Gaze Estimation}. In
   \bibinfo{booktitle}{\emph{Proceedings of the 2019 CHI Conference on Human
@@ -310,19 +234,6 @@
 \href{https://doi.org/10.1109/ISMAR50242.2020.00058}{doi:\nolinkurl{10.1109/ISMAR50242.2020.00058}}
 
 
-\bibitem[MacKenzie et~al\mbox{.}(2010)]%
-        {MacKenzie_2010_JOV}
-\bibfield{author}{\bibinfo{person}{Kevin~J. MacKenzie},
-  \bibinfo{person}{David~M. Hoffman}, {and} \bibinfo{person}{Simon~J. Watt}.}
-  \bibinfo{year}{2010}\natexlab{}.
-\newblock \showarticletitle{Accommodation to multiple-focal-plane displays:
-  Implications for improving stereoscopic displays and for accommodation
-  control}.
-\newblock \bibinfo{journal}{\emph{Journal of Vision}} \bibinfo{volume}{10},
-  \bibinfo{number}{8} (\bibinfo{year}{2010}), \bibinfo{pages}{22}.
-\newblock
-
-
 \bibitem[Morimoto et~al\mbox{.}(2002)]%
         {Single_Camera_Two_Lights}
 \bibfield{author}{\bibinfo{person}{Carlos~H. Morimoto}, \bibinfo{person}{Arnon
@@ -363,6 +274,20 @@
 \href{https://doi.org/10.1145/3385955.3407935}{doi:\nolinkurl{10.1145/3385955.3407935}}
 
 
+\bibitem[Navarro et~al\mbox{.}(1985)]%
+        {Navarro1985Accommodation}
+\bibfield{author}{\bibinfo{person}{R. Navarro}, \bibinfo{person}{J.
+  Santamar{\'i}a}, {and} \bibinfo{person}{J. Besc{\'o}s}.}
+  \bibinfo{year}{1985}\natexlab{}.
+\newblock \showarticletitle{Accommodation-Dependent Model of the Human Eye with
+  Aspherics}.
+\newblock \bibinfo{journal}{\emph{Journal of the Optical Society of America A}}
+  \bibinfo{volume}{2}, \bibinfo{number}{8} (\bibinfo{year}{1985}),
+  \bibinfo{pages}{1273--1280}.
+\newblock
+\href{https://doi.org/10.1364/JOSAA.2.001273}{doi:\nolinkurl{10.1364/JOSAA.2.001273}}
+
+
 \bibitem[Ozhan et~al\mbox{.}(2023)]%
         {Dynamic_accommodation_Purkinje}
 \bibfield{author}{\bibinfo{person}{Faik~Ozan Ozhan}, \bibinfo{person}{Ugur
@@ -374,19 +299,6 @@
   \bibinfo{number}{21625} (\bibinfo{year}{2023}).
 \newblock
 \href{https://doi.org/10.1038/s41598-023-47572-0}{doi:\nolinkurl{10.1038/s41598-023-47572-0}}
-
-
-\bibitem[Padmanaban et~al\mbox{.}(2017)]%
-        {Padmanaban_2017_PNAS}
-\bibfield{author}{\bibinfo{person}{Nitish Padmanaban}, \bibinfo{person}{Robert
-  Konrad}, \bibinfo{person}{Tal Stramer}, \bibinfo{person}{Emily~A. Cooper},
-  {and} \bibinfo{person}{Gordon Wetzstein}.} \bibinfo{year}{2017}\natexlab{}.
-\newblock \showarticletitle{Optimizing virtual reality for all users through
-  gaze-contingent and adaptive focus displays}.
-\newblock \bibinfo{journal}{\emph{Proceedings of the National Academy of
-  Sciences}} \bibinfo{volume}{114}, \bibinfo{number}{9} (\bibinfo{year}{2017}),
-  \bibinfo{pages}{2183--2188}.
-\newblock
 
 
 \bibitem[Padmanaban et~al\mbox{.}(2019)]%
@@ -503,18 +415,6 @@
 \newblock
 
 
-\bibitem[Verbin et~al\mbox{.}(2022)]%
-        {RefNeRF_2022}
-\bibfield{author}{\bibinfo{person}{Dor Verbin}, \bibinfo{person}{Peter Hedman},
-  \bibinfo{person}{Ben Mildenhall}, \bibinfo{person}{Todd Zickler},
-  \bibinfo{person}{Jonathan~T. Barron}, {and} \bibinfo{person}{Pratul~P.
-  Srinivasan}.} \bibinfo{year}{2022}\natexlab{}.
-\newblock \showarticletitle{{Ref-NeRF}: Structured view-dependent appearance
-  for neural radiance fields}. In \bibinfo{booktitle}{\emph{Proc. IEEE/CVF
-  Conference on Computer Vision and Pattern Recognition (CVPR)}}.
-\newblock
-
-
 \bibitem[Wang et~al\mbox{.}(2024)]%
         {GazeGaussian_2024}
 \bibfield{author}{\bibinfo{person}{Xiaobao Wang} {et~al\mbox{.}}}
@@ -552,18 +452,6 @@
 \href{https://doi.org/10.1145/2857491.2857492}{doi:\nolinkurl{10.1145/2857491.2857492}}
 
 
-\bibitem[Wood et~al\mbox{.}(2015)]%
-        {SynthesEyes_2015}
-\bibfield{author}{\bibinfo{person}{Erroll Wood}, \bibinfo{person}{Tadas
-  Baltru{\v{s}}aitis}, \bibinfo{person}{Xucong Zhang}, \bibinfo{person}{Yusuke
-  Sugano}, \bibinfo{person}{Peter Robinson}, {and} \bibinfo{person}{Andreas
-  Bulling}.} \bibinfo{year}{2015}\natexlab{}.
-\newblock \showarticletitle{Rendering of eyes for eye-shape registration and
-  gaze estimation}. In \bibinfo{booktitle}{\emph{Proc. IEEE International
-  Conference on Computer Vision (ICCV)}}.
-\newblock
-
-
 \bibitem[Wu et~al\mbox{.}(2025)]%
         {3DGUT}
 \bibfield{author}{\bibinfo{person}{Qi Wu}, \bibinfo{person}{Janick~Martinez
@@ -589,21 +477,6 @@
   \bibinfo{number}{5} (\bibinfo{year}{2023}), \bibinfo{pages}{4}.
 \newblock
 \href{https://doi.org/10.1167/jov.23.5.4}{doi:\nolinkurl{10.1167/jov.23.5.4}}
-
-
-\bibitem[Wu et~al\mbox{.}(2022)]%
-        {High_resolution_dDPI_2022}
-\bibfield{author}{\bibinfo{person}{Ruei-Jr Wu}, \bibinfo{person}{Paul Jolly},
-  \bibinfo{person}{Soma Mizobuchi}, \bibinfo{person}{Ashley~M. Clark},
-  \bibinfo{person}{Zhetuo Zhao}, \bibinfo{person}{Bin Yang},
-  \bibinfo{person}{Janis Intoy}, \bibinfo{person}{Michele~A. Cox}, {and}
-  \bibinfo{person}{Michele Rucci}.} \bibinfo{year}{2022}\natexlab{}.
-\newblock \showarticletitle{High-resolution oculomotor measurements via a
-  digital Dual Purkinje Image eye-tracker}.
-\newblock \bibinfo{journal}{\emph{Journal of Vision}} \bibinfo{volume}{22},
-  \bibinfo{number}{14} (\bibinfo{year}{2022}), \bibinfo{pages}{4203}.
-\newblock
-\href{https://doi.org/10.1167/jov.22.14.4203}{doi:\nolinkurl{10.1167/jov.22.14.4203}}
 
 
 \end{thebibliography}
