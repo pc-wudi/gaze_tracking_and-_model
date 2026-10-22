@@ -13,18 +13,34 @@
 \citation{Improved_vergence_and_accommodation}
 \citation{Dynamic_accommodation_Purkinje}
 \citation{Dual_Purkinje_Tracker}
+\citation{Crane_Steele_1978}
+\citation{Schaeffel_1987}
 \citation{Single_Camera_Two_Lights}
-\citation{AR_Vergence_Depth_OST}
-\citation{AR_Haploscope_Replication}
+\citation{Rosales_2006_JOV}
+\citation{Swirski_2013}
+\citation{Weier_2018}
+\citation{NVGaze}
+\citation{Padmanaban_2019}
 \citation{Improved_vergence_and_accommodation}
+\citation{Angelopoulos_2021}
+\citation{Wu2023Purkinje}
 \citation{Dynamic_accommodation_Purkinje}
-\citation{RIT-Eyes}
-\citation{EyeNeRF}
-\citation{Realistic_nerf_eyes}
 \citation{Depth_fixation_DPI}
+\citation{AR_Vergence_Depth_OST}
+\citation{OpenIrisDPI}
+\citation{Navarro1985Accommodation}
+\citation{UnityEyes}
+\citation{RIT-Eyes}
 \citation{Keratoconus_Purkinje}
-\citation{High_resolution_dDPI_2022}
 \citation{Digital_Eye_Tracker_Prototyper}
+\citation{EyeNeRF}
+\citation{RefNeRF_2022}
+\citation{Gaussian_Splatting}
+\citation{GazeNeRF_2023}
+\citation{GaussianShader}
+\citation{SpecTReGS}
+\citation{3DGUT}
+\citation{Realistic_nerf_eyes}
 \citation{UnityEyes,NVGaze,RIT-Eyes}
 \citation{EyeNeRF}
 \citation{Realistic_nerf_eyes}
@@ -47,22 +63,25 @@
 \citation{Dynamic_accommodation_Purkinje}
 \citation{AR_Haploscope_Replication}
 \citation{Wu2023Purkinje}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces  Comparison of representative approaches related to vergence (V) and accommodation (A) sensing. Colours rate each entry \emph  {relative to the other options in its column} with respect to one goal, a compact wearable sensor that estimates V and A jointly; green is better suited, yellow intermediate, red least suited. Camera: imaging hardware per eye, ordered by the minimum needed for binocular V and A -- one camera per eye (the lower bound, since V requires both eyes and A one) $>$ two or more sensors per eye $>$ bench-top optics with head stabilisation. This ordering reflects footprint, not accuracy: head-fixed bench systems and multi-view rigs achieve lower errors by removing or measuring eye--camera motion, whereas a single camera must rely on illumination layout and eye-model priors (see Accuracy). Illum.: integrability and designability of the source geometry -- freely positionable IR/NIR LEDs, whose number and placement are chosen for the sensing principle, $>$ LEDs fixed inside a commercial tracker, placed by the vendor for corneal glints and not adjustable, $>$ bench-top collimated or off-axis sources tied to a working distance. As for Camera, this reflects integrability, not image quality: collimated bench sources yield the sharpest lens reflections. Method: whether the signal physically depends on lens state and can be captured by a compact camera -- Purkinje reflections (lens-dependent, camera and LED only) $>$ photorefraction (lens-dependent, but requires an eccentric source at a bench working distance) $>$ pupil/glint gaze tracking (no A information). Data: validated on real eyes $>$ synthetic only. Learning: handling of inter-subject variability -- learned models $>$ physical eye models requiring per-user calibration $>$ fixed formulas such as binocular triangulation. V/A Target: quantity directly estimated (both $>$ one $>$ neither). Near-eye: demonstrated in a physical near-eye configuration. Accuracy: error reported for the quantity in parentheses -- gaze: high $<0.5^\circ $, mid $0.5$--$3^\circ $, low $>3^\circ $; A and V (depth in dioptres): high $<0.25$\nonbreakingspace D, mid $0.25$--$0.5$\nonbreakingspace D, low $>0.5$\nonbreakingspace D; protocols differ across works, so values are indicative only. }}{2}{table.caption.5}\protected@file@percent }
+\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
+\newlabel{tab:literature_review}{{1}{2}{Comparison of representative approaches related to vergence (V) and accommodation (A) sensing. Colours rate each entry \emph {relative to the other options in its column} with respect to one goal, a compact wearable sensor that estimates V and A jointly; green is better suited, yellow intermediate, red least suited. Camera: imaging hardware per eye, ordered by the minimum needed for binocular V and A -- one camera per eye (the lower bound, since V requires both eyes and A one) $>$ two or more sensors per eye $>$ bench-top optics with head stabilisation. This ordering reflects footprint, not accuracy: head-fixed bench systems and multi-view rigs achieve lower errors by removing or measuring eye--camera motion, whereas a single camera must rely on illumination layout and eye-model priors (see Accuracy). Illum.: integrability and designability of the source geometry -- freely positionable IR/NIR LEDs, whose number and placement are chosen for the sensing principle, $>$ LEDs fixed inside a commercial tracker, placed by the vendor for corneal glints and not adjustable, $>$ bench-top collimated or off-axis sources tied to a working distance. As for Camera, this reflects integrability, not image quality: collimated bench sources yield the sharpest lens reflections. Method: whether the signal physically depends on lens state and can be captured by a compact camera -- Purkinje reflections (lens-dependent, camera and LED only) $>$ photorefraction (lens-dependent, but requires an eccentric source at a bench working distance) $>$ pupil/glint gaze tracking (no A information). Data: validated on real eyes $>$ synthetic only. Learning: handling of inter-subject variability -- learned models $>$ physical eye models requiring per-user calibration $>$ fixed formulas such as binocular triangulation. V/A Target: quantity directly estimated (both $>$ one $>$ neither). Near-eye: demonstrated in a physical near-eye configuration. Accuracy: error reported for the quantity in parentheses -- gaze: high $<0.5^\circ $, mid $0.5$--$3^\circ $, low $>3^\circ $; A and V (depth in dioptres): high $<0.25$~D, mid $0.25$--$0.5$~D, low $>0.5$~D; protocols differ across works, so values are indicative only}{table.caption.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Physics-Based Optical Design}{2}{subsection.3.3}\protected@file@percent }
 \citation{OpenIrisDPI,Dual_Purkinje_Tracker}
 \citation{Dual_Purkinje_Tracker}
 \citation{Depth_fixation_DPI}
 \citation{Dual_Purkinje_Tracker,Depth_fixation_DPI}
 \citation{Dual_Purkinje_Tracker,Improved_vergence_and_accommodation}
 \citation{Purkinje_Surface_Measurement}
-\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces  Comparison of representative approaches related to vergence and accommodation sensing. Method denotes the primary sensing principle or eye representation, while Estimator denotes the strategy used to infer the target quantity. V/A Target specifies whether accommodation (A), vergence (V), both, or neither are directly estimated in the reported work. Near-eye indicates whether the method is demonstrated in a physical near-eye configuration. Green indicates favorable suitability for compact joint vergence--accommodation tracking, yellow indicates moderate suitability, and red indicates limited suitability. }}{2}{table.caption.5}\protected@file@percent }
-\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
-\newlabel{tab:literature_review}{{1}{2}{Comparison of representative approaches related to vergence and accommodation sensing. Method denotes the primary sensing principle or eye representation, while Estimator denotes the strategy used to infer the target quantity. V/A Target specifies whether accommodation (A), vergence (V), both, or neither are directly estimated in the reported work. Near-eye indicates whether the method is demonstrated in a physical near-eye configuration. Green indicates favorable suitability for compact joint vergence--accommodation tracking, yellow indicates moderate suitability, and red indicates limited suitability}{table.caption.5}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Physics-Based Optical Design}{2}{subsection.3.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {4}Optical Background}{2}{section.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Capturing Purkinje image}{2}{subsection.4.1}\protected@file@percent }
 \citation{Improved_vergence_and_accommodation}
 \citation{Dynamic_accommodation_Purkinje}
 \citation{RIT-Eyes,EyeNeRF,Realistic_nerf_eyes}
 \citation{Gaussian_Splatting}
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces  Eye representations and rendering approaches relevant to modelling Purkinje reflections. Colours rate each entry relative to the other options in its column with respect to one goal, an eye model that can be fitted to a real eye and renders Purkinje reflections for training or fitting a V/A estimator; green is better suited, yellow intermediate, red least suited. Representation: explicit optical surfaces combined with image-fitted neural appearance $>$ explicit surfaces from population parameters that cannot be fitted to an individual (optical eye models, parametric meshes) $>$ purely neural fields without surfaces for reflection or refraction. Reflections: ray-traced or analytic specular reflections $>$ reflection-aware shading (reflected-direction parametrisation, environment maps) $>$ baked view-dependent appearance or rasterised highlights. Input: images needed to personalise the model to a real eye -- few images $>$ dense multi-view or light-stage capture $>$ synthetic only, not personalisable. Fidelity: reported agreement with real images -- quantitative (PSNR/SSIM) $>$ photorealistic without quantitative comparison $>$ geometric or appearance approximation. Speed: real-time ($\geq $30\nonbreakingspace fps) $>$ interactive (1--30\nonbreakingspace fps) $>$ offline. Gaze and Lens: whether eye rotation and lens (accommodative) state are explicit controllable variables. }}{3}{table.caption.6}\protected@file@percent }
+\newlabel{tab:eye_rendering}{{2}{3}{Eye representations and rendering approaches relevant to modelling Purkinje reflections. Colours rate each entry relative to the other options in its column with respect to one goal, an eye model that can be fitted to a real eye and renders Purkinje reflections for training or fitting a V/A estimator; green is better suited, yellow intermediate, red least suited. Representation: explicit optical surfaces combined with image-fitted neural appearance $>$ explicit surfaces from population parameters that cannot be fitted to an individual (optical eye models, parametric meshes) $>$ purely neural fields without surfaces for reflection or refraction. Reflections: ray-traced or analytic specular reflections $>$ reflection-aware shading (reflected-direction parametrisation, environment maps) $>$ baked view-dependent appearance or rasterised highlights. Input: images needed to personalise the model to a real eye -- few images $>$ dense multi-view or light-stage capture $>$ synthetic only, not personalisable. Fidelity: reported agreement with real images -- quantitative (PSNR/SSIM) $>$ photorealistic without quantitative comparison $>$ geometric or appearance approximation. Speed: real-time ($\geq $30~fps) $>$ interactive (1--30~fps) $>$ offline. Gaze and Lens: whether eye rotation and lens (accommodative) state are explicit controllable variables}{table.caption.6}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Optical Background}{3}{section.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Capturing Purkinje image}{3}{subsection.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Simulation-to-capture pipeline for near-eye Purkinje imaging}{3}{subsection.4.2}\protected@file@percent }
 \citation{Gaussian_Splatting}
 \citation{Gaussian_Splatting,GaussianShader}
 \citation{Gaussian_Splatting}
@@ -70,39 +89,60 @@
 \citation{Gaussian_Splatting,GaussianShader}
 \citation{Gaussian_Splatting}
 \citation{Gaussian_Splatting}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Method}{4}{section.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}3D Gaussian Splatting}{4}{subsection.5.1}\protected@file@percent }
+\newlabel{eq:gaussian_primitive}{{1}{4}{3D Gaussian Splatting}{equation.1}{}}
+\newlabel{eq:3dgs_covariance}{{2}{4}{3D Gaussian Splatting}{equation.2}{}}
+\newlabel{eq:3dgs_loss}{{3}{4}{3D Gaussian Splatting}{equation.3}{}}
 \bibstyle{ACM-Reference-Format}
 \bibdata{references}
 \bibcite{Depth_fixation_DPI}{{1}{2025}{{Ahn and Lee}}{{}}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Simulation-to-capture pipeline for near-eye Purkinje imaging}{3}{subsection.4.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {5}Method}{3}{section.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}3D Gaussian Splatting}{3}{subsection.5.1}\protected@file@percent }
-\newlabel{eq:gaussian_primitive}{{1}{3}{3D Gaussian Splatting}{equation.1}{}}
-\newlabel{eq:3dgs_covariance}{{2}{3}{3D Gaussian Splatting}{equation.2}{}}
-\newlabel{eq:3dgs_loss}{{3}{3}{3D Gaussian Splatting}{equation.3}{}}
-\bibcite{Purkinje_Surface_Measurement}{{2}{2001}{{Barry et~al\mbox  {.}}}{{}}}
-\bibcite{AR_Haploscope_Replication}{{3}{2024}{{Bontha and Arefin}}{{}}}
-\bibcite{Dual_Purkinje_Tracker}{{4}{1973}{{Cornsweet and Crane}}{{}}}
-\bibcite{VAC}{{5}{2008}{{Hoffman et~al\mbox  {.}}}{{}}}
-\bibcite{WideRange_Purkinje}{{6}{2025}{{Idrizovi{\'c} et~al\mbox  {.}}}{{}}}
-\bibcite{GaussianShader}{{7}{2024}{{Jiang et~al\mbox  {.}}}{{}}}
-\bibcite{Gaussian_Splatting}{{8}{2023}{{Kerbl et~al\mbox  {.}}}{{}}}
-\bibcite{Realistic_nerf_eyes}{{9}{2026}{{Khademi et~al\mbox  {.}}}{{}}}
-\bibcite{NVGaze}{{10}{2019}{{Kim et~al\mbox  {.}}}{{}}}
-\bibcite{EyeNeRF}{{11}{2022}{{Li et~al\mbox  {.}}}{{}}}
-\bibcite{Digital_Eye_Tracker_Prototyper}{{12}{2026}{{Lin et~al\mbox  {.}}}{{}}}
-\bibcite{Improved_vergence_and_accommodation}{{13}{2020}{{Lu et~al\mbox  {.}}}{{}}}
-\bibcite{Single_Camera_Two_Lights}{{14}{2002}{{Morimoto et~al\mbox  {.}}}{{}}}
-\bibcite{Fluidic_Lenses}{{15}{2024}{{Na et~al\mbox  {.}}}{{}}}
-\bibcite{RIT-Eyes}{{16}{2020}{{Nair et~al\mbox  {.}}}{{}}}
-\bibcite{Dynamic_accommodation_Purkinje}{{17}{2023}{{Ozhan et~al\mbox  {.}}}{{}}}
-\bibcite{OpenIrisDPI}{{18}{2026}{{Ressmeyer et~al\mbox  {.}}}{{}}}
-\bibcite{Keratoconus_Purkinje}{{19}{2024}{{Sharifzadeh}}{{}}}
-\bibcite{AR_Vergence_Depth_OST}{{20}{2025}{{Sturgeon et~al\mbox  {.}}}{{}}}
-\bibcite{SpecTReGS}{{21}{2025}{{Tang et~al\mbox  {.}}}{{}}}
-\bibcite{UnityEyes}{{22}{2016}{{Wood et~al\mbox  {.}}}{{}}}
-\bibcite{3DGUT}{{23}{2025}{{Wu et~al\mbox  {.}}}{{}}}
-\bibcite{Wu2023Purkinje}{{24}{2023}{{Wu et~al\mbox  {.}}}{{}}}
-\bibcite{High_resolution_dDPI_2022}{{25}{2022}{{Wu et~al\mbox  {.}}}{{}}}
+\bibcite{Angelopoulos_2021}{{2}{2021}{{Angelopoulos et~al\mbox  {.}}}{{}}}
+\bibcite{Purkinje_Surface_Measurement}{{3}{2001}{{Barry et~al\mbox  {.}}}{{}}}
+\bibcite{AR_Haploscope_Replication}{{4}{2024}{{Bontha and Arefin}}{{}}}
+\bibcite{Chirre_2015_BOE}{{5}{2015}{{Chirre et~al\mbox  {.}}}{{}}}
+\bibcite{Dual_Purkinje_Tracker}{{6}{1973}{{Cornsweet and Crane}}{{}}}
+\bibcite{Crane_Steele_1978}{{7}{1978}{{Crane and Steele}}{{}}}
+\bibcite{Gambra_2013_OE}{{8}{2013}{{Gambra et~al\mbox  {.}}}{{}}}
+\bibcite{VAC}{{9}{2008}{{Hoffman et~al\mbox  {.}}}{{}}}
+\bibcite{WideRange_Purkinje}{{10}{2025}{{Idrizovi{\'c} et~al\mbox  {.}}}{{}}}
+\bibcite{GaussianShader}{{11}{2024a}{{Jiang et~al\mbox  {.}}}{{}}}
+\bibcite{GaussianShader_2024}{{12}{2024b}{{Jiang et~al\mbox  {.}}}{{}}}
+\bibcite{Kasthurirangan_2005}{{13}{2005}{{Kasthurirangan and Glasser}}{{}}}
+\bibcite{Gaussian_Splatting}{{14}{2023a}{{Kerbl et~al\mbox  {.}}}{{}}}
+\bibcite{Kerbl_3DGS_2023}{{15}{2023b}{{Kerbl et~al\mbox  {.}}}{{}}}
+\bibcite{Realistic_nerf_eyes}{{16}{2026}{{Khademi et~al\mbox  {.}}}{{}}}
+\bibcite{NVGaze_2019}{{17}{2019a}{{Kim et~al\mbox  {.}}}{{}}}
+\bibcite{NVGaze}{{18}{2019b}{{Kim et~al\mbox  {.}}}{{}}}
+\bibcite{EyeNeRF}{{19}{2022}{{Li et~al\mbox  {.}}}{{}}}
+\bibcite{Digital_Eye_Tracker_Prototyper}{{20}{2026}{{Lin et~al\mbox  {.}}}{{}}}
+\bibcite{Improved_vergence_and_accommodation}{{21}{2020}{{Lu et~al\mbox  {.}}}{{}}}
+\bibcite{MacKenzie_2010_JOV}{{22}{2010}{{MacKenzie et~al\mbox  {.}}}{{}}}
+\bibcite{Single_Camera_Two_Lights}{{23}{2002}{{Morimoto et~al\mbox  {.}}}{{}}}
+\bibcite{Fluidic_Lenses}{{24}{2024}{{Na et~al\mbox  {.}}}{{}}}
+\bibcite{RIT-Eyes}{{25}{2020}{{Nair et~al\mbox  {.}}}{{}}}
+\bibcite{Dynamic_accommodation_Purkinje}{{26}{2023}{{Ozhan et~al\mbox  {.}}}{{}}}
+\bibcite{Padmanaban_2017_PNAS}{{27}{2017}{{Padmanaban et~al\mbox  {.}}}{{}}}
+\bibcite{Padmanaban_2019}{{28}{2019}{{Padmanaban et~al\mbox  {.}}}{{}}}
+\bibcite{OpenIrisDPI}{{29}{2026}{{Ressmeyer et~al\mbox  {.}}}{{}}}
+\bibcite{Rosales_2006_JOV}{{30}{2006}{{Rosales et~al\mbox  {.}}}{{}}}
+\bibcite{GazeNeRF_2023}{{31}{2023}{{Ruzzi et~al\mbox  {.}}}{{}}}
+\bibcite{Schaeffel_1987}{{32}{1987}{{Schaeffel et~al\mbox  {.}}}{{}}}
+\bibcite{Keratoconus_Purkinje}{{33}{2024}{{Sharifzadeh}}{{}}}
+\bibcite{AR_Vergence_Depth_OST}{{34}{2025}{{Sturgeon et~al\mbox  {.}}}{{}}}
+\bibcite{Swirski_2013}{{35}{2013}{{{\'S}wirski and Dodgson}}{{}}}
+\bibcite{SpecTReGS}{{36}{2025}{{Tang et~al\mbox  {.}}}{{}}}
+\bibcite{RefNeRF_2022}{{37}{2022}{{Verbin et~al\mbox  {.}}}{{}}}
+\bibcite{GazeGaussian_2024}{{38}{2024}{{Wang et~al\mbox  {.}}}{{}}}
+\bibcite{Weier_2018}{{39}{2018}{{Weier et~al\mbox  {.}}}{{}}}
+\bibcite{UnityEyes}{{40}{2016}{{Wood et~al\mbox  {.}}}{{}}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Results and Discussions}{5}{section.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {7}Results and Discussions}{5}{section.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{References}{5}{section*.8}\protected@file@percent }
+\bibcite{SynthesEyes_2015}{{41}{2015}{{Wood et~al\mbox  {.}}}{{}}}
+\bibcite{3DGUT}{{42}{2025}{{Wu et~al\mbox  {.}}}{{}}}
+\bibcite{Wu2023Purkinje}{{43}{2023}{{Wu et~al\mbox  {.}}}{{}}}
+\bibcite{High_resolution_dDPI_2022}{{44}{2022}{{Wu et~al\mbox  {.}}}{{}}}
 \newlabel{tocindent-1}{0pt}
 \newlabel{tocindent0}{0pt}
 \newlabel{tocindent1}{4.185pt}
@@ -110,8 +150,5 @@
 \newlabel{tocindent3}{0pt}
 \newlabel{tocindent4}{0pt}
 \newlabel{tocindent5}{0pt}
-\@writefile{toc}{\contentsline {section}{\numberline {6}Results and Discussions}{4}{section.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {7}Results and Discussions}{4}{section.7}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{References}{4}{section*.7}\protected@file@percent }
-\newlabel{TotPages}{{4}{4}{}{page.4}{}}
-\gdef \@abspage@last{4}
+\newlabel{TotPages}{{6}{6}{}{page.6}{}}
+\gdef \@abspage@last{6}

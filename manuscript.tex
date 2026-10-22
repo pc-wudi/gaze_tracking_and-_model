@@ -32,7 +32,10 @@
 \newcommand{\good}[1]{\colorbox{GoodBG}{\strut #1}}
 \newcommand{\okay}[1]{\colorbox{MidBG}{\strut #1}}
 \newcommand{\poor}[1]{\colorbox{LowBG}{\strut #1}}
-
+\newcommand{\G}[1]{\cellcolor{GoodBG}#1}
+\newcommand{\M}[1]{\cellcolor{MidBG}#1}
+\newcommand{\R}[1]{\cellcolor{LowBG}#1}
+\newcommand{\grp}[1]{\multicolumn{11}{l}{\textit{#1}}\\}
 \newacronym{VAE}{VAE}{Variational Auto-Encoder}
 \newacronym{INR}{INR}{Implicit Neural Representations}
 \newacronym{PSNR}{PSNR}{Peak Signal-to-Noise Ratio}
@@ -234,176 +237,148 @@ Motivated by this limitation, we first build a controllable 3D optical eye
 model to analyze the formation, visibility, and stability of P1--P4 under near-eye infrared
  imaging conditions.
 
+% Requires: booktabs, xcolor with [table] option (or colortbl)
 \begin{table*}[t]
-
-% Local definitions used only by this table
-\definecolor{GoodBG}{RGB}{190,245,190}
-\definecolor{MidBG}{RGB}{255,247,190}
-\definecolor{BadBG}{RGB}{255,190,190}
-
-\newcommand{\G}[1]{\cellcolor{GoodBG}#1}
-\newcommand{\M}[1]{\cellcolor{MidBG}#1}
-\newcommand{\R}[1]{\cellcolor{BadBG}#1}
-
 \centering
 \caption{
-Comparison of representative approaches related to vergence and
-accommodation sensing.
-Method denotes the primary sensing principle or eye representation,
-while Estimator denotes the strategy used to infer the target quantity.
-V/A Target specifies whether accommodation (A), vergence (V), both,
-or neither are directly estimated in the reported work.
-Near-eye indicates whether the method is demonstrated in a physical
-near-eye configuration.
-Green indicates favorable suitability for compact joint
-vergence--accommodation tracking, yellow indicates moderate suitability,
-and red indicates limited suitability.
+Comparison of representative approaches related to vergence (V) and
+accommodation (A) sensing.
+Colours rate each entry \emph{relative to the other options in its column}
+with respect to one goal, a compact wearable sensor that estimates V and A
+jointly; green is better suited, yellow intermediate, red least suited.
+Camera: imaging hardware per eye, ordered by the minimum needed for binocular
+V and A -- one camera per eye (the lower bound, since V requires both eyes and
+A one) $>$ two or more sensors per eye $>$ bench-top optics with head
+stabilisation. This ordering reflects footprint, not accuracy: head-fixed
+bench systems and multi-view rigs achieve lower errors by removing or
+measuring eye--camera motion, whereas a single camera must rely on
+illumination layout and eye-model priors (see Accuracy).
+Illum.: integrability and designability of the source geometry -- freely
+positionable IR/NIR LEDs, whose number and placement are chosen for the
+sensing principle, $>$ LEDs fixed inside a commercial tracker, placed by the
+vendor for corneal glints and not adjustable, $>$ bench-top collimated or
+off-axis sources tied to a working distance. As for Camera, this reflects
+integrability, not image quality: collimated bench sources yield the sharpest
+lens reflections.
+Method: whether the signal physically depends on lens state and can be
+captured by a compact camera -- Purkinje reflections (lens-dependent, camera
+and LED only) $>$ photorefraction (lens-dependent, but requires an eccentric
+source at a bench working distance) $>$ pupil/glint gaze tracking (no A
+information).
+Data: validated on real eyes $>$ synthetic only.
+Learning: handling of inter-subject variability -- learned models $>$
+physical eye models requiring per-user calibration $>$ fixed formulas such as
+binocular triangulation.
+V/A Target: quantity directly estimated (both $>$ one $>$ neither).
+Near-eye: demonstrated in a physical near-eye configuration.
+Accuracy: error reported for the quantity in parentheses -- gaze: high
+$<0.5^\circ$, mid $0.5$--$3^\circ$, low $>3^\circ$; A and V (depth in
+dioptres): high $<0.25$~D, mid $0.25$--$0.5$~D, low $>0.5$~D; protocols differ
+across works, so values are indicative only.
 }
 \label{tab:literature_review}
 
 \small
+\begin{tabular}{lcccccccc}
+\toprule
+Ref. & Camera & Illum. & Method & Data & Learning & V/A Target & Near-eye & Accuracy \\
+\midrule
+\cite{Dual_Purkinje_Tracker}
+& \R{Bench} & \R{Bench source} & \G{Purkinje} & \G{Real} & \M{Physical model} & \R{Neither} & \R{No} & \G{High (gaze)} \\
+\cite{Crane_Steele_1978}
+& \R{Bench} & \R{Bench source} & \G{Purkinje} & \G{Real} & \M{Physical model} & \M{A only} & \R{No} & \G{High (A)} \\
+\cite{Schaeffel_1987}
+& \R{Bench} & \R{Bench source} & \M{Photorefraction} & \G{Real} & \M{Physical model} & \G{Both} & \R{No} & \M{Mid (A)} \\
+\cite{Single_Camera_Two_Lights}
+& \G{1/eye} & \G{Movable LEDs} & \R{Pupil/glint} & \G{Real} & \M{Physical model} & \R{Neither} & \R{No} & \M{Mid (gaze)} \\
+\cite{Rosales_2006_JOV}
+& \R{Bench} & \R{Bench source} & \G{Purkinje} & \G{Real} & \M{Physical model} & \M{A only} & \R{No} & \M{Mid (A)} \\
+\cite{Swirski_2013}
+& \G{1/eye} & \M{Fixed LEDs} & \R{Pupil/glint} & \G{Real} & \M{Physical model} & \R{Neither} & \G{Yes} & \M{Mid (gaze)} \\
+\cite{Weier_2018}
+& \G{1/eye} & \M{Fixed LEDs} & \R{Pupil/glint} & \G{Real} & \G{Regression} & \M{V only} & \G{Yes} & \M{Mid (V)} \\
+\cite{NVGaze}
+& \G{1/eye} & \G{Movable LEDs} & \R{Pupil/glint} & \G{Both} & \G{CNN} & \R{Neither} & \G{Yes} & \M{Mid (gaze)} \\
+\cite{Padmanaban_2019}
+& \G{1/eye} & \M{Fixed LEDs} & \R{Pupil/glint} & \G{Real} & \R{Formula} & \M{V only} & \G{Yes} & \M{Mid (V)} \\
+\cite{Improved_vergence_and_accommodation}
+& \M{$\geq$2/eye} & \G{Movable LEDs} & \G{Purkinje} & \R{Synthetic} & \G{NN regression} & \G{Both} & \G{Yes} & \M{Mid (A)} \\
+\cite{Angelopoulos_2021}
+& \M{$\geq$2/eye} & \G{Movable LEDs} & \R{Pupil/glint} & \G{Real} & \M{Physical model} & \R{Neither} & \G{Yes} & \G{High (gaze)} \\
+\cite{Wu2023Purkinje}
+& \R{Bench} & \R{Bench source} & \G{Purkinje} & \G{Real} & \M{Physical model} & \R{Neither} & \R{No} & \G{High (gaze)} \\
+\cite{Dynamic_accommodation_Purkinje}
+& \G{1/eye} & \G{Movable LEDs} & \G{Purkinje} & \G{Real} & \G{ML regression} & \G{Both} & \R{No} & \G{High (A)} \\
+\cite{Depth_fixation_DPI}
+& \G{1/eye} & \G{Movable LEDs} & \G{Purkinje} & \G{Real} & \G{Regression} & \M{V only} & \R{No} & \R{Low (V)} \\
+\cite{AR_Vergence_Depth_OST}
+& \G{1/eye} & \M{Fixed LEDs} & \R{Pupil/glint} & \G{Real} & \R{Formula} & \M{V only} & \G{Yes} & \R{Low (V)} \\
+\cite{OpenIrisDPI}
+& \R{Bench} & \R{Bench source} & \G{Purkinje} & \G{Real} & \M{Physical model} & \R{Neither} & \R{No} & \G{High (gaze)} \\
+\textbf{Ours}
+& \G{1/eye} & \G{Movable LEDs} & \G{Purkinje} & \G{Both} & \G{3DGS} & \G{Both} & \G{Yes} & \G{High (A)} \\
+\bottomrule
+\end{tabular}
+\end{table*}
+\begin{table*}[t]
+\centering
+\caption{
+Eye representations and rendering approaches relevant to modelling Purkinje
+reflections. Colours rate each entry relative to the other options in its
+column with respect to one goal, an eye model that can be fitted to a real eye
+and renders Purkinje reflections for training or fitting a V/A estimator;
+green is better suited, yellow intermediate, red least suited.
+Representation: explicit optical surfaces combined with image-fitted neural
+appearance $>$ explicit surfaces from population parameters that cannot be
+fitted to an individual (optical eye models, parametric meshes) $>$ purely
+neural fields without surfaces for reflection or refraction.
+Reflections: ray-traced or analytic specular reflections $>$ reflection-aware
+shading (reflected-direction parametrisation, environment maps) $>$ baked
+view-dependent appearance or rasterised highlights.
+Input: images needed to personalise the model to a real eye -- few images $>$
+dense multi-view or light-stage capture $>$ synthetic only, not personalisable.
+Fidelity: reported agreement with real images -- quantitative (PSNR/SSIM) $>$
+photorealistic without quantitative comparison $>$ geometric or appearance
+approximation.
+Speed: real-time ($\geq$30~fps) $>$ interactive (1--30~fps) $>$ offline.
+Gaze and Lens: whether eye rotation and lens (accommodative) state are explicit
+controllable variables.
+}
+\label{tab:eye_rendering}
+
+\small
 \begin{tabular}{lccccccc}
 \toprule
-Ref. &
-Camera &
-Illum. &
-Method &
-Estimator &
-V/A Target &
-Near-eye &
-Accuracy \\
+Ref. & Representation & Reflections & Input & Fidelity & Speed & Gaze & Lens \\
 \midrule
-
-\cite{Dual_Purkinje_Tracker}
-& \G{Single}
-& \G{IR}
-& \G{Purkinje}
-& \M{Model-based}
-& \R{Neither}
-& \R{No}
-& \G{High}
-\\
-
-\cite{Single_Camera_Two_Lights}
-& \G{Single}
-& \G{NIR}
-& \M{PCCR}
-& \M{Model-based}
-& \R{Neither}
-& \R{No}
-& \M{Mid}
-\\
-
-\cite{AR_Vergence_Depth_OST}
-& \G{Built-in}
-& \M{Built-in}
-& \M{Gaze}
-& \M{Model-based}
-& \M{V only}
-& \G{Yes}
-& \M{Mid}
-\\
-
-\cite{AR_Haploscope_Replication}
-& \R{None}
-& \R{None}
-& \R{Haploscope}
-& \R{N/A}
-& \R{Neither}
-& \G{Yes}
-& \R{N/A}
-\\
-
-\cite{Improved_vergence_and_accommodation}
-& \M{Multiple}
-& \G{IR}
-& \G{Purkinje}
-& \G{Data-driven}
-& \G{Both}
-& \G{Yes}
-& \G{High}
-\\
-
-\cite{Dynamic_accommodation_Purkinje}
-& \G{Single}
-& \G{NIR}
-& \G{Purkinje}
-& \G{Data-driven}
-& \G{Both}
-& \R{No}
-& \G{High}
-\\
-
+\cite{Navarro1985Accommodation}
+& \M{Optical eye model} & \G{Analytic} & \R{Synthetic} & \R{Low} & \M{Interactive} & \G{Yes} & \G{Yes} \\
+\cite{UnityEyes}
+& \M{Parametric mesh} & \R{Rasterised} & \R{Synthetic} & \R{Low} & \G{Real-time} & \G{Yes} & \R{No} \\
 \cite{RIT-Eyes}
-& \R{Virtual}
-& \M{RGB/IR}
-& \M{Eye model}
-& \R{N/A}
-& \R{Neither}
-& \M{Synthetic}
-& \R{N/A}
-\\
-
-\cite{EyeNeRF}
-& \R{Multiple}
-& \R{Visible}
-& \M{Eye model}
-& \R{N/A}
-& \R{Neither}
-& \R{No}
-& \R{N/A}
-\\
-
-\cite{Realistic_nerf_eyes}
-& \R{Multiple}
-& \M{Controlled}
-& \M{Eye model}
-& \R{N/A}
-& \R{Neither}
-& \R{No}
-& \R{N/A}
-\\
-
-\cite{Depth_fixation_DPI}
-& \G{Single}
-& \G{IR}
-& \G{Purkinje}
-& \G{Data-driven}
-& \R{Neither}
-& \R{No}
-& \M{Mid}
-\\
-
+& \M{Parametric mesh} & \G{Path-traced} & \R{Synthetic} & \M{Mid} & \R{Offline} & \G{Yes} & \R{No} \\
 \cite{Keratoconus_Purkinje}
-& \R{Virtual}
-& \M{Simulated}
-& \G{Purkinje}
-& \M{Model-based}
-& \R{Neither}
-& \R{No}
-& \R{N/A}
-\\
-
-\cite{High_resolution_dDPI_2022}
-& \G{Single}
-& \G{IR}
-& \G{Purkinje}
-& \M{Model-based}
-& \R{Neither}
-& \R{No}
-& \G{High}
-\\
-
+& \M{Optical eye model} & \G{Analytic} & \R{Synthetic} & \R{Low} & \M{Interactive} & \R{No} & \R{No} \\
 \cite{Digital_Eye_Tracker_Prototyper}
-& \R{Virtual}
-& \M{Simulated}
-& \M{Eye model}
-& \R{N/A}
-& \R{Neither}
-& \M{Synthetic}
-& \R{N/A}
-\\
-
+& \M{Optical eye model} & \G{Ray-traced} & \R{Synthetic} & \M{Mid} & \R{Offline} & \G{Yes} & \R{No} \\
+\cite{EyeNeRF}
+& \G{Hybrid} & \G{Analytic} & \M{Light stage} & \G{High} & \R{Offline} & \G{Yes} & \R{No} \\
+\cite{RefNeRF_2022}
+& \R{NeRF} & \M{Reflection-aware} & \M{Multi-view} & \G{High} & \R{Offline} & \R{No} & \R{No} \\
+\cite{Gaussian_Splatting}
+& \R{3DGS} & \R{Baked (SH)} & \M{Multi-view} & \G{High} & \G{Real-time} & \R{No} & \R{No} \\
+\cite{GazeNeRF_2023}
+& \R{NeRF} & \R{Baked} & \G{Few images} & \M{Mid} & \R{Offline} & \G{Yes} & \R{No} \\
+\cite{GaussianShader}
+& \R{3DGS} & \M{Reflection-aware} & \M{Multi-view} & \G{High} & \G{Real-time} & \R{No} & \R{No} \\
+\cite{SpecTReGS}
+& \R{3DGS} & \G{Ray-traced} & \M{Multi-view} & \G{High} & \M{Interactive} & \R{No} & \R{No} \\
+\cite{3DGUT}
+& \R{3DGS} & \G{Ray-traced} & \M{Multi-view} & \G{High} & \G{Real-time} & \R{No} & \R{No} \\
+\cite{Realistic_nerf_eyes}
+& \M{Neural + eye prior} & \M{Reflection-aware} & \M{Multi-view} & \G{High} & \R{Offline} & \M{Partial} & \R{No} \\
+\textbf{Ours}
+& \G{Hybrid} & \G{Analytic} & \G{Few images} & \G{High} & \G{Real-time} & \G{Yes} & \G{Yes} \\
 \bottomrule
 \end{tabular}
 \end{table*}
