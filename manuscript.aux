@@ -8,8 +8,8 @@
 \citation{Improved_vergence_and_accommodation}
 \citation{Dual_Purkinje_Tracker}
 \citation{Improved_vergence_and_accommodation,Dynamic_accommodation_Purkinje}
-\citation{VAC}
 \citation{AR_Vergence_Depth_OST,AR_Haploscope_Replication}
+\citation{Dunn2019Varifocal}
 \citation{Improved_vergence_and_accommodation}
 \citation{Dynamic_accommodation_Purkinje}
 \citation{Dual_Purkinje_Tracker}
@@ -40,6 +40,9 @@
 \citation{UnityEyes,NVGaze,RIT-Eyes}
 \citation{EyeNeRF}
 \citation{Realistic_nerf_eyes}
+\citation{Wu2023Purkinje,WideRange_Purkinje,OpenIrisDPI}
+\citation{Improved_vergence_and_accommodation}
+\citation{Dynamic_accommodation_Purkinje}
 \providecommand\@newglossary[4]{}
 \@newglossary{main}{glg}{gls}{glo}
 \@newglossary{abbreviations}{glg-abr}{gls-abr}{glo-abr}
@@ -51,20 +54,17 @@
 \@writefile{toc}{\contentsline {section}{\numberline {3}Related works}{1}{section.3}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Eye Accommodation Tracking}{1}{subsection.3.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Computational Eye Modeling}{1}{subsection.3.2}\protected@file@percent }
-\citation{Wu2023Purkinje,WideRange_Purkinje,OpenIrisDPI}
-\citation{Improved_vergence_and_accommodation}
-\citation{Dynamic_accommodation_Purkinje}
 \citation{Fluidic_Lenses}
 \citation{Improved_vergence_and_accommodation}
 \citation{Dynamic_accommodation_Purkinje}
+\citation{AR_Haploscope_Replication}
+\citation{Wu2023Purkinje}
 \@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces  Comparison of vergence (V) and accommodation (A) sensing approaches. Camera refers to imaging hardware per eye, from one camera to bench-top optics. Illum.\ refers to whether infrared sources are freely placed, fixed in a commercial tracker, or bench-mounted. Method refers to the sensing principle. Learning refers to whether the target is predicted by a learned model, a physical eye model, or a fixed formula. Accuracy refers to the reported error of the quantity in parentheses (high: $<0.5^\circ $ gaze or $<0.25$\nonbreakingspace D). Colours rate entries within each column for a compact wearable V/A sensor (green better, red worse). }}{2}{table.caption.5}\protected@file@percent }
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
 \newlabel{tab:literature_review}{{1}{2}{Comparison of vergence (V) and accommodation (A) sensing approaches. Camera refers to imaging hardware per eye, from one camera to bench-top optics. Illum.\ refers to whether infrared sources are freely placed, fixed in a commercial tracker, or bench-mounted. Method refers to the sensing principle. Learning refers to whether the target is predicted by a learned model, a physical eye model, or a fixed formula. Accuracy refers to the reported error of the quantity in parentheses (high: $<0.5^\circ $ gaze or $<0.25$~D). Colours rate entries within each column for a compact wearable V/A sensor (green better, red worse)}{table.caption.5}{}}
 \@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Comparison of eye models}}{2}{table.caption.6}\protected@file@percent }
 \newlabel{tab:eye_rendering}{{2}{2}{Comparison of eye models}{table.caption.6}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Physics-Based Optical Design}{2}{subsection.3.3}\protected@file@percent }
-\citation{AR_Haploscope_Replication}
-\citation{Wu2023Purkinje}
 \citation{OpenIrisDPI,Dual_Purkinje_Tracker}
 \citation{Dual_Purkinje_Tracker}
 \citation{Depth_fixation_DPI}
@@ -79,17 +79,22 @@
 \citation{Gaussian_Splatting,GaussianShader}
 \citation{Gaussian_Splatting}
 \citation{Gaussian_Splatting}
+\citation{Gaussian_Splatting,GaussianShader}
 \@writefile{toc}{\contentsline {section}{\numberline {4}Optical Background}{3}{section.4}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Capturing Purkinje image}{3}{subsection.4.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Simulation-to-capture pipeline for near-eye Purkinje imaging}{3}{subsection.4.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {5}Method}{3}{section.5}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.1}3D Gaussian Splatting}{3}{subsection.5.1}\protected@file@percent }
-\citation{Gaussian_Splatting,GaussianShader}
+\newlabel{eq:gaussian_primitive}{{1}{3}{3D Gaussian Splatting}{equation.1}{}}
 \citation{Gaussian_Splatting}
 \bibstyle{ACM-Reference-Format}
 \bibdata{references}
 \bibcite{Depth_fixation_DPI}{{1}{2025}{{Ahn and Lee}}{{}}}
-\newlabel{eq:gaussian_primitive}{{1}{4}{3D Gaussian Splatting}{equation.1}{}}
+\bibcite{Angelopoulos_2021}{{2}{2021}{{Angelopoulos et~al\mbox  {.}}}{{}}}
+\bibcite{Purkinje_Surface_Measurement}{{3}{2001}{{Barry et~al\mbox  {.}}}{{}}}
+\bibcite{AR_Haploscope_Replication}{{4}{2024}{{Bontha and Arefin}}{{}}}
+\bibcite{Dual_Purkinje_Tracker}{{5}{1973}{{Cornsweet and Crane}}{{}}}
+\bibcite{Crane_Steele_1978}{{6}{1978}{{Crane and Steele}}{{}}}
 \newlabel{eq:3dgs_covariance}{{2}{4}{3D Gaussian Splatting}{equation.2}{}}
 \newlabel{eq:3dgs_loss}{{3}{4}{3D Gaussian Splatting}{equation.3}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.2}The collection of synthetic eye data and real eye images}{4}{subsection.5.2}\protected@file@percent }
@@ -98,12 +103,7 @@
 \@writefile{toc}{\contentsline {section}{\numberline {6}Results and Discussions}{4}{section.6}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {7}Results and Discussions}{4}{section.7}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{References}{4}{section*.8}\protected@file@percent }
-\bibcite{Angelopoulos_2021}{{2}{2021}{{Angelopoulos et~al\mbox  {.}}}{{}}}
-\bibcite{Purkinje_Surface_Measurement}{{3}{2001}{{Barry et~al\mbox  {.}}}{{}}}
-\bibcite{AR_Haploscope_Replication}{{4}{2024}{{Bontha and Arefin}}{{}}}
-\bibcite{Dual_Purkinje_Tracker}{{5}{1973}{{Cornsweet and Crane}}{{}}}
-\bibcite{Crane_Steele_1978}{{6}{1978}{{Crane and Steele}}{{}}}
-\bibcite{VAC}{{7}{2008}{{Hoffman et~al\mbox  {.}}}{{}}}
+\bibcite{Dunn2019Varifocal}{{7}{2019}{{Dunn}}{{}}}
 \bibcite{WideRange_Purkinje}{{8}{2025}{{Idrizovi{\'c} et~al\mbox  {.}}}{{}}}
 \bibcite{GaussianShader}{{9}{2024}{{Jiang et~al\mbox  {.}}}{{}}}
 \bibcite{Gaussian_Splatting}{{10}{2023}{{Kerbl et~al\mbox  {.}}}{{}}}

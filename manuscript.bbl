@@ -110,17 +110,16 @@
 \newblock
 
 
-\bibitem[Hoffman et~al\mbox{.}(2008)]%
-        {VAC}
-\bibfield{author}{\bibinfo{person}{David~M. Hoffman}, \bibinfo{person}{Ahna~R.
-  Girshick}, \bibinfo{person}{Kurt Akeley}, {and} \bibinfo{person}{Martin~S.
-  Banks}.} \bibinfo{year}{2008}\natexlab{}.
-\newblock \showarticletitle{Vergence--Accommodation Conflicts Hinder Visual
-  Performance and Cause Visual Fatigue}.
-\newblock \bibinfo{journal}{\emph{Journal of Vision}} \bibinfo{volume}{8},
-  \bibinfo{number}{3} (\bibinfo{year}{2008}), \bibinfo{pages}{33}.
+\bibitem[Dunn(2019)]%
+        {Dunn2019Varifocal}
+\bibfield{author}{\bibinfo{person}{David Dunn}.}
+  \bibinfo{year}{2019}\natexlab{}.
+\newblock \showarticletitle{Required Accuracy of Gaze Tracking for Varifocal
+  Displays}. In \bibinfo{booktitle}{\emph{2019 IEEE Conference on Virtual
+  Reality and 3D User Interfaces (VR)}}. \bibinfo{publisher}{IEEE},
+  \bibinfo{pages}{1838--1842}.
 \newblock
-\href{https://doi.org/10.1167/8.3.33}{doi:\nolinkurl{10.1167/8.3.33}}
+\href{https://doi.org/10.1109/VR.2019.8798273}{doi:\nolinkurl{10.1109/VR.2019.8798273}}
 
 
 \bibitem[Idrizovi{\'c} et~al\mbox{.}(2025)]%

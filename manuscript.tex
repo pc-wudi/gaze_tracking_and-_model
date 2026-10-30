@@ -205,37 +205,30 @@ characterized as dynamic optical signals governed by ocular optics rather than s
 \section{Introduction}
 \section{Related works}
 
-To compare our work with existing eye convergence and accommodation tracking, we review related works from two main areas: 
-physical feature-based experimental designs and virtual eye modeling and neural rendering. 
-To clearly show the technical features of previous works, Table 1 categorizes and compares these methods 
-based on their hardware setups, algorithms, operating modes, and tracking accuracy.
+We review  works from two main areas: 
+experimental approaches to ocular accommodation estimation and computational methods for virtual eye modeling and simulation. 
+Table 1 compares reviewed works
 
 \subsection{Eye Accommodation Tracking}
-In stereoscopic and near-eye displays, the \VAC{}~ \cite{VAC}arises when the eyes converge to a virtual 
-3D depth while the crystalline lens remains focused on the physical display plane. 
-This mismatch can reduce fusion performance and cause visual discomfort . 
-Recent \VAC{}-related depth-perception studies therefore use eye-tracking and 
+%In stereoscopic and near-eye displays, the \VAC{}~ \cite{VAC} arises when the eyes converge to a virtual 
+%3D depth while the crystalline lens remains focused on the physical display plane. 
+%This mismatch can reduce fusion performance and cause visual discomfort . 
+The depth-perception studies use eye-tracking and 
 controlled optical setups to measure vergence responses under different 
-perceived-depth conditions, highlighting the need for objective and reproducible 
-eye-based measurements in \VAC{}-related experiments \cite{AR_Vergence_Depth_OST,AR_Haploscope_Replication}.
-However, vergence alone does not fully describe the accommodative state of the eye. 
-Accommodation is harder to measure directly, especially in compact near-eye systems. 
-Higher-order Purkinje images provide a promising optical cue because they arise from 
+perceived-depth conditions \cite{AR_Vergence_Depth_OST,AR_Haploscope_Replication}. Vergence alone does not fully describe the accommodative state of the eye. 
+Accommodation is harder to measure directly, especially in compact near-eye systems \cite{Dunn2019Varifocal}. 
+Purkinje images (P1-P2-P3-P4) provide a promising optical cue because they arise from 
 reflections at ocular interfaces, including the crystalline lens surfaces, and vary 
-with the lens geometry during accommodation. Lu et al.\shortcite{Improved_vergence_and_accommodation} 
+with the lens geometry during accommodation. Lu et al. \shortcite{Improved_vergence_and_accommodation} 
 use a multi-camera, multi-LED AR-glasses prototype to track higher-order Purkinje images,
 extending conventional pupil--corneal-reflection tracking toward accommodation-aware sensing in a near-eye form factor. 
-Ozhan et al.\shortcite{Dynamic_accommodation_Purkinje} 
+Ozhan et al. \shortcite{Dynamic_accommodation_Purkinje} 
 extend this direction by collecting multi-subject Purkinje measurements and combining a 
 Purkinje imaging setup with a \MLP{}-based regression model to estimate dynamic vergence 
-and accommodation across users.
-
-These works suggest that higher-order Purkinje reflections can serve as physically meaningful 
+and accommodation across users. Surveyed works suggest that higher-order Purkinje reflections can serve as physically meaningful 
 cues for accommodation-aware eye tracking, but they also reveal a practical challenge: 
-P3 and P4 are faint, easily defocused, and highly sensitive to LED--camera--eye geometry. 
-Motivated by this limitation, we first build a controllable 3D optical eye 
-model to analyze the formation, visibility, and stability of P1--P4 under near-eye infrared
- imaging conditions.
+\textit{P3 and P4 are faint, easily defocused, and highly sensitive to LED--camera--eye geometry.} 
+\textcolor{red}{ToDo: Our work's differentiation goes here}
 
 % Requires: booktabs, xcolor with [table] option (or colortbl)
 \begin{table*}[t]
