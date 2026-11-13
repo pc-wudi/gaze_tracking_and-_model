@@ -2,7 +2,7 @@
 %%% Do NOT edit. File created by BibTeX with style
 %%% ACM-Reference-Format-Journals [18-Jan-2012].
 
-\begin{thebibliography}{34}
+\begin{thebibliography}{36}
 
 %%% ====================================================================
 %%% NOTE TO THE USER: you can override these defaults by providing
@@ -62,6 +62,21 @@
 \newblock
 
 
+\bibitem[Bandela et~al\mbox{.}(2025)]%
+        {Bandela2025Photorefraction}
+\bibfield{author}{\bibinfo{person}{Praveen~K. Bandela}, \bibinfo{person}{Arthur
+  Ho}, \bibinfo{person}{Eric Papas}, {and} \bibinfo{person}{Shrikant~R.
+  Bharadwaj}.} \bibinfo{year}{2025}\natexlab{}.
+\newblock \showarticletitle{A Feasibility Study of Real-Time Manipulation of
+  Blur Feedback to Accommodation Using Eccentric Photorefraction and a Tunable
+  Lens}.
+\newblock \bibinfo{journal}{\emph{Optometry and Vision Science}}
+  \bibinfo{volume}{102}, \bibinfo{number}{11} (\bibinfo{year}{2025}),
+  \bibinfo{pages}{707--714}.
+\newblock
+\href{https://doi.org/10.1097/OPX.0000000000002303}{doi:\nolinkurl{10.1097/OPX.0000000000002303}}
+
+
 \bibitem[Barry et~al\mbox{.}(2001)]%
         {Purkinje_Surface_Measurement}
 \bibfield{author}{\bibinfo{person}{Jean-Cyriaque Barry}, \bibinfo{person}{Mark
@@ -85,6 +100,20 @@
   on Mixed and Augmented Reality Adjunct (ISMAR-Adjunct)}}.
   \bibinfo{publisher}{IEEE}, \bibinfo{pages}{37--41}.
 \newblock
+
+
+\bibitem[Chen et~al\mbox{.}(2026)]%
+        {Chen2026GazeSynthesizer}
+\bibfield{author}{\bibinfo{person}{Muchun Chen}, \bibinfo{person}{Yinxin Lin},
+  \bibinfo{person}{Yuhan Li}, \bibinfo{person}{Yugang Chen},
+  \bibinfo{person}{Xuanhong Chen}, \bibinfo{person}{Bilian Ke}, {and}
+  \bibinfo{person}{Bingbing Ni}.} \bibinfo{year}{2026}\natexlab{}.
+\newblock \showarticletitle{Learning Gaze Synthesizer via 3D-Eye Controlled
+  Diffusion and Cross-Domain Feature Alignment}.
+\newblock \bibinfo{journal}{\emph{IEEE Transactions on Image Processing}}
+  \bibinfo{volume}{35} (\bibinfo{year}{2026}), \bibinfo{pages}{7928--7941}.
+\newblock
+\href{https://doi.org/10.1109/TIP.2026.3707758}{doi:\nolinkurl{10.1109/TIP.2026.3707758}}
 
 
 \bibitem[Cornsweet and Crane(1973)]%

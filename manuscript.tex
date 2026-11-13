@@ -231,9 +231,12 @@ cues for accommodation-aware eye tracking, but they also reveal a practical chal
 \textcolor{red}{ToDo: Our work's differentiation goes here}
 
 % Requires: booktabs, xcolor with [table] option (or colortbl)
+
+
 \begin{table*}[t]
 \centering
-\caption{
+
+\caption{%
 Comparison of vergence (V) and accommodation (A) sensing approaches.
 Camera refers to imaging hardware per eye, from one camera to bench-top
 optics. Illum.\ refers to whether infrared sources are freely placed, fixed
@@ -244,50 +247,86 @@ reported error of the quantity in parentheses (high: $<0.5^\circ$ gaze or
 $<0.25$~D). Colours rate entries within each column for a compact wearable
 V/A sensor (green better, red worse).
 }
+
 \label{tab:literature_review}
 
 \small
-\begin{tabular}{lcccccccc}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lccccccc}
+
 \toprule
-Ref. & Camera & Illum. & Method & Data & Learning & V/A Target & Near-eye & Accuracy \\
+Ref. & Camera & Illum. & Method & Learning & V/A Target & Near-eye & Accuracy \\
 \midrule
+
 \cite{Dual_Purkinje_Tracker}
-& \R{Bench} & \R{Bench source} & \G{Purkinje} & \G{Real} & \M{Physical model} & \R{Neither} & \R{No} & \G{High (gaze)} \\
+& \R{0} & \R{Fixed} & \G{Purkinje} & \M{Physical model} & \R{Gaze} & \R{No} & \G{High (gaze)} \\
+
 \cite{Crane_Steele_1978}
-& \R{Bench} & \R{Bench source} & \G{Purkinje} & \G{Real} & \M{Physical model} & \M{A only} & \R{No} & \G{High (A)} \\
+& \R{0} & \R{Fixed} & \G{Purkinje} & \M{Physical model} & \M{A only} & \R{No} & \G{High (A)} \\
+
 \cite{Schaeffel_1987}
-& \R{Bench} & \R{Bench source} & \M{Photorefraction} & \G{Real} & \M{Physical model} & \G{Both} & \R{No} & \M{Mid (A)} \\
+& \M{1} & \R{Fixed} & \M{Photorefraction} & \M{Physical model} & \G{Both} & \R{No} & \M{Mid (A)} \\
+
 \cite{Single_Camera_Two_Lights}
-& \G{1/eye} & \G{Movable LEDs} & \R{Pupil/glint} & \G{Real} & \M{Physical model} & \R{Neither} & \R{No} & \M{Mid (gaze)} \\
+& \M{1} & \G{Movable} & \R{Vergence} & \M{Physical model} & \R{Gaze} & \R{No} & \M{Mid (gaze)} \\
+
 \cite{Rosales_2006_JOV}
-& \R{Bench} & \R{Bench source} & \G{Purkinje} & \G{Real} & \M{Physical model} & \M{A only} & \R{No} & \M{Mid (A)} \\
+& \M{1} & \R{Fixed} & \G{Purkinje} & \M{Physical model} & \M{A only} & \R{No} & \M{Mid (A)} \\
+
 \cite{Swirski_2013}
-& \G{1/eye} & \M{Fixed LEDs} & \R{Pupil/glint} & \G{Real} & \M{Physical model} & \R{Neither} & \G{Yes} & \M{Mid (gaze)} \\
+& \M{1} & \R{Fixed} & \R{Vergence} & \M{Physical model} & \R{Gaze} & \G{Yes} & \M{Mid (gaze)} \\
+
 \cite{Weier_2018}
-& \G{1/eye} & \M{Fixed LEDs} & \R{Pupil/glint} & \G{Real} & \G{Regression} & \M{V only} & \G{Yes} & \M{Mid (V)} \\
+& \M{1} & \R{Fixed} & \R{Vergence} & \G{Regression} & \M{V only} & \G{Yes} & \M{Mid (V)} \\
+
 \cite{NVGaze}
-& \G{1/eye} & \G{Movable LEDs} & \R{Pupil/glint} & \G{Both} & \G{CNN} & \R{Neither} & \G{Yes} & \M{Mid (gaze)} \\
+& \M{1} & \G{Movable} & \R{Vergence} & \G{CNN} & \R{Gaze} & \G{Yes} & \M{Mid (gaze)} \\
+
 \cite{Padmanaban_2019}
-& \G{1/eye} & \M{Fixed LEDs} & \R{Pupil/glint} & \G{Real} & \R{Formula} & \M{V only} & \G{Yes} & \M{Mid (V)} \\
+& \M{1} & \R{Fixed} & \R{Vergence} & \R{Formula} & \M{V only} & \G{Yes} & \M{Mid (V)} \\
+
 \cite{Improved_vergence_and_accommodation}
-& \M{$\geq$2/eye} & \G{Movable LEDs} & \G{Purkinje} & \R{Synthetic} & \G{NN regression} & \G{Both} & \G{Yes} & \M{Mid (A)} \\
+& \G{2} & \R{Fixed} & \G{Purkinje} & \G{NN regression} & \G{Both} & \G{Yes} & \M{Mid (A)} \\
+
 \cite{Angelopoulos_2021}
-& \M{$\geq$2/eye} & \G{Movable LEDs} & \R{Pupil/glint} & \G{Real} & \M{Physical model} & \R{Neither} & \G{Yes} & \G{High (gaze)} \\
+& \M{1} & \R{Fixed} & \R{Vergence} & \M{Physical model} & \R{Gaze} & \G{Yes} & \G{High (gaze)} \\
+
 \cite{Wu2023Purkinje}
-& \R{Bench} & \R{Bench source} & \G{Purkinje} & \G{Real} & \M{Physical model} & \R{Neither} & \R{No} & \G{High (gaze)} \\
+& \M{1} & \R{Fixed} & \G{Purkinje} & \M{Physical model} & \R{Gaze} & \R{No} & \G{High (gaze)} \\
+
 \cite{Dynamic_accommodation_Purkinje}
-& \G{1/eye} & \G{Movable LEDs} & \G{Purkinje} & \G{Real} & \G{ML regression} & \G{Both} & \R{No} & \G{High (A)} \\
+& \M{1} & \G{Movable} & \G{Purkinje} & \G{ML regression} & \G{Both} & \R{No} & \G{High (A)} \\
+
 \cite{Depth_fixation_DPI}
-& \G{1/eye} & \G{Movable LEDs} & \G{Purkinje} & \G{Real} & \G{Regression} & \M{V only} & \R{No} & \R{Low (V)} \\
+& \M{1} & \R{Fixed} & \G{Purkinje} & \G{Regression} & \M{V only} & \R{No} & \R{Low (V)} \\
+
 \cite{AR_Vergence_Depth_OST}
-& \G{1/eye} & \M{Fixed LEDs} & \R{Pupil/glint} & \G{Real} & \R{Formula} & \M{V only} & \G{Yes} & \R{Low (V)} \\
+& \M{1} & \R{Fixed} & \R{Vergence} & \R{Formula} & \M{V only} & \G{Yes} & \R{Low (V)} \\
+
 \cite{OpenIrisDPI}
-& \R{Bench} & \R{Bench source} & \G{Purkinje} & \G{Real} & \M{Physical model} & \R{Neither} & \R{No} & \G{High (gaze)} \\
+& \M{1} & \R{Fixed} & \G{Purkinje} & \M{Physical model} & \R{Gaze} & \R{No} & \G{High (gaze)} \\
+
+\cite{Chen2026GazeSynthesizer}
+& -- & \R{Fixed} & \R{Vergence} & \G{Diffusion + CNN} & \R{Gaze} & \R{No} & \M{--} \\
+
+\cite{Digital_Eye_Tracker_Prototyper}
+& \G{20} & \R{Fixed} & \R{Vergence} & \G{NeRF + CNN} & \R{Gaze} & \G{Yes} & \M{--} \\
+
+\cite{Bandela2025Photorefraction}
+& \M{1} & \R{Fixed} & \M{Photorefraction} & \M{Physical model} & \M{A only} & \R{No} & \M{--} \\
+
 \textbf{Ours}
-& \G{1/eye} & \G{Movable LEDs} & \G{Purkinje} & \G{Both} & \G{3DGS} & \G{Both} & \G{Yes} & \G{High (A)} \\
+& \M{1} & \G{Movable} & \G{Purkinje} & \G{3DGS} & \G{Both} & \G{Yes} & \G{High (A)} \\
+
 \bottomrule
-\end{tabular}
+\end{tabular}%
+}
+
 \end{table*}
+
+
+
+
 
 
 
