@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.3.6)  6 NOV 2026 13:25
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.3.6)  13 NOV 2026 11:27
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1306,89 +1306,87 @@ tion and Cap-ture for Accommodation-
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\gls' on input line 193.
 
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 6.0pt on input line 376.
- [1.1{C:/Users/25217/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users
-/25217/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/libertine/lbtn_76gpa5.enc}
-{C:/Users/25217/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/libertine/lbtn_25
-tcsq.enc}
+(Font)              scaled to size 6.0pt on input line 346.
+[1.1{C:/Users/25217/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/
+25217/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/libertine/lbtn_76gpa5.enc}{
+C:/Users/25217/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/libertine/lbtn_25t
+csq.enc}
 
 {C:/Users/25217/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/libertine/lbtn_nh
 77jq.enc}{C:/Users/25217/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/libertin
 e/lbtn_naooyc.enc}{C:/Users/25217/AppData/Local/Programs/MiKTeX/fonts/enc/dvips
 /libertine/lbtn_7grukw.enc}]
+Underfull \vbox (badness 3872) has occurred while \output is active []
+
+
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/n' will be
-(Font)              scaled to size 9.0pt on input line 381.
+(Font)              scaled to size 9.0pt on input line 351.
 LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/n' will be
-(Font)              scaled to size 7.0pt on input line 381.
- [2.2{C:/Users/25217/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/libertine/lb
-tn_oexx6f.enc}]
+(Font)              scaled to size 7.0pt on input line 351.
+ [2.2]
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/sb/n' will be
-(Font)              scaled to size 9.0pt on input line 405.
+(Font)              scaled to size 9.0pt on input line 375.
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/sb/n' will be
-(Font)              scaled to size 6.6pt on input line 405.
+(Font)              scaled to size 6.6pt on input line 375.
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/sb/n' will be
-(Font)              scaled to size 5.5pt on input line 405.
+(Font)              scaled to size 5.5pt on input line 375.
 LaTeX Font Info:    Font shape `OML/nxlmi/b/it' will be
-(Font)              scaled to size 9.0pt on input line 405.
+(Font)              scaled to size 9.0pt on input line 375.
 LaTeX Font Info:    Font shape `OML/nxlmi/b/it' will be
-(Font)              scaled to size 6.6pt on input line 405.
+(Font)              scaled to size 6.6pt on input line 375.
 LaTeX Font Info:    Font shape `OML/nxlmi/b/it' will be
-(Font)              scaled to size 5.5pt on input line 405.
+(Font)              scaled to size 5.5pt on input line 375.
 LaTeX Font Info:    Font shape `LMS/ntxsy/b/n' will be
-(Font)              scaled to size 9.0pt on input line 405.
+(Font)              scaled to size 9.0pt on input line 375.
 LaTeX Font Info:    Font shape `LMS/ntxsy/b/n' will be
-(Font)              scaled to size 6.6pt on input line 405.
+(Font)              scaled to size 6.6pt on input line 375.
 LaTeX Font Info:    Font shape `LMS/ntxsy/b/n' will be
-(Font)              scaled to size 5.5pt on input line 405.
+(Font)              scaled to size 5.5pt on input line 375.
 LaTeX Font Info:    Font shape `LMX/ntxexx/b/n' will be
-(Font)              scaled to size 9.0pt on input line 405.
+(Font)              scaled to size 9.0pt on input line 375.
 LaTeX Font Info:    Font shape `LMX/ntxexx/b/n' will be
-(Font)              scaled to size 6.6pt on input line 405.
+(Font)              scaled to size 6.6pt on input line 375.
 LaTeX Font Info:    Font shape `LMX/ntxexx/b/n' will be
-(Font)              scaled to size 5.5pt on input line 405.
+(Font)              scaled to size 5.5pt on input line 375.
 LaTeX Font Info:    Font shape `U/ntxmia/b/it' will be
-(Font)              scaled to size 9.0pt on input line 405.
+(Font)              scaled to size 9.0pt on input line 375.
 LaTeX Font Info:    Font shape `U/ntxmia/b/it' will be
-(Font)              scaled to size 6.6pt on input line 405.
+(Font)              scaled to size 6.6pt on input line 375.
 LaTeX Font Info:    Font shape `U/ntxmia/b/it' will be
-(Font)              scaled to size 5.5pt on input line 405.
+(Font)              scaled to size 5.5pt on input line 375.
 LaTeX Font Info:    Font shape `U/ntxsym/b/n' will be
-(Font)              scaled to size 9.0pt on input line 405.
+(Font)              scaled to size 9.0pt on input line 375.
 LaTeX Font Info:    Font shape `U/ntxsym/b/n' will be
-(Font)              scaled to size 6.6pt on input line 405.
+(Font)              scaled to size 6.6pt on input line 375.
 LaTeX Font Info:    Font shape `U/ntxsym/b/n' will be
-(Font)              scaled to size 5.5pt on input line 405.
+(Font)              scaled to size 5.5pt on input line 375.
 LaTeX Font Info:    Font shape `U/ntxsyc/b/n' will be
-(Font)              scaled to size 9.0pt on input line 405.
+(Font)              scaled to size 9.0pt on input line 375.
 LaTeX Font Info:    Font shape `U/ntxsyc/b/n' will be
-(Font)              scaled to size 6.6pt on input line 405.
+(Font)              scaled to size 6.6pt on input line 375.
 LaTeX Font Info:    Font shape `U/ntxsyc/b/n' will be
-(Font)              scaled to size 5.5pt on input line 405.
+(Font)              scaled to size 5.5pt on input line 375.
 LaTeX Font Info:    Font shape `U/ntxexa/b/n' will be
-(Font)              scaled to size 9.0pt on input line 405.
+(Font)              scaled to size 9.0pt on input line 375.
 LaTeX Font Info:    Font shape `U/ntxexa/b/n' will be
-(Font)              scaled to size 6.6pt on input line 405.
+(Font)              scaled to size 6.6pt on input line 375.
 LaTeX Font Info:    Font shape `U/ntxexa/b/n' will be
-(Font)              scaled to size 5.5pt on input line 405.
- [3.3{C:/Users/25217/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/libertine/lb
-tn_fygcup.enc}]
+(Font)              scaled to size 5.5pt on input line 375.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 6.6pt on input line 459.
+(Font)              scaled to size 6.6pt on input line 429.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 5.5pt on input line 459.
- (manuscript.bbl
+(Font)              scaled to size 5.5pt on input line 429.
+
+[3.3{C:/Users/25217/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/libertine/lbt
+n_fygcup.enc}{C:/Users/25217/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/libe
+rtine/lbtn_oexx6f.enc}] (manuscript.bbl
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/sb/n' will be
 (Font)              scaled to size 7.3pt on input line 48.
  [4.4])
-
-Package balance Warning: You have called \balance in second column
-(balance)                Columns might not be balanced.
+Overfull \vbox (1.333pt too high) has occurred while \output is active []
 
 
 (C:\Users\25217\AppData\Local\Programs\MiKTeX\tex/generic/stringenc\se-pdfdoc.d
@@ -1403,22 +1401,18 @@ LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
  ***********
 Package rerunfilecheck Info: File `manuscript.out' has not changed.
-(rerunfilecheck)             Checksum: 9FF1EAC8E66D9A12B9D8E4213217C6D5;4026.
+(rerunfilecheck)             Checksum: DA76999C532CCBD8638C793B35ED0C63;3096.
  ) 
 Here is how much of TeX's memory you used:
- 32574 strings out of 467871
- 600811 string characters out of 5418377
- 1232563 words of memory out of 5000000
- 60251 multiletter control sequences out of 15000+600000
- 821707 words of font info for 469 fonts, out of 8000000 for 9000
+ 32547 strings out of 467871
+ 600208 string characters out of 5418377
+ 1223098 words of memory out of 5000000
+ 60244 multiletter control sequences out of 15000+600000
+ 819868 words of font info for 457 fonts, out of 8000000 for 9000
  1302 hyphenation exceptions out of 8191
- 90i,17n,131p,2500b,805s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 90i,16n,131p,2500b,870s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 pdfTeX warning (dest): name{glo:VAC} has been referenced but does not exist, re
-placed by a fixed one
-
-
-pdfTeX warning (dest): name{glo:DPI} has been referenced but does not exist, re
 placed by a fixed one
 
 
@@ -1449,9 +1443,9 @@ ta/Local/Programs/MiKTeX/fonts/type1/public/newtx/NewTXMI.pfb><C:/Users/25217/A
 ppData/Local/Programs/MiKTeX/fonts/type1/public/newtx/txexs.pfb><C:/Users/25217
 /AppData/Local/Programs/MiKTeX/fonts/type1/public/newtx/txmiaX.pfb><C:/Users/25
 217/AppData/Local/Programs/MiKTeX/fonts/type1/public/newtx/txsys.pfb>
-Output written on manuscript.pdf (5 pages, 594510 bytes).
+Output written on manuscript.pdf (5 pages, 579579 bytes).
 PDF statistics:
- 453 PDF objects out of 1000 (max. 8388607)
- 75 named destinations out of 1000 (max. 500000)
- 100521 words of extra memory for PDF output out of 106986 (max. 10000000)
+ 397 PDF objects out of 1000 (max. 8388607)
+ 71 named destinations out of 1000 (max. 500000)
+ 100489 words of extra memory for PDF output out of 106986 (max. 10000000)
 

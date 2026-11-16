@@ -2,7 +2,7 @@
 %%% Do NOT edit. File created by BibTeX with style
 %%% ACM-Reference-Format-Journals [18-Jan-2012].
 
-\begin{thebibliography}{36}
+\begin{thebibliography}{35}
 
 %%% ====================================================================
 %%% NOTE TO THE USER: you can override these defaults by providing
@@ -75,20 +75,6 @@
   \bibinfo{pages}{707--714}.
 \newblock
 \href{https://doi.org/10.1097/OPX.0000000000002303}{doi:\nolinkurl{10.1097/OPX.0000000000002303}}
-
-
-\bibitem[Barry et~al\mbox{.}(2001)]%
-        {Purkinje_Surface_Measurement}
-\bibfield{author}{\bibinfo{person}{Jean-Cyriaque Barry}, \bibinfo{person}{Mark
-  Dunne}, {and} \bibinfo{person}{Thomas Kirschkamp}.}
-  \bibinfo{year}{2001}\natexlab{}.
-\newblock \showarticletitle{Phakometric Measurement of Ocular Surface Radius of
-  Curvature and Alignment: Evaluation of Method with Physical Model Eyes}.
-\newblock \bibinfo{journal}{\emph{Ophthalmic and Physiological Optics}}
-  \bibinfo{volume}{21}, \bibinfo{number}{6} (\bibinfo{year}{2001}),
-  \bibinfo{pages}{450--460}.
-\newblock
-\href{https://doi.org/10.1046/j.1475-1313.2001.00612.x}{doi:\nolinkurl{10.1046/j.1475-1313.2001.00612.x}}
 
 
 \bibitem[Bontha and Arefin(2024)]%

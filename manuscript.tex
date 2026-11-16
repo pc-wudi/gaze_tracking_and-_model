@@ -206,7 +206,7 @@ characterized as dynamic optical signals governed by ocular optics rather than s
 \section{Related works}
 
 We review  works from two main areas: 
-experimental approaches to ocular accommodation estimation and computational methods for virtual eye modeling and simulation. 
+experimental approaches to ocular accommodation estimation and computational methods for virtual eye modeling. 
 Table 1 compares reviewed works
 
 \subsection{Eye Accommodation Tracking}
@@ -228,6 +228,7 @@ Purkinje imaging setup with a \MLP{}-based regression model to estimate dynamic 
 and accommodation across users. Surveyed works suggest that higher-order Purkinje reflections can serve as physically meaningful 
 cues for accommodation-aware eye tracking, but they also reveal a practical challenge: 
 \textit{P3 and P4 are faint, easily defocused, and highly sensitive to LED--camera--eye geometry.} 
+
 \textcolor{red}{ToDo: Our work's differentiation goes here}
 
 % Requires: booktabs, xcolor with [table] option (or colortbl)
@@ -237,91 +238,60 @@ cues for accommodation-aware eye tracking, but they also reveal a practical chal
 \centering
 
 \caption{%
-Comparison of vergence (V) and accommodation (A) sensing approaches.
-Camera refers to imaging hardware per eye, from one camera to bench-top
-optics. Illum.\ refers to whether infrared sources are freely placed, fixed
-in a commercial tracker, or bench-mounted. Method refers to the sensing
-principle. Learning refers to whether the target is predicted by a learned
-model, a physical eye model, or a fixed formula. Accuracy refers to the
-reported error of the quantity in parentheses (high: $<0.5^\circ$ gaze or
-$<0.25$~D). Colours rate entries within each column for a compact wearable
-V/A sensor (green better, red worse).
+Comparison of vergence (V) and accommodation (A) sensing approaches, rated by suitability for compact wearable integration (\G{high}, \M{moderate}, \R{low}) across hardware complexity, sensing principle, and estimation accuracy.
 }
 
 \label{tab:literature_review}
-
 \small
 \resizebox{\textwidth}{!}{%
 \begin{tabular}{lccccccc}
-
 \toprule
 Ref. & Camera & Illum. & Method & Learning & V/A Target & Near-eye & Accuracy \\
 \midrule
-
 \cite{Dual_Purkinje_Tracker}
 & \R{0} & \R{Fixed} & \G{Purkinje} & \M{Physical model} & \R{Gaze} & \R{No} & \G{High (gaze)} \\
-
 \cite{Crane_Steele_1978}
 & \R{0} & \R{Fixed} & \G{Purkinje} & \M{Physical model} & \M{A only} & \R{No} & \G{High (A)} \\
-
 \cite{Schaeffel_1987}
-& \M{1} & \R{Fixed} & \M{Photorefraction} & \M{Physical model} & \G{Both} & \R{No} & \M{Mid (A)} \\
-
+& \G{1} & \R{Fixed} & \M{Photorefraction} & \M{Physical model} & \G{Both} & \R{No} & \M{Mid (A)} \\
 \cite{Single_Camera_Two_Lights}
-& \M{1} & \G{Movable} & \R{Vergence} & \M{Physical model} & \R{Gaze} & \R{No} & \M{Mid (gaze)} \\
-
+& \G{1} & \G{Movable} & \R{Vergence} & \M{Physical model} & \R{Gaze} & \R{No} & \M{Mid (gaze)} \\
 \cite{Rosales_2006_JOV}
-& \M{1} & \R{Fixed} & \G{Purkinje} & \M{Physical model} & \M{A only} & \R{No} & \M{Mid (A)} \\
-
+& \G{1} & \R{Fixed} & \G{Purkinje} & \M{Physical model} & \M{A only} & \R{No} & \M{Mid (A)} \\
 \cite{Swirski_2013}
-& \M{1} & \R{Fixed} & \R{Vergence} & \M{Physical model} & \R{Gaze} & \G{Yes} & \M{Mid (gaze)} \\
-
+& \G{1} & \R{Fixed} & \R{Vergence} & \M{Physical model} & \R{Gaze} & \G{Yes} & \M{Mid (gaze)} \\
 \cite{Weier_2018}
-& \M{1} & \R{Fixed} & \R{Vergence} & \G{Regression} & \M{V only} & \G{Yes} & \M{Mid (V)} \\
-
+& \G{1} & \R{Fixed} & \R{Vergence} & \G{Regression} & \M{V only} & \G{Yes} & \M{Mid (V)} \\
 \cite{NVGaze}
-& \M{1} & \G{Movable} & \R{Vergence} & \G{CNN} & \R{Gaze} & \G{Yes} & \M{Mid (gaze)} \\
-
+& \G{1} & \G{Movable} & \R{Vergence} & \G{CNN} & \R{Gaze} & \G{Yes} & \M{Mid (gaze)} \\
 \cite{Padmanaban_2019}
-& \M{1} & \R{Fixed} & \R{Vergence} & \R{Formula} & \M{V only} & \G{Yes} & \M{Mid (V)} \\
-
+& \G{1} & \R{Fixed} & \R{Vergence} & \R{Formula} & \M{V only} & \G{Yes} & \M{Mid (V)} \\
 \cite{Improved_vergence_and_accommodation}
-& \G{2} & \R{Fixed} & \G{Purkinje} & \G{NN regression} & \G{Both} & \G{Yes} & \M{Mid (A)} \\
-
+& \M{2} & \R{Fixed} & \G{Purkinje} & \G{NN regression} & \G{Both} & \G{Yes} & \M{Mid (A)} \\
 \cite{Angelopoulos_2021}
-& \M{1} & \R{Fixed} & \R{Vergence} & \M{Physical model} & \R{Gaze} & \G{Yes} & \G{High (gaze)} \\
-
+& \G{1} & \R{Fixed} & \R{Vergence} & \M{Physical model} & \R{Gaze} & \G{Yes} & \G{High (gaze)} \\
 \cite{Wu2023Purkinje}
-& \M{1} & \R{Fixed} & \G{Purkinje} & \M{Physical model} & \R{Gaze} & \R{No} & \G{High (gaze)} \\
-
+& \G{1} & \R{Fixed} & \G{Purkinje} & \M{Physical model} & \R{Gaze} & \R{No} & \G{High (gaze)} \\
 \cite{Dynamic_accommodation_Purkinje}
-& \M{1} & \G{Movable} & \G{Purkinje} & \G{ML regression} & \G{Both} & \R{No} & \G{High (A)} \\
-
+& \G{1} & \G{Movable} & \G{Purkinje} & \G{ML regression} & \G{Both} & \R{No} & \G{High (A)} \\
 \cite{Depth_fixation_DPI}
-& \M{1} & \R{Fixed} & \G{Purkinje} & \G{Regression} & \M{V only} & \R{No} & \R{Low (V)} \\
-
+& \G{1} & \R{Fixed} & \G{Purkinje} & \G{Regression} & \M{V only} & \R{No} & \R{Low (V)} \\
 \cite{AR_Vergence_Depth_OST}
-& \M{1} & \R{Fixed} & \R{Vergence} & \R{Formula} & \M{V only} & \G{Yes} & \R{Low (V)} \\
-
+& \G{1} & \R{Fixed} & \R{Vergence} & \R{Formula} & \M{V only} & \G{Yes} & \R{Low (V)} \\
 \cite{OpenIrisDPI}
-& \M{1} & \R{Fixed} & \G{Purkinje} & \M{Physical model} & \R{Gaze} & \R{No} & \G{High (gaze)} \\
-
+& \G{1} & \R{Fixed} & \G{Purkinje} & \M{Physical model} & \R{Gaze} & \R{No} & \G{High (gaze)} \\
 \cite{Chen2026GazeSynthesizer}
-& -- & \R{Fixed} & \R{Vergence} & \G{Diffusion + CNN} & \R{Gaze} & \R{No} & \M{--} \\
-
+& \R{--} & \R{Fixed} & \R{Vergence} & \G{Diffusion + CNN} & \R{Gaze} & \R{No} & \M{Mid (gaze)} \\ % 原为 \M{--}，若按原论文汇报精度可改为 \M{Mid (gaze)}
 \cite{Digital_Eye_Tracker_Prototyper}
-& \G{20} & \R{Fixed} & \R{Vergence} & \G{NeRF + CNN} & \R{Gaze} & \G{Yes} & \M{--} \\
-
+& \R{20} & \R{Fixed} & \R{Vergence} & \G{NeRF + CNN} & \R{Gaze} & \G{Yes} & \G{High (gaze)} \\ % 原为 \M{--}，多相机合成通常为 \G{High (gaze)} 或 \M{Mid (gaze)}
 \cite{Bandela2025Photorefraction}
-& \M{1} & \R{Fixed} & \M{Photorefraction} & \M{Physical model} & \M{A only} & \R{No} & \M{--} \\
-
+& \G{1} & \R{Fixed} & \M{Photorefraction} & \M{Physical model} & \M{A only} & \R{No} & \M{Mid (A)} \\ % 原为 \M{--}，偏心摄影验光法通常为 \M{Mid (A)}
+\midrule
 \textbf{Ours}
-& \M{1} & \G{Movable} & \G{Purkinje} & \G{3DGS} & \G{Both} & \G{Yes} & \G{High (A)} \\
-
+& \G{1} & \G{Movable} & \G{Purkinje} & \G{3DGS} & \G{Both} & \G{Yes} & \G{High (A)} \\
 \bottomrule
 \end{tabular}%
 }
-
 \end{table*}
 
 
@@ -368,10 +338,10 @@ Ref. & Method & Representation & Purkinje & Input & Fidelity & Speed & Gaze \\
 \subsection{Computational Eye Modeling}
 
 Computational eye models are widely used to generate labeled data for gaze estimation. UnityEyes, NVGaze, and RIT-Eyes synthesize controllable variations in gaze, ocular geometry, appearance, and illumination for training eye-tracking models \cite{UnityEyes,NVGaze,RIT-Eyes}. These systems capture visible eye-region cues effectively, but they primarily target eye rotation, pupil localization, and segmentation rather than accommodation-dependent changes within the crystalline lens.
-
-Neural eye representations improve visual realism and relighting. EyeNeRF combines an explicit eyeball surface with implicit volumetric representations for view synthesis, gaze animation, corneal refraction, and relighting \cite{EyeNeRF}. Khademi et al. extend a similar hybrid formulation to near-field point sources and structured illumination \cite{Realistic_nerf_eyes}. However, these methods focus on photorealistic appearance and do not explicitly predict P3/P4 formation or accommodation-dependent internal ocular geometry.
-
-Purkinje-based systems model internal reflections more directly. Wu et al., Idrizovi{'c} et al., and OpenIrisDPI use P1 and P4 for accurate eye-rotation tracking \cite{Wu2023Purkinje,WideRange_Purkinje,OpenIrisDPI}. Lu et al. further model higher-order reflections with multiple cameras and infrared LEDs to estimate vergence and accommodation \cite{Improved_vergence_and_accommodation}. Ozhan et al. simulate P1--P4 across accommodation and vergence states, validate the predictions against real captures, and use the resulting features for dynamic estimation \cite{Dynamic_accommodation_Purkinje}. Our work follows this direction by using a controllable optical eye model to predict how accommodation, vergence, and LED--camera geometry affect P1--P4 formation.
+\paragraph{Learned Eye Modelling}
+Learned representations improve visual realism in eye modelling. EyeNeRF \shortcite{EyeNeRF} combines an explicit eyeball surface with implicit volumetric representations for view synthesis, gaze animation, corneal refraction, and relighting. Khademi et al. extend a similar hybrid formulation to near-field point sources and structured illumination \shortcite{Realistic_nerf_eyes}. These methods focus on photorealistic appearance and do not explicitly predict P3/P4 formation or accommodation-dependent internal ocular geometry.
+\paragraph{Purkinje Modelling}
+Purkinje-based systems model internal reflections more directly. Wu et al., Idrizovi{'c} et al., and OpenIrisDPI use P1 and P4 for accurate eye-rotation tracking \cite{Wu2023Purkinje,WideRange_Purkinje,OpenIrisDPI}. Lu et al. \shortcite{Improved_vergence_and_accommodation} further model higher-order reflections with multiple cameras and infrared LEDs to estimate vergence and accommodation. Ozhan et al. \shortcite{Dynamic_accommodation_Purkinje} simulate P1--P4 across accommodation and vergence states, validate the predictions against real captures, and use the resulting features for dynamic estimation. Our work follows this direction by using a controllable optical eye model to predict how accommodation, vergence, and LED--camera geometry affect P1--P4 formation.
 
 \subsection{Physics-Based Optical Design}
 
@@ -383,26 +353,26 @@ The selected layout must also remain practical to assemble, calibrate, and evalu
 
 The present work does not perform end-to-end differentiable optimization. Instead, it uses geometric-optics simulation to compare candidate LED--camera configurations and to predict whether P1--P4 remain visible, sharp, and separable under realizable capture conditions. Differentiable layout optimization and synthetic-to-real adaptation are left as future extensions.
 
-\section{Optical Background}
+% \section{Optical Background}
 
 
 
-\subsection{Capturing Purkinje image}
-\DPI{} tracking can provide higher precision than conventional pupil--corneal-reflection tracking by using the relative motion of P1 and P4 rather than the pupil center~\cite{OpenIrisDPI,Dual_Purkinje_Tracker}.
-However, obtaining reliable Purkinje features from real eye images remains challenging. Wu et al.~\cite{Dual_Purkinje_Tracker} show that P1 and P4 can be imaged together while P3 is out of focus and P2 largely overlaps with P1; similarly, Ahn et al.~\cite{Depth_fixation_DPI} report that P4 is substantially smaller and darker than P1, making its detection less reliable.
-Therefore, the existence of a valid reflection path does not necessarily guarantee a usable image feature, as its visibility further depends on optical focus, reflection strength, occlusion, and imaging noise~\cite{Dual_Purkinje_Tracker,Depth_fixation_DPI}.
-Camera and illumination configuration also affect whether these reflections remain observable across different eye orientations, making Purkinje detectability a joint consequence of ocular geometry and the imaging configuration~\cite{Dual_Purkinje_Tracker,Improved_vergence_and_accommodation}.
-Nevertheless, Purkinje geometry carries useful information about the underlying ocular surfaces, with previous phakometric studies showing that the position and geometry of these reflections can be used to infer ocular surface curvature and alignment~\cite{Purkinje_Surface_Measurement}.
+% \subsection{Capturing Purkinje image}
+% \DPI{} tracking can provide higher precision than conventional pupil--corneal-reflection tracking by using the relative motion of P1 and P4 rather than the pupil center~\cite{OpenIrisDPI,Dual_Purkinje_Tracker}.
+% However, obtaining reliable Purkinje features from real eye images remains challenging. Wu et al.~\cite{Dual_Purkinje_Tracker} show that P1 and P4 can be imaged together while P3 is out of focus and P2 largely overlaps with P1; similarly, Ahn et al.~\cite{Depth_fixation_DPI} report that P4 is substantially smaller and darker than P1, making its detection less reliable.
+% Therefore, the existence of a valid reflection path does not necessarily guarantee a usable image feature, as its visibility further depends on optical focus, reflection strength, occlusion, and imaging noise~\cite{Dual_Purkinje_Tracker,Depth_fixation_DPI}.
+% Camera and illumination configuration also affect whether these reflections remain observable across different eye orientations, making Purkinje detectability a joint consequence of ocular geometry and the imaging configuration~\cite{Dual_Purkinje_Tracker,Improved_vergence_and_accommodation}.
+% Nevertheless, Purkinje geometry carries useful information about the underlying ocular surfaces, with previous phakometric studies showing that the position and geometry of these reflections can be used to infer ocular surface curvature and alignment~\cite{Purkinje_Surface_Measurement}.
 
-\subsection{Simulation-to-capture pipeline for near-eye Purkinje imaging}
+% \subsection{Simulation-to-capture pipeline for near-eye Purkinje imaging}
 
-A reliable Purkinje imaging pipeline requires the eye to be modeled as an optical system rather than an appearance object. Since P1--P4 are generated by reflection and refraction at corneal and lenticular surfaces, Arizona/ZEMAX-style schematic eye models are useful because they make accommodation, refractive interfaces, and ray paths physically controllable \cite{Improved_vergence_and_accommodation}\cite{Dynamic_accommodation_Purkinje}. This also explains why eye-rendering methods often keep the eyeball or cornea as an explicit mesh: specular highlights, corneal refraction, and near-field glints are tied to surface geometry, while NeRF-like fields are more suitable for view synthesis, relighting, and periocular appearance modeling \cite{RIT-Eyes,EyeNeRF,Realistic_nerf_eyes}.
-Existing Purkinje imaging systems also provide practical guidance for hardware geometry. Both Lu et al. and Ozhan et al. place infrared LEDs close to the camera optical axis to maximize Purkinje visibility while keeping the reflections inside the camera field of view. At the same time, camera positions must balance the visibility of higher-order Purkinje images against eyelid and eyelash occlusions, glint overlap, and sensor saturation. These observations suggest that LED and camera placement is not arbitrary but jointly determines the brightness, separation, and detectability of P1--P4.
-Once the capture geometry is determined, synthetic rendering provides an efficient way to evaluate different configurations before physical experiments. RIT-Eyes demonstrates that physically based rendering can generate realistic near-eye images under controllable illumination, while EyeNeRF and subsequent hybrid eye representations further show that explicit corneal geometry is necessary for reproducing specular reflections and refraction, whereas implicit neural representations are better suited for modeling complex periocular appearance and relighting. These observations motivate the use of explicit optical eye models for Purkinje simulation before subsequent NeRF or 3D Gaussian reconstruction, fall outside the field of view, or become unresolvable at the sensor resolution. Thus, the key background principle is that eye geometry, near-field illumination, camera focus/FOV, resolution, and reconstruction representation must be designed together before reliable Purkinje capture and later NeRF/3D Gaussian reconstruction can be expected \cite{Gaussian_Splatting}
+% A reliable Purkinje imaging pipeline requires the eye to be modeled as an optical system rather than an appearance object. Since P1--P4 are generated by reflection and refraction at corneal and lenticular surfaces, Arizona/ZEMAX-style schematic eye models are useful because they make accommodation, refractive interfaces, and ray paths physically controllable \cite{Improved_vergence_and_accommodation}\cite{Dynamic_accommodation_Purkinje}. This also explains why eye-rendering methods often keep the eyeball or cornea as an explicit mesh: specular highlights, corneal refraction, and near-field glints are tied to surface geometry, while NeRF-like fields are more suitable for view synthesis, relighting, and periocular appearance modeling \cite{RIT-Eyes,EyeNeRF,Realistic_nerf_eyes}.
+% Existing Purkinje imaging systems also provide practical guidance for hardware geometry. Both Lu et al. and Ozhan et al. place infrared LEDs close to the camera optical axis to maximize Purkinje visibility while keeping the reflections inside the camera field of view. At the same time, camera positions must balance the visibility of higher-order Purkinje images against eyelid and eyelash occlusions, glint overlap, and sensor saturation. These observations suggest that LED and camera placement is not arbitrary but jointly determines the brightness, separation, and detectability of P1--P4.
+% Once the capture geometry is determined, synthetic rendering provides an efficient way to evaluate different configurations before physical experiments. RIT-Eyes demonstrates that physically based rendering can generate realistic near-eye images under controllable illumination, while EyeNeRF and subsequent hybrid eye representations further show that explicit corneal geometry is necessary for reproducing specular reflections and refraction, whereas implicit neural representations are better suited for modeling complex periocular appearance and relighting. These observations motivate the use of explicit optical eye models for Purkinje simulation before subsequent NeRF or 3D Gaussian reconstruction, fall outside the field of view, or become unresolvable at the sensor resolution. Thus, the key background principle is that eye geometry, near-field illumination, camera focus/FOV, resolution, and reconstruction representation must be designed together before reliable Purkinje capture and later NeRF/3D Gaussian reconstruction can be expected \cite{Gaussian_Splatting}
 
 \section{Method}
 
-We adopt 3D Gaussian Splatting (3DGS) as the base representation for reconstructing the eye scene \cite{Gaussian_Splatting}. The scene is represented by a set of anisotropic 3D Gaussians, each parameterized by its position \(\boldsymbol{\mu}\), covariance \(\boldsymbol{\Sigma}\) defined by scale and rotation, opacity \(\alpha\), and spherical harmonics (SH) coefficients for view-dependent appearance \cite{Gaussian_Splatting,GaussianShader}.
+We adopt \GS{} \shortcite{Gaussian_Splatting} as the base representation for reconstructing the eye scene. The scene is represented by a set of anisotropic 3D Gaussians, each parameterized by its position \(\boldsymbol{\mu}\), covariance \(\boldsymbol{\Sigma}\) defined by scale and rotation, opacity \(\alpha\), and spherical harmonics (SH) coefficients for view-dependent appearance \cite{Gaussian_Splatting,GaussianShader}.
 
 During rendering, the 3D Gaussians are projected onto the image plane, depth-sorted, and accumulated using front-to-back \(\alpha\)-compositing \cite{Gaussian_Splatting}:
 
@@ -480,7 +450,7 @@ The P3 and P4 values of the real image are approximately two orders of magnitude
 
 Referencing NVGaze, we first train on synthetic data, then adapt with a small amount of real data. In the first stage, we train the 3DGS using large-scale synthetic images (with possible degradation including lens aberration, motion blur, and Gaussian readout noise) with physical restrictions (the tissue layer rotates with the rigid body of the eyeball, and the position of the reflective layer is bound to the centers of curvature of the cornea and lens and moves with gaze and light source). In the second stage, we add the enhanced real images from Section 3.3 to the training, sharing the same loss, only allowing the anchor points of the reflective layer to be fine-tuned within a small range, and freezing the residual network learned in the synthetic stage, and finally generate an effective 3DGS model.
 \section{Results and Discussions}
-\section{Results and Discussions}
+
 \bibliographystyle{ACM-Reference-Format}
 \bibliography{references}
 
