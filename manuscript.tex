@@ -298,131 +298,65 @@ cues for accommodation-aware eye tracking, but they also reveal a practical chal
 % }
 % \end{table*}
 
-
-
-\begin{table*}[t]
+\begin{table}[t]
 \centering
-
+\providecommand{\chk}[1]{\textcolor{red}{#1}}% unverified cell; redefine as {#1} once checked
+\providecommand{\refline}[1]{\addlinespace[1.5pt]\multicolumn{6}{@{}l}{#1}\\[-0.5pt]}
 \caption{%
-Comparison of accommodation and fixation-depth sensing
-approaches in terms of hardware complexity, sensing
-principle, learning strategy, subject population,
-and near- and far-distance accuracy.
+Comparison of accommodation and fixation-depth sensing approaches.
+Accuracy is rated from the reported error: for errors in diopters ($\dagger$), High is at most 0.25\,D, Mid at most 0.5\,D, and Low above.
+\emph{Photorefraction}, \emph{Wavefront}, and \emph{Ultrasound} are clinical instruments that measure accommodation, the first two from the eye's refraction and the last from lens biometry.
+Although our method is per-person, combining 3DGS with Purkinje imaging promises large amounts of synthetic data to further improve accuracy.
 }
-
 \label{tab:literature_review}
-
-\small
-
-\resizebox{\textwidth}{!}{%
-\begin{tabular}{lccccccc}
-
+\footnotesize
+\setlength{\tabcolsep}{5.5pt}
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{@{}cccccl@{}}
 \toprule
-
-Ref. & Camera & Illum. & Method & Learning
-& Subjects & Near Acc. & Far Acc. \\
-
+Camera & Method & Subjects & Ranges (D) & Accuracy & Model \\
 \midrule
-
-\cite{Crane_Steele_1978}
-& \R{0} & \R{Fixed} & \G{Purkinje}
-& \M{Physical model} & --
-& \G{High}$^\dagger$ & -- \\
-
-\cite{Schaeffel_1987}
-& \G{1} & \R{Fixed} & \M{Photorefraction}
-& \M{Physical model} & --
-& \M{Mid}$^\dagger$ & -- \\
-
-\cite{Rosales_2006_JOV}
-& \G{1} & \R{Fixed} & \G{Purkinje}
-& \M{Physical model} & \G{Multiple}
-& -- & -- \\
-
-\cite{Lee2012PurkinjeDepth}
-& \G{1} & \R{Fixed} & \G{Purkinje}
-& \G{MLP} & --
-& \M{Mid}$^*$ & -- \\
-
-\cite{Chirre_2015_BOE}
-& \R{0} & \R{Fixed} & \M{-}
-& \M{Physical model} & \G{Multiple}
-& \G{High}$^\dagger$ & -- \\
-
-\cite{Ramasubramanian2015UBM}
-& \R{0} & -- & \M{-}
-& \G{Regression} & \G{Multiple}
-& \G{High}$^\dagger$ & -- \\
-
-\cite{Stevenson2015FixationDepth}
-& \R{0} & -- & \R{Vergence}
-& \G{NN regression} & --
-& \M{Mid}$^*$ & -- \\
-
-\cite{Itoh2017Focus}
-& \G{1} & \R{Fixed} & \G{Purkinje}
-& \G{Regression} & \M{Single}
-& \M{Mid}$^*$ & -- \\
-
-\cite{Lee2017GazeDepth}
-& \G{1} & \R{Fixed} & \R{Vergence}
-& \G{MLP} & \G{Multiple}
-& -- & \M{Mid}$^*$ \\
-
-\cite{Weier_2018}
-& \G{1} & \R{Fixed} & \R{Vergence}
-& \G{Regression} & \G{Multiple}
-& \G{High}$^*$ & \G{High}$^*$ \\
-
-\cite{Padmanaban_2019}
-& \G{1} & \R{Fixed} & \R{Vergence}
-& \G{Sensor fusion} & \G{Multiple}
-& -- & -- \\
-
-\cite{Improved_vergence_and_accommodation}
-& \M{2} & \R{Fixed} & \G{Purkinje}
-& \G{NN regression} & \M{Single}
-& \G{High}$^*$ & -- \\
-
-\cite{Dynamic_accommodation_Purkinje}
-& \G{1} & \R{Fixed} & \G{Purkinje}
-& \G{ML regression} & \G{Multiple}
-& \G{High} & -- \\
-
-\cite{Depth_fixation_DPI}
-& \G{1} & \R{Fixed} & \G{Purkinje}
-& \G{Regression} & \G{Multiple}
-& \R{Low}$^*$ & -- \\
-
-\cite{AR_Vergence_Depth_OST}
-& \G{1} & \R{Fixed} & \R{Vergence}
-& \M{Statistical analysis} & \G{Multiple}
-& -- & -- \\
-
-\cite{Pijpaert2025Vergence}
-& \G{1} & \R{Fixed} & \R{Vergence}
-& \M{Physical model} & \G{Multiple}
-& \M{Mid}$^*$ & -- \\
-
-\cite{Bandela2025Photorefraction}
-& \G{1} & \R{Fixed} & \M{Photorefraction}
-& \M{Physical model} & \G{Multiple}
-& -- & -- \\
-
+\refline{\cite{Crane_Steele_1978}}
+\R{0} & \G{Purkinje} & N/A & $-$4 to 12 & \G{High}$^\dagger$ & Physical \\ % optometer: -4 to +12 D, about 0.1 D
+\refline{\cite{Schaeffel_1987}}
+\G{1} & \M{Photorefraction} & N/A & $-$5 to 5 & \M{Mid}$^\dagger$ & Physical \\ % +-0.3 D or better over +-5 D
+\refline{\cite{Rosales_2006_JOV}}
+\G{1} & \G{Purkinje} & \G{Generalized} & 0--7 & \R{\chk{Low}}$^\dagger$ & Physical \\ % proposed rating: 0.61 D lens-power difference vs. Scheimpflug
+\refline{\cite{Lee2012PurkinjeDepth}}
+\G{1} & \G{Purkinje} & \G{Generalized} & 2--10 & \M{Mid}$^*$ & MLP \\ % 10--50 cm; 4.59 cm
+\refline{\cite{Chirre_2015_BOE}}
+\R{0} & \M{Wavefront} & \G{Generalized} & 0.36--3.3 & \G{High}$^\dagger$ & Physical \\ % 2.75 m and 30 cm; 0.025 D
+\refline{\cite{Ramasubramanian2015UBM}}
+\R{0} & \M{Ultrasound} & \G{Generalized} & 0--6 & \G{High}$^\dagger$ & ML \\ % regression; 0.24--0.50 D
+\refline{\cite{Stevenson2015FixationDepth}}
+\R{0} & \R{Vergence} & \M{Per-person} & 1.1--5 & \M{Mid}$^*$ & MLP \\ % 0.2--0.9 m; feedforward NN; 5.7 cm (10.3%)
+\refline{\cite{Itoh2017Focus}}
+\G{1} & \G{Purkinje} & \M{Per-person} & 2.2--6.7 & \M{Mid}$^*$ & ML \\ % 15--45 cm; learned regression; 3.15 cm
+\refline{\cite{Lee2017GazeDepth}}
+\G{1} & \R{Vergence} & \G{Generalized} & 0.2--1 & \M{Mid}$^*$ & MLP \\ % 1--5 m; 0.42 m, 13 subjects
+\refline{\cite{Weier_2018}}
+\G{1} & \R{Vergence} & \G{Generalized} & $\geq$0.17 & \G{High}$^*$ & ML \\ % first 6 m; regression model; MSE < 0.1 m
+%\refline{\cite{Padmanaban_2019}}
+%\G{1} & \R{Vergence} & \G{Generalized} & 0--4 & \chk{N/A} & Physical \\ % vergence + depth camera, no training; error only in the supplement
+\refline{\cite{Improved_vergence_and_accommodation}}
+\M{2} & \G{Purkinje} & \M{Per-person} & 2--3.3 & \G{High}$^*$ & CNN \\ % 30--50 cm; 1.108 cm, 0.3782 deg
+\refline{\cite{Dynamic_accommodation_Purkinje}}
+\G{1} & \G{Purkinje} & \G{Generalized} & 1--4 & \G{High} & MLP \\ % 4 to 1 D; MLP; 0.22 D own data, 0.40 D other subjects
+\refline{\cite{Depth_fixation_DPI}}
+\G{1} & \G{Purkinje} & \G{Generalized} & 1.7--6.7 & \R{Low}$^*$ & ML \\ % 15--60 cm; regression; RMSE 7.69 cm
+\refline{\cite{AR_Vergence_Depth_OST}}
+\G{1} & \R{Vergence} & \G{Generalized} & 0.25--2.9 & \R{\chk{Low}}$^*$ & Physical \\ % vergence angle from gaze vectors, no training; proposed rating
+\refline{\cite{Pijpaert2025Vergence}}
+\M{2} & \R{Vergence} & \G{Generalized} & 1.6--2.9 & \M{Mid}$^*$ & Physical \\ % 350--610 mm; vergence MAE 0.89 deg
+\refline{\cite{Bandela2025Photorefraction}}
+\G{1} & \M{Photorefraction} & \G{Generalized} & 0--2 & \M{Mid}$^\dagger$ & Physical \\ % 2 D steps, 5 adults; 1.54 D response, 0.34 D residual after blur cancellation
 \midrule
-
-\textbf{Ours}
-& \G{1} & \G{Movable} & \G{Purkinje}
-& \G{3DGS} & --
-& -- & -- \\
-
+\refline{\textbf{Ours}}
+\G{1} & \G{Purkinje} & \M{Per-person} & N/A & N/A & 3DGS \\
 \bottomrule
-
 \end{tabular}%
 }
-
-\end{table*}
-
+\end{table}
 
 
 
@@ -430,40 +364,41 @@ Ref. & Camera & Illum. & Method & Learning
 
 
 
-\begin{table*}[t]
-\centering
-\caption[Comparison of eye models]{Comparison of eye models. Representation refers to how far the model is fitted to an individual eye: geometry and appearance from images, appearance on a template eyeball, or population parameters only. Purkinje refers to which reflections the model reproduces; only lens reflections (P3, P4) carry accommodation information. Input refers to the images needed to personalise the model. Fidelity refers to agreement with real images. Speed refers to rendering rate (real-time: $>$30~fps). Gaze refers to whether eye rotation is a controllable variable. Colours rate entries within each column for an eye model fitted to a real eye that reproduces lens reflections under controlled gaze (green better, red worse).}
-\label{tab:eye_rendering}
 
-\small
-\begin{tabular}{llcccccc}
-\toprule
-Ref. & Method & Representation & Purkinje & Input & Fidelity & Speed & Gaze \\
-\midrule
-\cite{Navarro1985Accommodation} & Navarro schematic eye
-& \R{Optical model} & \G{P1--P4} & \R{Synthetic} & \R{Low} & \M{Interactive} & \G{Yes} \\
-\cite{UnityEyes} & UnityEyes
-& \R{Parametric mesh} & \M{P1} & \R{Synthetic} & \R{Low} & \G{Real-time} & \G{Yes} \\
-\cite{RIT-Eyes} & RIT-Eyes
-& \R{Parametric mesh} & \M{P1} & \R{Synthetic} & \M{Mid} & \R{Offline} & \G{Yes} \\
-\cite{Keratoconus_Purkinje} & Purkinje ray model
-& \R{Optical model} & \M{P1} & \R{Synthetic} & \R{Low} & \M{Interactive} & \R{No} \\
-\cite{EyeNeRF} & EyeNeRF
-& \M{Mesh + NeRF} & \M{P1} & \M{Light stage} & \G{High} & \R{Offline} & \G{Yes} \\
-\cite{GazeNeRF_2023} & GazeNeRF
-& \G{NeRF} & \R{None} & \G{Few images} & \M{Mid} & \R{Offline} & \G{Yes} \\
-\cite{Digital_Eye_Tracker_Prototyper} & NeRF--mesh eye simulator
-& \M{Mesh + NeRF} & \M{P1} & \M{Light stage} & \M{Mid} & \R{Offline} & \M{Partial} \\
-\cite{Realistic_nerf_eyes} & Relightable hybrid eye
-& \M{Mesh + NeRF} & \M{P1} & \M{Light stage} & \G{High} & \R{Offline} & \R{No} \\
-\cite{GazeGaussian_2024} & GazeGaussian
-& \G{Gaussians} & \R{None} & \G{Few images} & \M{Mid} & \G{Real-time} & \G{Yes} \\
-\textbf{Ours} & Purkinje 3DGS
-& \G{Gaussians + deform.} & \G{P1--P4} & \M{Multi-view} & \G{High} & \G{Real-time} & \G{Yes} \\
+% \begin{table*}[t]
+% \centering
+% \caption[Comparison of eye models]{Comparison of eye models. Representation refers to how far the model is fitted to an individual eye: geometry and appearance from images, appearance on a template eyeball, or population parameters only. Purkinje refers to which reflections the model reproduces; only lens reflections (P3, P4) carry accommodation information. Input refers to the images needed to personalise the model. Fidelity refers to agreement with real images. Speed refers to rendering rate (real-time: $>$30~fps). Gaze refers to whether eye rotation is a controllable variable. Colours rate entries within each column for an eye model fitted to a real eye that reproduces lens reflections under controlled gaze (green better, red worse).}
+% \label{tab:eye_rendering}
 
-\bottomrule
-\end{tabular}
-\end{table*}
+% \small
+% \begin{tabular}{llcccccc}
+% \toprule
+% Ref. & Method & Representation & Purkinje & Input & Fidelity & Speed & Gaze \\
+% \midrule
+% \cite{Navarro1985Accommodation} & Navarro schematic eye
+% & \R{Optical model} & \G{P1--P4} & \R{Synthetic} & \R{Low} & \M{Interactive} & \G{Yes} \\
+% \cite{UnityEyes} & UnityEyes
+% & \R{Parametric mesh} & \M{P1} & \R{Synthetic} & \R{Low} & \G{Real-time} & \G{Yes} \\
+% \cite{RIT-Eyes} & RIT-Eyes
+% & \R{Parametric mesh} & \M{P1} & \R{Synthetic} & \M{Mid} & \R{Offline} & \G{Yes} \\
+% \cite{Keratoconus_Purkinje} & Purkinje ray model
+% & \R{Optical model} & \M{P1} & \R{Synthetic} & \R{Low} & \M{Interactive} & \R{No} \\
+% \cite{EyeNeRF} & EyeNeRF
+% & \M{Mesh + NeRF} & \M{P1} & \M{Light stage} & \G{High} & \R{Offline} & \G{Yes} \\
+% \cite{GazeNeRF_2023} & GazeNeRF
+% & \G{NeRF} & \R{None} & \G{Few images} & \M{Mid} & \R{Offline} & \G{Yes} \\
+% \cite{Digital_Eye_Tracker_Prototyper} & NeRF--mesh eye simulator
+% & \M{Mesh + NeRF} & \M{P1} & \M{Light stage} & \M{Mid} & \R{Offline} & \M{Partial} \\
+% \cite{Realistic_nerf_eyes} & Relightable hybrid eye
+% & \M{Mesh + NeRF} & \M{P1} & \M{Light stage} & \G{High} & \R{Offline} & \R{No} \\
+% \cite{GazeGaussian_2024} & GazeGaussian
+% & \G{Gaussians} & \R{None} & \G{Few images} & \M{Mid} & \G{Real-time} & \G{Yes} \\
+% \textbf{Ours} & Purkinje 3DGS
+% & \G{Gaussians + deform.} & \G{P1--P4} & \M{Multi-view} & \G{High} & \G{Real-time} & \G{Yes} \\
+
+% \bottomrule
+% \end{tabular}
+% \end{table*}
 
 \subsection{Computational Eye Modeling}
 
