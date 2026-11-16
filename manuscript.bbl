@@ -2,7 +2,7 @@
 %%% Do NOT edit. File created by BibTeX with style
 %%% ACM-Reference-Format-Journals [18-Jan-2012].
 
-\begin{thebibliography}{35}
+\begin{thebibliography}{38}
 
 %%% ====================================================================
 %%% NOTE TO THE USER: you can override these defaults by providing
@@ -48,20 +48,6 @@
 \href{https://doi.org/10.3390/electronics14091799}{doi:\nolinkurl{10.3390/electronics14091799}}
 
 
-\bibitem[Angelopoulos et~al\mbox{.}(2021)]%
-        {Angelopoulos_2021}
-\bibfield{author}{\bibinfo{person}{Anastasios~N. Angelopoulos},
-  \bibinfo{person}{Julien N.~P. Martel}, \bibinfo{person}{Amit~P. Kohli},
-  \bibinfo{person}{J{\"o}rg Conradt}, {and} \bibinfo{person}{Gordon
-  Wetzstein}.} \bibinfo{year}{2021}\natexlab{}.
-\newblock \showarticletitle{Event-based near-eye gaze tracking beyond 10,000
-  {Hz}}.
-\newblock \bibinfo{journal}{\emph{IEEE Transactions on Visualization and
-  Computer Graphics}} \bibinfo{volume}{27}, \bibinfo{number}{5}
-  (\bibinfo{year}{2021}), \bibinfo{pages}{2577--2586}.
-\newblock
-
-
 \bibitem[Bandela et~al\mbox{.}(2025)]%
         {Bandela2025Photorefraction}
 \bibfield{author}{\bibinfo{person}{Praveen~K. Bandela}, \bibinfo{person}{Arthur
@@ -88,18 +74,17 @@
 \newblock
 
 
-\bibitem[Chen et~al\mbox{.}(2026)]%
-        {Chen2026GazeSynthesizer}
-\bibfield{author}{\bibinfo{person}{Muchun Chen}, \bibinfo{person}{Yinxin Lin},
-  \bibinfo{person}{Yuhan Li}, \bibinfo{person}{Yugang Chen},
-  \bibinfo{person}{Xuanhong Chen}, \bibinfo{person}{Bilian Ke}, {and}
-  \bibinfo{person}{Bingbing Ni}.} \bibinfo{year}{2026}\natexlab{}.
-\newblock \showarticletitle{Learning Gaze Synthesizer via 3D-Eye Controlled
-  Diffusion and Cross-Domain Feature Alignment}.
-\newblock \bibinfo{journal}{\emph{IEEE Transactions on Image Processing}}
-  \bibinfo{volume}{35} (\bibinfo{year}{2026}), \bibinfo{pages}{7928--7941}.
+\bibitem[Chirre et~al\mbox{.}(2015)]%
+        {Chirre_2015_BOE}
+\bibfield{author}{\bibinfo{person}{Emmanuel Chirre}, \bibinfo{person}{Pedro~M.
+  Prieto}, {and} \bibinfo{person}{Pablo Artal}.}
+  \bibinfo{year}{2015}\natexlab{}.
+\newblock \showarticletitle{Dynamics of the near response under natural viewing
+  conditions with an open-view sensor}.
+\newblock \bibinfo{journal}{\emph{Biomedical Optics Express}}
+  \bibinfo{volume}{6}, \bibinfo{number}{10} (\bibinfo{year}{2015}),
+  \bibinfo{pages}{4200--4211}.
 \newblock
-\href{https://doi.org/10.1109/TIP.2026.3707758}{doi:\nolinkurl{10.1109/TIP.2026.3707758}}
 
 
 \bibitem[Cornsweet and Crane(1973)]%
@@ -149,6 +134,19 @@
   \bibinfo{pages}{135950F}.
 \newblock
 \href{https://doi.org/10.1117/12.3065468}{doi:\nolinkurl{10.1117/12.3065468}}
+
+
+\bibitem[Itoh et~al\mbox{.}(2017)]%
+        {Itoh2017Focus}
+\bibfield{author}{\bibinfo{person}{Yuta Itoh}, \bibinfo{person}{Jason Orlosky},
+  \bibinfo{person}{Kiyoshi Kiyokawa}, \bibinfo{person}{Toshiyuki Amano}, {and}
+  \bibinfo{person}{Maki Sugimoto}.} \bibinfo{year}{2017}\natexlab{}.
+\newblock \showarticletitle{Monocular Focus Estimation Method for a
+  Freely-Orienting Eye Using Purkinje-Sanson Images}. In
+  \bibinfo{booktitle}{\emph{2017 IEEE Virtual Reality (VR)}}.
+  \bibinfo{publisher}{IEEE}, \bibinfo{pages}{213--214}.
+\newblock
+\href{https://doi.org/10.1109/VR.2017.7892252}{doi:\nolinkurl{10.1109/VR.2017.7892252}}
 
 
 \bibitem[Jiang et~al\mbox{.}(2024)]%
@@ -204,6 +202,34 @@
 \href{https://doi.org/10.1145/3290605.3300780}{doi:\nolinkurl{10.1145/3290605.3300780}}
 
 
+\bibitem[Lee et~al\mbox{.}(2012)]%
+        {Lee2012PurkinjeDepth}
+\bibfield{author}{\bibinfo{person}{Ji~Woo Lee}, \bibinfo{person}{Chul~Woo Cho},
+  \bibinfo{person}{Kwang~Yong Shin}, \bibinfo{person}{Eui~Chul Lee}, {and}
+  \bibinfo{person}{Kang~Ryoung Park}.} \bibinfo{year}{2012}\natexlab{}.
+\newblock \showarticletitle{3D Gaze Tracking Method Using Purkinje Images on
+  Eye Optical Model and Pupil}.
+\newblock \bibinfo{journal}{\emph{Optics and Lasers in Engineering}}
+  \bibinfo{volume}{50}, \bibinfo{number}{5} (\bibinfo{year}{2012}),
+  \bibinfo{pages}{736--751}.
+\newblock
+\href{https://doi.org/10.1016/j.optlaseng.2011.12.001}{doi:\nolinkurl{10.1016/j.optlaseng.2011.12.001}}
+
+
+\bibitem[Lee et~al\mbox{.}(2017)]%
+        {Lee2017GazeDepth}
+\bibfield{author}{\bibinfo{person}{Youngho Lee}, \bibinfo{person}{Choonsung
+  Shin}, \bibinfo{person}{Alexander Plopski}, \bibinfo{person}{Yuta Itoh},
+  \bibinfo{person}{Thammathip Piumsomboon}, \bibinfo{person}{Arindam Dey},
+  \bibinfo{person}{Gun Lee}, \bibinfo{person}{Seungwon Kim}, {and}
+  \bibinfo{person}{Mark Billinghurst}.} \bibinfo{year}{2017}\natexlab{}.
+\newblock \showarticletitle{Estimating Gaze Depth Using Multi-Layer
+  Perceptron}. In \bibinfo{booktitle}{\emph{2017 International Symposium on
+  Ubiquitous Virtual Reality (ISUVR)}}. \bibinfo{publisher}{IEEE}.
+\newblock
+\href{https://doi.org/10.1109/ISUVR.2017.13}{doi:\nolinkurl{10.1109/ISUVR.2017.13}}
+
+
 \bibitem[Li et~al\mbox{.}(2022)]%
         {EyeNeRF}
 \bibfield{author}{\bibinfo{person}{Gengyan Li}, \bibinfo{person}{Abhimitra
@@ -246,20 +272,6 @@
   \bibinfo{pages}{320--331}.
 \newblock
 \href{https://doi.org/10.1109/ISMAR50242.2020.00058}{doi:\nolinkurl{10.1109/ISMAR50242.2020.00058}}
-
-
-\bibitem[Morimoto et~al\mbox{.}(2002)]%
-        {Single_Camera_Two_Lights}
-\bibfield{author}{\bibinfo{person}{Carlos~H. Morimoto}, \bibinfo{person}{Arnon
-  Amir}, {and} \bibinfo{person}{Myron Flickner}.}
-  \bibinfo{year}{2002}\natexlab{}.
-\newblock \showarticletitle{Detecting Eye Position and Gaze from a Single
-  Camera and 2 Light Sources}. In \bibinfo{booktitle}{\emph{Proceedings of the
-  16th International Conference on Pattern Recognition}},
-  Vol.~\bibinfo{volume}{4}. \bibinfo{publisher}{IEEE},
-  \bibinfo{pages}{314--317}.
-\newblock
-\href{https://doi.org/10.1109/ICPR.2002.1047459}{doi:\nolinkurl{10.1109/ICPR.2002.1047459}}
 
 
 \bibitem[Na et~al\mbox{.}(2024)]%
@@ -327,6 +339,34 @@
 \newblock
 
 
+\bibitem[Pijpaert et~al\mbox{.}(2025)]%
+        {Pijpaert2025Vergence}
+\bibfield{author}{\bibinfo{person}{Arthur~R. Pijpaert}, \bibinfo{person}{H.~H.
+  L.~M. Goossens}, \bibinfo{person}{Bob~W. van Dijk}, \bibinfo{person}{L.~J.
+  Roetman}, \bibinfo{person}{Ruth M.~A. van Nispen}, {and}
+  \bibinfo{person}{Laurentius~J. van Rijn}.} \bibinfo{year}{2025}\natexlab{}.
+\newblock \showarticletitle{A Validation Study on the Accuracy and Precision of
+  Gaze and Vergence Using Stereoscopic Eye-Tracking Technology}.
+\newblock \bibinfo{journal}{\emph{Behavior Research Methods}}
+  \bibinfo{volume}{57}, \bibinfo{number}{8} (\bibinfo{year}{2025}),
+  \bibinfo{pages}{214}.
+\newblock
+\href{https://doi.org/10.3758/s13428-025-02731-1}{doi:\nolinkurl{10.3758/s13428-025-02731-1}}
+
+
+\bibitem[Ramasubramanian and Glasser(2015)]%
+        {Ramasubramanian2015UBM}
+\bibfield{author}{\bibinfo{person}{Viswanathan Ramasubramanian} {and}
+  \bibinfo{person}{Adrian Glasser}.} \bibinfo{year}{2015}\natexlab{}.
+\newblock \showarticletitle{Can Ultrasound Biomicroscopy Be Used to Predict
+  Accommodation Accurately?}
+\newblock \bibinfo{journal}{\emph{Journal of Refractive Surgery}}
+  \bibinfo{volume}{31}, \bibinfo{number}{4} (\bibinfo{year}{2015}),
+  \bibinfo{pages}{266--273}.
+\newblock
+\href{https://doi.org/10.3928/1081597X-20150319-06}{doi:\nolinkurl{10.3928/1081597X-20150319-06}}
+
+
 \bibitem[Ressmeyer et~al\mbox{.}(2026)]%
         {OpenIrisDPI}
 \bibfield{author}{\bibinfo{person}{Ryan~A. Ressmeyer}, \bibinfo{person}{Jorge
@@ -389,6 +429,19 @@
 \shownote{Preprint, Version 2}.
 
 
+\bibitem[Stevenson et~al\mbox{.}(2015)]%
+        {Stevenson2015FixationDepth}
+\bibfield{author}{\bibinfo{person}{Cory Stevenson}, \bibinfo{person}{Tzyy-Ping
+  Jung}, {and} \bibinfo{person}{Gert Cauwenberghs}.}
+  \bibinfo{year}{2015}\natexlab{}.
+\newblock \showarticletitle{Estimating Direction and Depth of Visual Fixation
+  Using Electrooculography}. In \bibinfo{booktitle}{\emph{2015 37th Annual
+  International Conference of the IEEE Engineering in Medicine and Biology
+  Society (EMBC)}}. \bibinfo{publisher}{IEEE}, \bibinfo{pages}{841--844}.
+\newblock
+\href{https://doi.org/10.1109/EMBC.2015.7318493}{doi:\nolinkurl{10.1109/EMBC.2015.7318493}}
+
+
 \bibitem[Sturgeon et~al\mbox{.}(2025)]%
         {AR_Vergence_Depth_OST}
 \bibfield{author}{\bibinfo{person}{Matthew Sturgeon}, \bibinfo{person}{Dakota
@@ -400,17 +453,6 @@
   In \bibinfo{booktitle}{\emph{2025 IEEE International Symposium on Mixed and
   Augmented Reality (ISMAR)}}. \bibinfo{publisher}{IEEE},
   \bibinfo{pages}{1376--1386}.
-\newblock
-
-
-\bibitem[{\'S}wirski and Dodgson(2013)]%
-        {Swirski_2013}
-\bibfield{author}{\bibinfo{person}{Lech {\'S}wirski} {and}
-  \bibinfo{person}{Neil~A. Dodgson}.} \bibinfo{year}{2013}\natexlab{}.
-\newblock \showarticletitle{A fully-automatic, temporal approach to single
-  camera, glint-free {3D} eye model fitting}. In
-  \bibinfo{booktitle}{\emph{Proc. Int. Workshop on Pervasive Eye Tracking and
-  Mobile Eye-Based Interaction (PETMEI)}}.
 \newblock
 
 

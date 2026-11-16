@@ -238,65 +238,191 @@ cues for accommodation-aware eye tracking, but they also reveal a practical chal
 % Requires: booktabs, xcolor with [table] option (or colortbl)
 
 
+% \begin{table*}[t]
+% \centering
+
+% \caption{%
+% Comparison of vergence (V) and accommodation (A) sensing approaches, rated by suitability for compact wearable integration (\G{high}, \M{moderate}, \R{low}) across hardware complexity, sensing principle, and estimation accuracy.
+% }
+
+% \label{tab:literature_review}
+% \small
+% \resizebox{\textwidth}{!}{%
+% \begin{tabular}{lccccccc}
+% \toprule
+% Ref. & Camera & Illum. & Method & Learning & V/A Target & Near-eye & Accuracy \\
+% \midrule
+% \cite{Dual_Purkinje_Tracker}
+% & \R{0} & \R{Fixed} & \G{Purkinje} & \M{Physical model} & \R{Gaze} & \R{No} & \G{High (gaze)} \\
+% \cite{Crane_Steele_1978}
+% & \R{0} & \R{Fixed} & \G{Purkinje} & \M{Physical model} & \M{A only} & \R{No} & \G{High (A)} \\
+% \cite{Schaeffel_1987}
+% & \G{1} & \R{Fixed} & \M{Photorefraction} & \M{Physical model} & \G{Both} & \R{No} & \M{Mid (A)} \\
+% \cite{Single_Camera_Two_Lights}
+% & \G{1} & \G{Movable} & \R{Vergence} & \M{Physical model} & \R{Gaze} & \R{No} & \M{Mid (gaze)} \\
+% \cite{Rosales_2006_JOV}
+% & \G{1} & \R{Fixed} & \G{Purkinje} & \M{Physical model} & \M{A only} & \R{No} & \M{Mid (A)} \\
+% \cite{Swirski_2013}
+% & \G{1} & \R{Fixed} & \R{Vergence} & \M{Physical model} & \R{Gaze} & \G{Yes} & \M{Mid (gaze)} \\
+% \cite{Weier_2018}
+% & \G{1} & \R{Fixed} & \R{Vergence} & \G{Regression} & \M{V only} & \G{Yes} & \M{Mid (V)} \\
+% \cite{NVGaze}
+% & \G{1} & \G{Movable} & \R{Vergence} & \G{CNN} & \R{Gaze} & \G{Yes} & \M{Mid (gaze)} \\
+% \cite{Padmanaban_2019}
+% & \G{1} & \R{Fixed} & \R{Vergence} & \R{Formula} & \M{V only} & \G{Yes} & \M{Mid (V)} \\
+% \cite{Improved_vergence_and_accommodation}
+% & \M{2} & \R{Fixed} & \G{Purkinje} & \G{NN regression} & \G{Both} & \G{Yes} & \M{Mid (A)} \\
+% \cite{Angelopoulos_2021}
+% & \G{1} & \R{Fixed} & \R{Vergence} & \M{Physical model} & \R{Gaze} & \G{Yes} & \G{High (gaze)} \\
+% \cite{Wu2023Purkinje}
+% & \G{1} & \R{Fixed} & \G{Purkinje} & \M{Physical model} & \R{Gaze} & \R{No} & \G{High (gaze)} \\
+% \cite{Dynamic_accommodation_Purkinje}
+% & \G{1} & \G{Movable} & \G{Purkinje} & \G{ML regression} & \G{Both} & \R{No} & \G{High (A)} \\
+% \cite{Depth_fixation_DPI}
+% & \G{1} & \R{Fixed} & \G{Purkinje} & \G{Regression} & \M{V only} & \R{No} & \R{Low (V)} \\
+% \cite{AR_Vergence_Depth_OST}
+% & \G{1} & \R{Fixed} & \R{Vergence} & \R{Formula} & \M{V only} & \G{Yes} & \R{Low (V)} \\
+% \cite{OpenIrisDPI}
+% & \G{1} & \R{Fixed} & \G{Purkinje} & \M{Physical model} & \R{Gaze} & \R{No} & \G{High (gaze)} \\
+% \cite{Chen2026GazeSynthesizer}
+% & \R{--} & \R{Fixed} & \R{Vergence} & \G{Diffusion + CNN} & \R{Gaze} & \R{No} & \M{Mid (gaze)} \\ % 原为 \M{--}，若按原论文汇报精度可改为 \M{Mid (gaze)}
+% \cite{Digital_Eye_Tracker_Prototyper}
+% & \R{20} & \R{Fixed} & \R{Vergence} & \G{NeRF + CNN} & \R{Gaze} & \G{Yes} & \G{High (gaze)} \\ % 原为 \M{--}，多相机合成通常为 \G{High (gaze)} 或 \M{Mid (gaze)}
+% \cite{Bandela2025Photorefraction}
+% & \G{1} & \R{Fixed} & \M{Photorefraction} & \M{Physical model} & \M{A only} & \R{No} & \M{Mid (A)} \\ % 原为 \M{--}，偏心摄影验光法通常为 \M{Mid (A)}
+% \midrule
+% \textbf{Ours}
+% & \G{1} & \G{Movable} & \G{Purkinje} & \G{3DGS} & \G{Both} & \G{Yes} & \G{High (A)} \\
+% \bottomrule
+% \end{tabular}%
+% }
+% \end{table*}
+
+
+
 \begin{table*}[t]
 \centering
 
 \caption{%
-Comparison of vergence (V) and accommodation (A) sensing approaches, rated by suitability for compact wearable integration (\G{high}, \M{moderate}, \R{low}) across hardware complexity, sensing principle, and estimation accuracy.
+Comparison of accommodation and fixation-depth sensing
+approaches in terms of hardware complexity, sensing
+principle, learning strategy, subject population,
+and near- and far-distance accuracy.
 }
 
 \label{tab:literature_review}
+
 \small
+
 \resizebox{\textwidth}{!}{%
 \begin{tabular}{lccccccc}
+
 \toprule
-Ref. & Camera & Illum. & Method & Learning & V/A Target & Near-eye & Accuracy \\
+
+Ref. & Camera & Illum. & Method & Learning
+& Subjects & Near Acc. & Far Acc. \\
+
 \midrule
-\cite{Dual_Purkinje_Tracker}
-& \R{0} & \R{Fixed} & \G{Purkinje} & \M{Physical model} & \R{Gaze} & \R{No} & \G{High (gaze)} \\
+
 \cite{Crane_Steele_1978}
-& \R{0} & \R{Fixed} & \G{Purkinje} & \M{Physical model} & \M{A only} & \R{No} & \G{High (A)} \\
+& \R{0} & \R{Fixed} & \G{Purkinje}
+& \M{Physical model} & --
+& \G{High}$^\dagger$ & -- \\
+
 \cite{Schaeffel_1987}
-& \G{1} & \R{Fixed} & \M{Photorefraction} & \M{Physical model} & \G{Both} & \R{No} & \M{Mid (A)} \\
-\cite{Single_Camera_Two_Lights}
-& \G{1} & \G{Movable} & \R{Vergence} & \M{Physical model} & \R{Gaze} & \R{No} & \M{Mid (gaze)} \\
+& \G{1} & \R{Fixed} & \M{Photorefraction}
+& \M{Physical model} & --
+& \M{Mid}$^\dagger$ & -- \\
+
 \cite{Rosales_2006_JOV}
-& \G{1} & \R{Fixed} & \G{Purkinje} & \M{Physical model} & \M{A only} & \R{No} & \M{Mid (A)} \\
-\cite{Swirski_2013}
-& \G{1} & \R{Fixed} & \R{Vergence} & \M{Physical model} & \R{Gaze} & \G{Yes} & \M{Mid (gaze)} \\
+& \G{1} & \R{Fixed} & \G{Purkinje}
+& \M{Physical model} & \G{Multiple}
+& -- & -- \\
+
+\cite{Lee2012PurkinjeDepth}
+& \G{1} & \R{Fixed} & \G{Purkinje}
+& \G{MLP} & --
+& \M{Mid}$^*$ & -- \\
+
+\cite{Chirre_2015_BOE}
+& \R{0} & \R{Fixed} & \M{-}
+& \M{Physical model} & \G{Multiple}
+& \G{High}$^\dagger$ & -- \\
+
+\cite{Ramasubramanian2015UBM}
+& \R{0} & -- & \M{-}
+& \G{Regression} & \G{Multiple}
+& \G{High}$^\dagger$ & -- \\
+
+\cite{Stevenson2015FixationDepth}
+& \R{0} & -- & \R{Vergence}
+& \G{NN regression} & --
+& \M{Mid}$^*$ & -- \\
+
+\cite{Itoh2017Focus}
+& \G{1} & \R{Fixed} & \G{Purkinje}
+& \G{Regression} & \M{Single}
+& \M{Mid}$^*$ & -- \\
+
+\cite{Lee2017GazeDepth}
+& \G{1} & \R{Fixed} & \R{Vergence}
+& \G{MLP} & \G{Multiple}
+& -- & \M{Mid}$^*$ \\
+
 \cite{Weier_2018}
-& \G{1} & \R{Fixed} & \R{Vergence} & \G{Regression} & \M{V only} & \G{Yes} & \M{Mid (V)} \\
-\cite{NVGaze}
-& \G{1} & \G{Movable} & \R{Vergence} & \G{CNN} & \R{Gaze} & \G{Yes} & \M{Mid (gaze)} \\
+& \G{1} & \R{Fixed} & \R{Vergence}
+& \G{Regression} & \G{Multiple}
+& \G{High}$^*$ & \G{High}$^*$ \\
+
 \cite{Padmanaban_2019}
-& \G{1} & \R{Fixed} & \R{Vergence} & \R{Formula} & \M{V only} & \G{Yes} & \M{Mid (V)} \\
+& \G{1} & \R{Fixed} & \R{Vergence}
+& \G{Sensor fusion} & \G{Multiple}
+& -- & -- \\
+
 \cite{Improved_vergence_and_accommodation}
-& \M{2} & \R{Fixed} & \G{Purkinje} & \G{NN regression} & \G{Both} & \G{Yes} & \M{Mid (A)} \\
-\cite{Angelopoulos_2021}
-& \G{1} & \R{Fixed} & \R{Vergence} & \M{Physical model} & \R{Gaze} & \G{Yes} & \G{High (gaze)} \\
-\cite{Wu2023Purkinje}
-& \G{1} & \R{Fixed} & \G{Purkinje} & \M{Physical model} & \R{Gaze} & \R{No} & \G{High (gaze)} \\
+& \M{2} & \R{Fixed} & \G{Purkinje}
+& \G{NN regression} & \M{Single}
+& \G{High}$^*$ & -- \\
+
 \cite{Dynamic_accommodation_Purkinje}
-& \G{1} & \G{Movable} & \G{Purkinje} & \G{ML regression} & \G{Both} & \R{No} & \G{High (A)} \\
+& \G{1} & \R{Fixed} & \G{Purkinje}
+& \G{ML regression} & \G{Multiple}
+& \G{High} & -- \\
+
 \cite{Depth_fixation_DPI}
-& \G{1} & \R{Fixed} & \G{Purkinje} & \G{Regression} & \M{V only} & \R{No} & \R{Low (V)} \\
+& \G{1} & \R{Fixed} & \G{Purkinje}
+& \G{Regression} & \G{Multiple}
+& \R{Low}$^*$ & -- \\
+
 \cite{AR_Vergence_Depth_OST}
-& \G{1} & \R{Fixed} & \R{Vergence} & \R{Formula} & \M{V only} & \G{Yes} & \R{Low (V)} \\
-\cite{OpenIrisDPI}
-& \G{1} & \R{Fixed} & \G{Purkinje} & \M{Physical model} & \R{Gaze} & \R{No} & \G{High (gaze)} \\
-\cite{Chen2026GazeSynthesizer}
-& \R{--} & \R{Fixed} & \R{Vergence} & \G{Diffusion + CNN} & \R{Gaze} & \R{No} & \M{Mid (gaze)} \\ % 原为 \M{--}，若按原论文汇报精度可改为 \M{Mid (gaze)}
-\cite{Digital_Eye_Tracker_Prototyper}
-& \R{20} & \R{Fixed} & \R{Vergence} & \G{NeRF + CNN} & \R{Gaze} & \G{Yes} & \G{High (gaze)} \\ % 原为 \M{--}，多相机合成通常为 \G{High (gaze)} 或 \M{Mid (gaze)}
+& \G{1} & \R{Fixed} & \R{Vergence}
+& \M{Statistical analysis} & \G{Multiple}
+& -- & -- \\
+
+\cite{Pijpaert2025Vergence}
+& \G{1} & \R{Fixed} & \R{Vergence}
+& \M{Physical model} & \G{Multiple}
+& \M{Mid}$^*$ & -- \\
+
 \cite{Bandela2025Photorefraction}
-& \G{1} & \R{Fixed} & \M{Photorefraction} & \M{Physical model} & \M{A only} & \R{No} & \M{Mid (A)} \\ % 原为 \M{--}，偏心摄影验光法通常为 \M{Mid (A)}
+& \G{1} & \R{Fixed} & \M{Photorefraction}
+& \M{Physical model} & \G{Multiple}
+& -- & -- \\
+
 \midrule
+
 \textbf{Ours}
-& \G{1} & \G{Movable} & \G{Purkinje} & \G{3DGS} & \G{Both} & \G{Yes} & \G{High (A)} \\
+& \G{1} & \G{Movable} & \G{Purkinje}
+& \G{3DGS} & --
+& -- & -- \\
+
 \bottomrule
+
 \end{tabular}%
 }
+
 \end{table*}
+
 
 
 
