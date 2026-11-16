@@ -69,7 +69,11 @@
 \newabbreviation{FOV}{FoV}{Field of View}
 \newabbreviation{AR}{AR}{Augmented Reality}
 \newabbreviation{VR}{VR}{Virtual Reality}
+\newabbreviation{4DGS}{4DGS}{4D Gaussian Splatting}
 
+
+
+\global\long\def\FourDGS{\gls{4DGS}\xspace}
 \global\long\def\GS{\gls{3DGS}\xspace}
 \global\long\def\SH{\gls{SH}\xspace}
 \global\long\def\DPI{\gls{DPI}\xspace}
@@ -115,7 +119,7 @@
 
 \begin{document}
 
-\title{Near-Eye Purkinje Image Simulation and Capture for Accommodation-Aware Eye Tracking}
+\title{Accommodation-Aware 4D Eye Reconstruction Using Gaussian Splatting}
 
 % \author{Zicong Peng}
 % \affiliation{%
@@ -169,7 +173,7 @@
 \ccsdesc[500]{Computing methodologies~Rendering}
 \ccsdesc[300]{Computing methodologies~Computer vision}
 
-\keywords{eye tracking, deep learning, computer graphics}
+\keywords{eye tracking, Gaussian splatting}
 % eample teaser
 % \begin{teaserfigure}
 %   \includegraphics[width=\textwidth]{figures/teaser.png}
@@ -229,7 +233,7 @@ and accommodation across users. Surveyed works suggest that higher-order Purkinj
 cues for accommodation-aware eye tracking, but they also reveal a practical challenge: 
 \textit{P3 and P4 are faint, easily defocused, and highly sensitive to LED--camera--eye geometry.} 
 
-\textcolor{red}{ToDo: Our work's differentiation goes here}
+\textcolor{red}{ToDo: We propose a framework that leverages \GS{} to explicitly preserve the ocular features, including Purkinje images. By coupling the real near-eye images, this approach enables the large-scale synthesis of high-fidelity eye images while serving as an effective prior for improving \GS{} rendering of complex, nested transparent structures. Building on this representation, we incorporate \FourDGS{} to capture transient physiological dynamics such as pupillary responses and micro-eye movements. This spatiotemporal approach is expected to improve dynamic gaze tracking precision while offering a promising avenue for non-invasive medical diagnostics.}
 
 % Requires: booktabs, xcolor with [table] option (or colortbl)
 
@@ -372,25 +376,23 @@ The present work does not perform end-to-end differentiable optimization. Instea
 
 \section{Method}
 
-We adopt \GS{} \shortcite{Gaussian_Splatting} as the base representation for reconstructing the eye scene. The scene is represented by a set of anisotropic 3D Gaussians, each parameterized by its position \(\boldsymbol{\mu}\), covariance \(\boldsymbol{\Sigma}\) defined by scale and rotation, opacity \(\alpha\), and spherical harmonics (SH) coefficients for view-dependent appearance \cite{Gaussian_Splatting,GaussianShader}.
+We adopt \GS{} \shortcite{Gaussian_Splatting} as the base representation for reconstructing the eye scene. The scene is represented by a set of anisotropic 3D Gaussians point clouds, each parameterized by its position \(\boldsymbol{\mu}\), covariance \(\boldsymbol{\Sigma}\) defined by scale and rotation, opacity \(\alpha\), and \SH{} coefficients for view-dependent appearance \cite{Gaussian_Splatting,GaussianShader}. During rendering, the 3D Gaussians are projected onto the image plane, depth-sorted, and accumulated using front-to-back \(\alpha\)-compositing \cite{Gaussian_Splatting}:
 
-During rendering, the 3D Gaussians are projected onto the image plane, depth-sorted, and accumulated using front-to-back \(\alpha\)-compositing \cite{Gaussian_Splatting}:
-
-\[
+\begin{equation}
 \mathbf{C}(\mathbf{p})
 =
 \sum_i
 T_i(\mathbf{p})
 \alpha_i(\mathbf{p})
-\mathbf{c}_i(\mathbf{v}),
-\]
+\mathbf{c}_i(\mathbf{v})
+\label{eq:color_rendering}
+\end{equation}
+where \(\mathbf{c}_i(\mathbf{v})\) denotes the view-dependent color predicted from the SH coefficients. We jointly optimize parameters of the Gaussians, namely $\alpha$, $\boldsymbol{\mu}$, and $\boldsymbol{\Sigma}$ and \SH{}. We regularize the optimization process using a combination of L1 and D-SSIM loss functions. In the process, we apply adaptive densification, increasing the number of Gaussians in regions requiring higher representational capacity. This description of 3DGS formulates our baseline implementation.
++
 
-where \(\mathbf{c}_i(\mathbf{v})\) denotes the view-dependent color predicted from the SH coefficients. Training jointly optimizes Gaussian positions, scales, rotations, opacities, and SH coefficients using a combination of \(L_1\) and D-SSIM reconstruction losses, while adaptive densification increases the number of Gaussians in regions requiring higher representational capacity \cite{Gaussian_Splatting}. We use this standard 3DGS formulation as our baseline and subsequently introduce Purkinje-specific local supervision.
+\subsection{\GS{}}
 
-
-\subsection{3D Gaussian Splatting}
-
-3D Gaussian Splatting is an explicit 3D scene representation and differentiable rendering method designed for novel view synthesis. The core idea is modeling the geometric structure and viewpoint-dependent appearance of a scene in 3D space using a set of optimizable Gaussian primitives expressed as
+\GS{} is an explicit 3D scene representation and differentiable rendering method designed for novel view synthesis. The core idea is modeling the geometric structure and viewpoint-dependent appearance of a scene in 3D space using a set of optimizable Gaussian primitives expressed as
 
 \begin{equation}
 \mathcal{G}_i =
@@ -416,11 +418,9 @@ The input to 3DGS consists of a set of multi-view images capturing the same scen
 \mathbf{R}_i^{T},
 \label{eq:3dgs_covariance}
 \end{equation}
-
 where $\mathbf{S}_i$ is a diagonal scaling matrix constructed from $\mathbf{s}_i$, and $\mathbf{R}_i$ determines the orientation of the anisotropic Gaussian.
 
 Once the Gaussian primitives are initialized and parameterized, they are projected onto the image plane, ordered according to depth, and accumulated using front-to-back alpha compositing to generate the rendered image. Standard 3DGS combines a pixel-wise $L_1$ loss with a D-SSIM loss \cite{Gaussian_Splatting}:
-
 \begin{equation}
 \mathcal{L}_{\mathrm{GS}}
 =
@@ -429,8 +429,8 @@ Once the Gaussian primitives are initialized and parameterized, they are project
 \lambda\mathcal{L}_{\mathrm{D\text{-}SSIM}},
 \label{eq:3dgs_loss}
 \end{equation}
-
-where $\mathcal{L}_{1}$ measures the pixel-wise photometric difference between the rendered and ground-truth images, $\mathcal{L}_{\mathrm{D\text{-}SSIM}}$ measures their local structural dissimilarity, and $\lambda$ controls the relative contribution of the two terms. The reconstruction loss is back-propagated to jointly optimize the Gaussian positions, scales, rotations, opacities, and SH coefficients.
+%
+\noindent where $\mathcal{L}_{1}$ measures the pixel-wise photometric difference between the rendered and ground-truth images, $\mathcal{L}_{\mathrm{D\text{-}SSIM}}$ measures their local structural dissimilarity, and $\lambda$ controls the relative contribution of the two terms. The reconstruction loss is back-propagated to jointly optimize the Gaussian positions, scales, rotations, opacities, and SH coefficients.
 
 Before the formal training, we conducted ablation experiments to compare four 3DGS models. Using Splatfacto from Nerfstudio as the baseline, we first used the default configuration and then enabled all the options to test whether a single Gaussian set could simultaneously represent iris texture and Purkinje images when the capacity was sufficient. Subsequently, we compared two variants that separately modeled reflection and transmission: RT-Splatting divided the Gaussians into a reflection layer and a transmission layer, rendered them separately and then composited them; TransparentGS explicitly handled reflection and refraction for transparent objects. The evaluation indicators were the position errors of P1 and P4 at the validation views, as well as the difference in PSNR between the training views and the validation views.
 
