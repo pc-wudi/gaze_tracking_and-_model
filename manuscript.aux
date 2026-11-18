@@ -12,8 +12,6 @@
 \citation{Dunn2019Varifocal}
 \citation{Improved_vergence_and_accommodation}
 \citation{Dynamic_accommodation_Purkinje}
-\citation{Crane_Steele_1978}
-\citation{Schaeffel_1987}
 \citation{Rosales_2006_JOV}
 \citation{Lee2012PurkinjeDepth}
 \citation{Chirre_2015_BOE}
@@ -54,22 +52,27 @@
 \citation{Gaussian_Splatting}
 \citation{Gaussian_Splatting,GaussianShader}
 \citation{Gaussian_Splatting}
-\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Comparison of accommodation and fixation-depth sensing approaches. Accuracy is rated from the reported error: for errors in diopters ($\dagger $), High is at most 0.25\,D, Mid at most 0.5\,D, and Low above. \emph  {Photorefraction}, \emph  {Wavefront}, and \emph  {Ultrasound} are clinical instruments that measure accommodation, the first two from the eye's refraction and the last from lens biometry. Although our method is per-person, combining 3DGS with Purkinje imaging promises large amounts of synthetic data to further improve accuracy. }}{2}{table.caption.5}\protected@file@percent }
+\citation{Gaussian_Splatting,GaussianShader}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Comparison of accommodation and fixation-depth sensing approaches. Accuracy is rated from the reported error in diopters: High is at most 0.25\,D, Mid at most 0.5\,D, and Low above. For works that report distance or angle errors, High is below 10\% of the centre of the tested range, Mid below 20\%, and Low above. \emph  {Ranges} are in diopters (D) for works that report accommodation and in metres (m) for works that report fixation depth. \emph  {Photorefraction}, \emph  {Wavefront}, and \emph  {Ultrasound} are clinical instruments that measure accommodation, the first two from the eye's refraction and the last from lens biometry. Although our method is per-person, combining 3DGS with Purkinje imaging promises large amounts of synthetic data to further improve accuracy. }}{2}{table.caption.5}\protected@file@percent }
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
-\newlabel{tab:literature_review}{{1}{2}{Comparison of accommodation and fixation-depth sensing approaches. Accuracy is rated from the reported error: for errors in diopters ($\dagger $), High is at most 0.25\,D, Mid at most 0.5\,D, and Low above. \emph {Photorefraction}, \emph {Wavefront}, and \emph {Ultrasound} are clinical instruments that measure accommodation, the first two from the eye's refraction and the last from lens biometry. Although our method is per-person, combining 3DGS with Purkinje imaging promises large amounts of synthetic data to further improve accuracy}{table.caption.5}{}}
+\newlabel{tab:literature_review}{{1}{2}{Comparison of accommodation and fixation-depth sensing approaches. Accuracy is rated from the reported error in diopters: High is at most 0.25\,D, Mid at most 0.5\,D, and Low above. For works that report distance or angle errors, High is below 10\% of the centre of the tested range, Mid below 20\%, and Low above. \emph {Ranges} are in diopters (D) for works that report accommodation and in metres (m) for works that report fixation depth. \emph {Photorefraction}, \emph {Wavefront}, and \emph {Ultrasound} are clinical instruments that measure accommodation, the first two from the eye's refraction and the last from lens biometry. Although our method is per-person, combining 3DGS with Purkinje imaging promises large amounts of synthetic data to further improve accuracy}{table.caption.5}{}}
 \@writefile{toc}{\contentsline {paragraph}{Purkinje Modelling}{2}{section*.7}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Physics-Based Optical Design}{2}{subsection.3.3}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {4}Method}{2}{section.4}\protected@file@percent }
 \newlabel{eq:color_rendering}{{1}{2}{Method}{equation.1}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.1}\gls {3DGS}\xspace  {}}{2}{subsection.4.1}\protected@file@percent }
-\citation{Gaussian_Splatting,GaussianShader}
+\newlabel{eq:gaussian_primitive}{{2}{2}{\GS {}}{equation.2}{}}
 \citation{Gaussian_Splatting}
 \bibstyle{ACM-Reference-Format}
 \bibdata{references}
 \bibcite{Depth_fixation_DPI}{{1}{2025}{{Ahn and Lee}}{{}}}
 \bibcite{Bandela2025Photorefraction}{{2}{2025}{{Bandela et~al\mbox  {.}}}{{}}}
 \bibcite{AR_Haploscope_Replication}{{3}{2024}{{Bontha and Arefin}}{{}}}
-\newlabel{eq:gaussian_primitive}{{2}{3}{\GS {}}{equation.2}{}}
+\bibcite{Chirre_2015_BOE}{{4}{2015}{{Chirre et~al\mbox  {.}}}{{}}}
+\bibcite{Dual_Purkinje_Tracker}{{5}{1973}{{Cornsweet and Crane}}{{}}}
+\bibcite{Crane_Steele_1978}{{6}{1978}{{Crane and Steele}}{{}}}
+\bibcite{Dunn2019Varifocal}{{7}{2019}{{Dunn}}{{}}}
+\bibcite{WideRange_Purkinje}{{8}{2025}{{Idrizovi{\'c} et~al\mbox  {.}}}{{}}}
 \newlabel{eq:3dgs_covariance}{{3}{3}{\GS {}}{equation.3}{}}
 \newlabel{eq:3dgs_loss}{{4}{3}{\GS {}}{equation.4}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.2}The collection of synthetic eye data and real eye images}{3}{subsection.4.2}\protected@file@percent }
@@ -77,11 +80,6 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Purkinje image reconstruction: From synthetic domain to real domain}{3}{subsection.4.4}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {5}Results and Discussions}{3}{section.5}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{References}{3}{section*.9}\protected@file@percent }
-\bibcite{Chirre_2015_BOE}{{4}{2015}{{Chirre et~al\mbox  {.}}}{{}}}
-\bibcite{Dual_Purkinje_Tracker}{{5}{1973}{{Cornsweet and Crane}}{{}}}
-\bibcite{Crane_Steele_1978}{{6}{1978}{{Crane and Steele}}{{}}}
-\bibcite{Dunn2019Varifocal}{{7}{2019}{{Dunn}}{{}}}
-\bibcite{WideRange_Purkinje}{{8}{2025}{{Idrizovi{\'c} et~al\mbox  {.}}}{{}}}
 \bibcite{Itoh2017Focus}{{9}{2017}{{Itoh et~al\mbox  {.}}}{{}}}
 \bibcite{GaussianShader}{{10}{2024}{{Jiang et~al\mbox  {.}}}{{}}}
 \bibcite{Gaussian_Splatting}{{11}{2023}{{Kerbl et~al\mbox  {.}}}{{}}}

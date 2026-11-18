@@ -300,66 +300,47 @@ cues for accommodation-aware eye tracking, but they also reveal a practical chal
 
 \begin{table}[t]
 \centering
-\providecommand{\chk}[1]{\textcolor{red}{#1}}% unverified cell; redefine as {#1} once checked
-\providecommand{\refline}[1]{\addlinespace[1.5pt]\multicolumn{6}{@{}l}{#1}\\[-0.5pt]}
+\providecommand{\rg}{}\renewcommand{\rg}[3]{#1 & #2\,#3}% a range: min -- max unit, aligned on the dash
+\providecommand{\rgone}{}\renewcommand{\rgone}[1]{\multicolumn{2}{c}{#1}}% a Ranges cell that is not a min -- max range
+\providecommand{\rowline}{}\renewcommand{\rowline}{\arrayrulecolor{black!25}\specialrule{0.8pt}{0pt}{0pt}\arrayrulecolor{black}}% faint line between rows
 \caption{%
 Comparison of accommodation and fixation-depth sensing approaches.
-Accuracy is rated from the reported error: for errors in diopters ($\dagger$), High is at most 0.25\,D, Mid at most 0.5\,D, and Low above.
+Accuracy is rated from the reported error in diopters: High is at most 0.25\,D, Mid at most 0.5\,D, and Low above.
+For works that report distance or angle errors, High is below 10\% of the centre of the tested range, Mid below 20\%, and Low above.
+\emph{Ranges} are in diopters (D) for works that report accommodation and in metres (m) for works that report fixation depth.
 \emph{Photorefraction}, \emph{Wavefront}, and \emph{Ultrasound} are clinical instruments that measure accommodation, the first two from the eye's refraction and the last from lens biometry.
 Although our method is per-person, combining 3DGS with Purkinje imaging promises large amounts of synthetic data to further improve accuracy.
 }
 \label{tab:literature_review}
 \footnotesize
-\setlength{\tabcolsep}{5.5pt}
+\setlength{\tabcolsep}{2.5pt}\renewcommand{\arraystretch}{1.2}
 \resizebox{\columnwidth}{!}{%
-\begin{tabular}{@{}cccccl@{}}
+\begin{tabular}{@{}lccc>{\hspace{1.5pt}}r@{\,--\,}lcc@{}}
 \toprule
-Camera & Method & Subjects & Ranges (D) & Accuracy & Model \\
+Ref. & Camera & Method & Subjects & \rgone{Ranges} & Accuracy & Model \\
 \midrule
-\refline{\cite{Crane_Steele_1978}}
-\R{0} & \G{Purkinje} & N/A & $-$4 to 12 & \G{High}$^\dagger$ & Physical \\ % optometer: -4 to +12 D, about 0.1 D
-\refline{\cite{Schaeffel_1987}}
-\G{1} & \M{Photorefraction} & N/A & $-$5 to 5 & \M{Mid}$^\dagger$ & Physical \\ % +-0.3 D or better over +-5 D
-\refline{\cite{Rosales_2006_JOV}}
-\G{1} & \G{Purkinje} & \G{Generalized} & 0--7 & \R{\chk{Low}}$^\dagger$ & Physical \\ % proposed rating: 0.61 D lens-power difference vs. Scheimpflug
-\refline{\cite{Lee2012PurkinjeDepth}}
-\G{1} & \G{Purkinje} & \G{Generalized} & 2--10 & \M{Mid}$^*$ & MLP \\ % 10--50 cm; 4.59 cm
-\refline{\cite{Chirre_2015_BOE}}
-\R{0} & \M{Wavefront} & \G{Generalized} & 0.36--3.3 & \G{High}$^\dagger$ & Physical \\ % 2.75 m and 30 cm; 0.025 D
-\refline{\cite{Ramasubramanian2015UBM}}
-\R{0} & \M{Ultrasound} & \G{Generalized} & 0--6 & \G{High}$^\dagger$ & ML \\ % regression; 0.24--0.50 D
-\refline{\cite{Stevenson2015FixationDepth}}
-\R{0} & \R{Vergence} & \M{Per-person} & 1.1--5 & \M{Mid}$^*$ & MLP \\ % 0.2--0.9 m; feedforward NN; 5.7 cm (10.3%)
-\refline{\cite{Itoh2017Focus}}
-\G{1} & \G{Purkinje} & \M{Per-person} & 2.2--6.7 & \M{Mid}$^*$ & ML \\ % 15--45 cm; learned regression; 3.15 cm
-\refline{\cite{Lee2017GazeDepth}}
-\G{1} & \R{Vergence} & \G{Generalized} & 0.2--1 & \M{Mid}$^*$ & MLP \\ % 1--5 m; 0.42 m, 13 subjects
-\refline{\cite{Weier_2018}}
-\G{1} & \R{Vergence} & \G{Generalized} & $\geq$0.17 & \G{High}$^*$ & ML \\ % first 6 m; regression model; MSE < 0.1 m
-%\refline{\cite{Padmanaban_2019}}
-%\G{1} & \R{Vergence} & \G{Generalized} & 0--4 & \chk{N/A} & Physical \\ % vergence + depth camera, no training; error only in the supplement
-\refline{\cite{Improved_vergence_and_accommodation}}
-\M{2} & \G{Purkinje} & \M{Per-person} & 2--3.3 & \G{High}$^*$ & CNN \\ % 30--50 cm; 1.108 cm, 0.3782 deg
-\refline{\cite{Dynamic_accommodation_Purkinje}}
-\G{1} & \G{Purkinje} & \G{Generalized} & 1--4 & \G{High} & MLP \\ % 4 to 1 D; MLP; 0.22 D own data, 0.40 D other subjects
-\refline{\cite{Depth_fixation_DPI}}
-\G{1} & \G{Purkinje} & \G{Generalized} & 1.7--6.7 & \R{Low}$^*$ & ML \\ % 15--60 cm; regression; RMSE 7.69 cm
-\refline{\cite{AR_Vergence_Depth_OST}}
-\G{1} & \R{Vergence} & \G{Generalized} & 0.25--2.9 & \R{\chk{Low}}$^*$ & Physical \\ % vergence angle from gaze vectors, no training; proposed rating
-\refline{\cite{Pijpaert2025Vergence}}
-\M{2} & \R{Vergence} & \G{Generalized} & 1.6--2.9 & \M{Mid}$^*$ & Physical \\ % 350--610 mm; vergence MAE 0.89 deg
-\refline{\cite{Bandela2025Photorefraction}}
-\G{1} & \M{Photorefraction} & \G{Generalized} & 0--2 & \M{Mid}$^\dagger$ & Physical \\ % 2 D steps, 5 adults; 1.54 D response, 0.34 D residual after blur cancellation
-\midrule
-\refline{\textbf{Ours}}
-\G{1} & \G{Purkinje} & \M{Per-person} & N/A & N/A & 3DGS \\
+%\cite{Crane_Steele_1978} & \R{0} & \M{Optometer} & \G{Generalized} & \rg{$-$4}{12}{D} & \G{High} & Physical \\ \rowline % optical instrument, no person-specific model; used on several human subjects; optometer -4 to +12 D, noise about 0.1 D
+%\cite{Schaeffel_1987} & \G{1} & \M{Photorefraction} & \G{Generalized} & \rg{$-$5}{5}{D} & \M{Mid} & Physical \\ \rowline % optical instrument, no person-specific model; shown on one human subject and an artificial eye; +-0.3 D over +-5 D at 1.5 m
+\cite{Rosales_2006_JOV} & \G{1} & \G{Purkinje} & \G{Generalized} & \rg{0}{7}{D} & \R{Low} & Physical \\ \rowline % proposed rating: 0.61 D lens-power difference vs. Scheimpflug
+\cite{Lee2012PurkinjeDepth} & \G{1} & \G{Purkinje} & \G{Generalized} & \rg{0.1}{0.5}{m} & \M{Mid} & MLP \\ \rowline % 10--50 cm; 4.59 cm
+\cite{Chirre_2015_BOE} & \R{0} & \M{Wavefront} & \G{Generalized} & \rg{$-$4}{4}{D} & \G{High} & Physical \\ \rowline % sensor range +4 to -4 D, accuracy 0.025 D; targets at 2.75 m and 30 cm (3 D step); 8 subjects
+\parbox[c]{64pt}{\raggedright\strut\cite{Ramasubramanian2015UBM}\strut} & \R{0} & \M{Ultrasound} & \G{Generalized} & \rg{0}{6}{D} & \G{High} & Linear \\ \rowline % 0 to 6 D stimuli, 26 subjects; linear regression; 0.24--0.50 D
+\cite{Stevenson2015FixationDepth} & \R{0} & \R{Vergence} & \M{Per-person} & \rg{0.2}{0.9}{m} & \M{Mid} & MLP \\ \rowline % 0.2--0.9 m; feedforward NN; 5.7 cm (10.3%)
+\cite{Itoh2017Focus} & \G{1} & \G{Purkinje} & \M{Per-person} & \rg{0.15}{0.45}{m} & \M{Mid} & ML \\ \rowline % 15--45 cm; regression, type not stated (kernel regression or neural network); 3.15 cm
+\cite{Lee2017GazeDepth} & \G{1} & \R{Vergence} & \G{Generalized} & \rg{1}{5}{m} & \M{Mid} & MLP \\ \rowline % 1--5 m; 0.42 m, 13 subjects
+\cite{Weier_2018} & \G{1} & \R{Vergence} & \M{Per-person} & \rg{0.25}{6}{m} & \G{High} & SVR \\ \rowline % 0.25 m to 6 m; SVR with radial basis functions; 14 subjects, one model trained per user (cross-user prediction reported as unreliable); median error about 0.1 m
+%\cite{Padmanaban_2019} & \G{1} & \R{Vergence} & \G{Generalized} & \rg{0}{4}{D} & N/A & Physical \\ \rowline % vergence + depth camera, no training; error only in the supplement
+\cite{Improved_vergence_and_accommodation} & \M{2} & \G{Purkinje} & \M{Per-person} & \rg{0.3}{0.5}{m} & \G{High} & CNN \\ \rowline % 30--50 cm; 1.108 cm, 0.3782 deg
+\cite{Dynamic_accommodation_Purkinje} & \G{1} & \G{Purkinje} & \G{Generalized} & \rg{1}{4}{D} & \M{Mid} & MLP \\ \rowline % 4 to 1 D, 9 subjects; MLP trained on other subjects: RMSE 0.32 D (max < 0.40 D); trained on the subject's own data: 0.18 D (max 0.22 D)
+\cite{Depth_fixation_DPI} & \G{1} & \G{Purkinje} & \G{Generalized} & \rg{0.15}{0.6}{m} & \R{Low} & Linear \\ \rowline % 15--60 cm, 11 subjects (8 analysed); multiple linear regression; RMSE 7.69 cm
+\cite{AR_Vergence_Depth_OST} & \G{1} & \R{Vergence} & \G{Generalized} & \rg{0.35}{4}{m} & \R{Low} & Physical \\ \rowline % vergence angle from gaze vectors, no training; proposed rating
+\cite{Pijpaert2025Vergence} & \M{2} & \R{Vergence} & \G{Generalized} & \rg{0.35}{0.61}{m} & \M{Mid} & Physical \\ \rowline % 350--610 mm; vergence MAE 0.89 deg
+\cite{Bandela2025Photorefraction} & \G{1} & \M{Photorefraction} & \G{Generalized} & \rg{0}{2}{D} & \M{Mid} & Physical \\ \rowline % 2 D steps, 5 adults; 1.54 D response, 0.34 D residual after blur cancellation
+\textbf{Ours} & \G{1} & \G{Purkinje} & \M{Per-person} & \rgone{N/A} & N/A & 3DGS \\
 \bottomrule
 \end{tabular}%
 }
 \end{table}
-
-
-
 
 
 
