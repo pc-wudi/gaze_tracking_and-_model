@@ -192,17 +192,17 @@
 
 \maketitle
 
-\section{Problem}
+%\section{Problem}
 
-\subsection{Challenges of reconstructing Purkinje reflections via \GS{}.}
+%\subsection{Challenges of reconstructing Purkinje reflections via \GS{}.}
 
-\GS{} represents view-dependent appearance by using low-order \SH{} \cite{Gaussian_Splatting}, therefore, accurately modeling high-frequency, view-dependent specular appearance remains challenging~\cite{GaussianShader,SpecTReGS}. More importantly, P3 and P4 are formed through transmission and reflection
-across the multiple ocular interfaces of eyes, whereas rasterization-based \GS{} does not explicitly model these secondary optical paths~\cite{3DGUT}. 
-In addition, Lu et al. \shortcite{Improved_vergence_and_accommodation} and Wu et al. \shortcite{Wu2023Purkinje} show that P3 is formed at a different optical 
-focal plane from P1 and P4, while higher-order Purkinje reflections are relatively weak and therefore more susceptible to defocus and low contrast. 
-Finally, Purkinje locations vary jointly with accommodation, vergence, subject-specific ocular geometry, and camera--illumination 
-configuration \cite{Improved_vergence_and_accommodation,Dynamic_accommodation_Purkinje}. Purkinje reflections are better 
-characterized as dynamic optical signals governed by ocular optics rather than stable surface textures, making it difficult for standard \GS{} to reconstruct them consistently with their underlying physical behavior.
+%\GS{} represents view-dependent appearance by using low-order \SH{} \cite{Gaussian_Splatting}, therefore, accurately modeling high-frequency, view-dependent %specular appearance remains challenging~\cite{GaussianShader,SpecTReGS}. More importantly, P3 and P4 are formed through transmission and reflection
+%across the multiple ocular interfaces of eyes, whereas rasterization-based \GS{} does not explicitly model these secondary optical paths~\cite{3DGUT}. 
+%In addition, Lu et al. \shortcite{Improved_vergence_and_accommodation} and Wu et al. \shortcite{Wu2023Purkinje} show that P3 is formed at a different optical 
+%focal plane from P1 and P4, while higher-order Purkinje reflections are relatively weak and therefore more susceptible to defocus and low contrast. 
+%Finally, Purkinje locations vary jointly with accommodation, vergence, subject-specific ocular geometry, and camera--illumination 
+%configuration \cite{Improved_vergence_and_accommodation,Dynamic_accommodation_Purkinje}. Purkinje reflections are better 
+%characterized as dynamic optical signals governed by ocular optics rather than stable surface textures, making it difficult for standard \GS{} to reconstruct them %consistently with their underlying physical behavior.
 
 
 
@@ -211,7 +211,7 @@ characterized as dynamic optical signals governed by ocular optics rather than s
 
 We review  works from two main areas: 
 experimental approaches to ocular accommodation estimation and computational methods for virtual eye modeling. 
-Table 1 compares reviewed works
+Table 1 compares reviewed works.
 %
 \begin{table}[t]
 \centering
@@ -222,7 +222,11 @@ Table 1 compares reviewed works
 Comparison of accommodation and fixation-depth sensing approaches.
 Accuracy is rated from the reported error in diopters: High is at most 0.25\,D, Mid at most 0.5\,D, and Low above.
 \emph{Ranges} are in diopters (D).
-\emph{Purkinje}, \emph{Photorefraction}, \emph{Wavefront}, and \emph{Ultrasound} are methods measuring accommodation, and \emph{Vergence} measures fixation depth.
+\emph{Purkinje}, \emph{Photorefraction}, \emph{Wavefront}, and \emph{Ultrasound} assess accommodation through
+reflection positions \cite{Dynamic_accommodation_Purkinje}, pupillary reflex intensity gradients \cite{Bandela2025Photorefraction},
+wavefront defocus \cite{Chirre_2015_BOE}, and anterior segment biometry \cite{Ramasubramanian2015UBM}, respectively.
+\emph{Vergence} estimates fixation depth from binocular
+gaze geometry \cite{Weier_2018}.
 }
 \label{tab:literature_review}
 \footnotesize
@@ -250,16 +254,10 @@ Ref. & Camera & Method & Subjects & \rgone{Ranges (D)} & Accuracy & Model \\
 \cite{Pijpaert2025Vergence} & \M{2} & \R{Vergence} & \G{Generalized} & \rg{1.6}{2.9} & \M{Mid} & Physical \\ \rowline % 350--610 mm; vergence MAE 0.89 deg
 \cite{Bandela2025Photorefraction} & \G{1} & \M{Photorefraction} & \G{Generalized} & \rg{0}{2} & \M{Mid} & Physical \\ \rowline % 2 D steps, 5 adults; 1.54 D response, 0.34 D residual after blur cancellation
 \textbf{Ours} & \G{1} & \G{Purkinje} & \M{Per-person} & \rgone{N/A} & N/A & 3DGS \\
+
 \bottomrule
+
 \end{tabular}%
-}
-\par\vspace{1pt}
-\parbox{\columnwidth}{\footnotesize\raggedright
-\emph{Note.}
-\emph{Purkinje}: accommodation, read out from the positions of the reflections off the cornea and lens surfaces in a camera image.
-\emph{Photorefraction}: accommodation, read out from the brightness gradient of the fundus reflex across the pupil in a camera image, whereas \emph{Wavefront} sensing reconstructs the full wavefront error from the phase sampled at multiple points across the pupil.
-\emph{Ultrasound}: accommodation, read out from lens biometry in ultrasound images.
-\emph{Vergence}: fixation depth, read out from the convergence angle between the gaze directions of the two eyes.
 }
 \vspace{-8pt}
 \end{table}
@@ -311,8 +309,8 @@ Purkinje-based systems model internal reflections more directly. Wu et al.~\shor
 
 \section{Method}
 
-We adopt \GS{}~\cite{Gaussian_Splatting} as the base representation for reconstructing the eye scene. The scene is represented by a set of anisotropic 3D Gaussians point clouds, each parameterized by its position \(\boldsymbol{\mu}\), covariance \(\boldsymbol{\Sigma}\) defined by scale and rotation, opacity \(\alpha\), and \SH{} coefficients for view-dependent appearance~\cite{Gaussian_Splatting,GaussianShader}. During rendering, the 3D Gaussians are projected onto the image plane, depth-sorted, and accumulated using front-to-back \(\alpha\)-compositing~\cite{Gaussian_Splatting}:
-
+We model the eye of a human subject using 3DGS [Kerbl et al. 2023] representations. The scene is represented by a set of 3D Gaussians point clouds, each parameterized by its position \(\boldsymbol{\mu}\in\mathbb{R}^{3}\), covariance \(\boldsymbol{\Sigma}\in\mathbb{R}^{3\times3}\) defined by scale and rotation, opacity \(\alpha\in[0,1]\), and \SH{} coefficients for view-dependent appearance~\cite{Gaussian_Splatting}. During rendering, the 3D Gaussians are projected onto the image plane, depth-sorted, and accumulated using front-to-back \(\alpha\)-compositing:
+%
 \begin{equation}
 \mathbf{C}(\mathbf{p})
 =
@@ -320,54 +318,24 @@ We adopt \GS{}~\cite{Gaussian_Splatting} as the base representation for reconstr
 T_i(\mathbf{p})
 \alpha_i(\mathbf{p})
 \mathbf{c}_i(\mathbf{v})
-\label{eq:color_rendering}
+\label{eq:color_rendering}.
 \end{equation}
-where \(\mathbf{c}_i(\mathbf{v})\) denotes the view-dependent color predicted from the SH coefficients. We jointly optimize parameters of the Gaussians, namely $\alpha$, $\boldsymbol{\mu}$, and $\boldsymbol{\Sigma}$ and \SH{}. We regularize the optimization process using a combination of L1 and D-SSIM loss functions. In the process, we apply adaptive densification, increasing the number of Gaussians in regions requiring higher representational capacity. This description of 3DGS formulates our baseline implementation.
+where \(\mathbf{c}_i(\mathbf{v})\) denotes the view-dependent color predicted from the SH coefficients. We jointly optimize parameters of the Gaussians, namely $\alpha$, $\boldsymbol{\mu}$, and $\boldsymbol{\Sigma}$ and \SH{}. We regularize the optimization process using a combination of L1 and D-SSIM loss functions ($w_{\mathrm{L1}}=0.8, w_{\mathrm{D\text{-}SSIM}}=0.2$). In the process, we apply adaptive densification, increasing the number of Gaussians in regions requiring higher representational capacity. This description of 3DGS formulates our baseline implementation.
 
-\subsection{\GS{}}
+To investigate whether standard 3DGS can simultaneously represent
+iris texture and Purkinje images, we compared four model
+configurations. Using Splatfacto from
+Nerfstudio~\cite{Nerfstudio} as the baseline, we evaluated both
+its default configuration and an enhanced configuration with
+additional optimization options enabled. We further considered
+two variants that explicitly model optical effects:
+RT-Splatting, which separates reflection and transmission into
+distinct Gaussian layers, and TransparentGS~\cite{TransparentGS},
+which explicitly handles reflection and refraction.
 
-\GS{} is an explicit 3D scene representation and differentiable rendering method designed for novel view synthesis. The core idea is modeling the geometric structure and viewpoint-dependent appearance of a scene in 3D space using a set of optimizable Gaussian primitives expressed as
-
-\begin{equation}
-\mathcal{G}_i =
-\left\{
-\boldsymbol{\mu}_i,\,
-\boldsymbol{\Sigma}_i,\,
-\alpha_i,\,
-\mathbf{c}_i
-\right\},
-\label{eq:gaussian_primitive}
-\end{equation}
-
-Here,  $\boldsymbol{\mu}_i$ denotes the 3D position of the $i$-th Gaussian, $\mathbf{s}_i$ its scale, $\mathbf{R}_i$ its rotation, $\alpha_i$ its opacity, and $\mathbf{c}_i$ the spherical harmonics coefficients used to represent view-dependent appearance.
-
-The input to 3DGS consists of a set of multi-view images capturing the same scene from different viewpoints, structure-from-Motion (SfM) estimates the camera parameters and reconstructs a sparse 3D point cloud, which is subsequently used to initialize the Gaussian primitives~\cite{Gaussian_Splatting,GaussianShader}. The scale and rotation jointly define the covariance matrix as
-
-\begin{equation}
-\boldsymbol{\Sigma}_i
-=
-\mathbf{R}_i
-\mathbf{S}_i
-\mathbf{S}_i^{T}
-\mathbf{R}_i^{T},
-\label{eq:3dgs_covariance}
-\end{equation}
-where $\mathbf{S}_i$ is a diagonal scaling matrix constructed from $\mathbf{s}_i$, and $\mathbf{R}_i$ determines the orientation of the anisotropic Gaussian.
-
-Once the Gaussian primitives are initialized and parameterized, they are projected onto the image plane, ordered according to depth, and accumulated using front-to-back alpha compositing to generate the rendered image. Standard 3DGS combines a pixel-wise $L_1$ loss with a D-SSIM loss~\cite{Gaussian_Splatting}:
-\begin{equation}
-\mathcal{L}_{\mathrm{GS}}
-=
-(1-\lambda)\mathcal{L}_{1}
-+
-\lambda\mathcal{L}_{\mathrm{D\text{-}SSIM}},
-\label{eq:3dgs_loss}
-\end{equation}
-%
-\noindent where $\mathcal{L}_{1}$ measures the pixel-wise photometric difference between the rendered and ground-truth images, $\mathcal{L}_{\mathrm{D\text{-}SSIM}}$ measures their local structural dissimilarity, and $\lambda$ controls the relative contribution of the two terms. The reconstruction loss is back-propagated to jointly optimize the Gaussian positions, scales, rotations, opacities, and SH coefficients.
-
-% TODO(cite): "RT-Splatting" in the paragraph below has no entry in references.bib; add its \cite once the reference is confirmed.
-Before the formal training, we conducted ablation experiments to compare four 3DGS models. Using Splatfacto from Nerfstudio~\cite{Nerfstudio} as the baseline, we first used the default configuration and then enabled all the options to test whether a single Gaussian set could simultaneously represent iris texture and Purkinje images when the capacity was sufficient. Subsequently, we compared two variants that separately modeled reflection and transmission: RT-Splatting divided the Gaussians into a reflection layer and a transmission layer, rendered them separately and then composited them; TransparentGS~\cite{TransparentGS} explicitly handled reflection and refraction for transparent objects. The evaluation indicators were the position errors of P1 and P4 at the validation views, as well as the difference in PSNR between the training views and the validation views.
+The models were evaluated using the localization errors of P1
+and P4 in the validation views, as well as the PSNR gap between
+the training and validation views.
 
 \subsection{The collection of synthetic eye data and real eye images}
 

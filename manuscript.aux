@@ -2,12 +2,16 @@
 \providecommand\hyper@newdestlabel[2]{}
 \providecommand\HyField@AuxAddToFields[1]{}
 \providecommand\HyField@AuxAddToCoFields[2]{}
-\citation{Gaussian_Splatting}
-\citation{GaussianShader,SpecTReGS}
-\citation{3DGUT}
-\citation{Improved_vergence_and_accommodation}
-\citation{Wu2023Purkinje}
-\citation{Improved_vergence_and_accommodation,Dynamic_accommodation_Purkinje}
+\citation{Dynamic_accommodation_Purkinje}
+\citation{Bandela2025Photorefraction}
+\citation{Chirre_2015_BOE}
+\citation{Ramasubramanian2015UBM}
+\citation{Weier_2018}
+\citation{Dynamic_accommodation_Purkinje}
+\citation{Bandela2025Photorefraction}
+\citation{Chirre_2015_BOE}
+\citation{Ramasubramanian2015UBM}
+\citation{Weier_2018}
 \citation{Rosales_2006_JOV}
 \citation{Lee2012PurkinjeDepth}
 \citation{Chirre_2015_BOE}
@@ -26,49 +30,43 @@
 \citation{Dunn2019Varifocal}
 \citation{Improved_vergence_and_accommodation}
 \citation{Dynamic_accommodation_Purkinje}
+\citation{UnityEyes,NVGaze,RIT-Eyes}
+\citation{EyeNeRF}
+\citation{Realistic_nerf_eyes}
 \providecommand\@newglossary[4]{}
 \@newglossary{main}{glg}{gls}{glo}
 \@newglossary{abbreviations}{glg-abr}{gls-abr}{glo-abr}
 \providecommand\@glsxtr@savepreloctag[2]{}
 \@writefile{toc}{\contentsline {section}{Abstract}{1}{section*.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {1}Problem}{1}{section.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.1}Challenges of reconstructing Purkinje reflections via \gls {3DGS}\xspace  {}.}{1}{subsection.1.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {2}Introduction}{1}{section.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {3}Related works}{1}{section.3}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Comparison of accommodation and fixation-depth sensing approaches. Accuracy is rated from the reported error in diopters: High is at most 0.25\,D, Mid at most 0.5\,D, and Low above. \emph  {Ranges} are in diopters (D). \emph  {Purkinje}, \emph  {Photorefraction}, \emph  {Wavefront}, and \emph  {Ultrasound} are methods measuring accommodation, and \emph  {Vergence} measures fixation depth. }}{1}{table.caption.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{1}{section.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {2}Related works}{1}{section.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Eye Accommodation Tracking}{1}{subsection.2.1}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Comparison of accommodation and fixation-depth sensing approaches. Accuracy is rated from the reported error in diopters: High is at most 0.25\,D, Mid at most 0.5\,D, and Low above. \emph  {Ranges} are in diopters (D). \emph  {Purkinje}, \emph  {Photorefraction}, \emph  {Wavefront}, and \emph  {Ultrasound} assess accommodation through reflection positions \citep  {Dynamic_accommodation_Purkinje}, pupillary reflex intensity gradients \citep  {Bandela2025Photorefraction}, wavefront defocus \citep  {Chirre_2015_BOE}, and anterior segment biometry \citep  {Ramasubramanian2015UBM}, respectively. \emph  {Vergence} estimates fixation depth from binocular gaze geometry \citep  {Weier_2018}. }}{1}{table.caption.5}\protected@file@percent }
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
-\newlabel{tab:literature_review}{{1}{1}{Comparison of accommodation and fixation-depth sensing approaches. Accuracy is rated from the reported error in diopters: High is at most 0.25\,D, Mid at most 0.5\,D, and Low above. \emph {Ranges} are in diopters (D). \emph {Purkinje}, \emph {Photorefraction}, \emph {Wavefront}, and \emph {Ultrasound} are methods measuring accommodation, and \emph {Vergence} measures fixation depth}{table.caption.5}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Eye Accommodation Tracking}{1}{subsection.3.1}\protected@file@percent }
-\citation{UnityEyes,NVGaze,RIT-Eyes}
-\citation{EyeNeRF}
-\citation{Realistic_nerf_eyes}
+\newlabel{tab:literature_review}{{1}{1}{Comparison of accommodation and fixation-depth sensing approaches. Accuracy is rated from the reported error in diopters: High is at most 0.25\,D, Mid at most 0.5\,D, and Low above. \emph {Ranges} are in diopters (D). \emph {Purkinje}, \emph {Photorefraction}, \emph {Wavefront}, and \emph {Ultrasound} assess accommodation through reflection positions \cite {Dynamic_accommodation_Purkinje}, pupillary reflex intensity gradients \cite {Bandela2025Photorefraction}, wavefront defocus \cite {Chirre_2015_BOE}, and anterior segment biometry \cite {Ramasubramanian2015UBM}, respectively. \emph {Vergence} estimates fixation depth from binocular gaze geometry \cite {Weier_2018}}{table.caption.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Computational Eye Modeling}{1}{subsection.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Learned Eye Modelling}{1}{section*.6}\protected@file@percent }
 \citation{Wu2023Purkinje}
 \citation{WideRange_Purkinje}
 \citation{OpenIrisDPI}
 \citation{Improved_vergence_and_accommodation}
 \citation{Dynamic_accommodation_Purkinje}
 \citation{Gaussian_Splatting}
-\citation{Gaussian_Splatting,GaussianShader}
-\citation{Gaussian_Splatting}
-\citation{Gaussian_Splatting,GaussianShader}
-\citation{Gaussian_Splatting}
 \citation{Nerfstudio}
 \citation{TransparentGS}
 \citation{Schwiegerling2004}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Computational Eye Modeling}{2}{subsection.3.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Learned Eye Modelling}{2}{section*.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Purkinje Modelling}{2}{section*.7}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {4}Method}{2}{section.4}\protected@file@percent }
-\newlabel{eq:color_rendering}{{1}{2}{Method}{equation.1}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}\gls {3DGS}\xspace  {}}{2}{subsection.4.1}\protected@file@percent }
-\newlabel{eq:gaussian_primitive}{{2}{2}{\GS {}}{equation.2}{}}
-\newlabel{eq:3dgs_covariance}{{3}{2}{\GS {}}{equation.3}{}}
-\newlabel{eq:3dgs_loss}{{4}{2}{\GS {}}{equation.4}{}}
 \citation{Kassner2014Pupil}
 \citation{NVGaze}
 \bibstyle{ACM-Reference-Format}
 \bibdata{references}
 \bibcite{Depth_fixation_DPI}{{1}{2025}{{Ahn and Lee}}{{}}}
+\@writefile{toc}{\contentsline {paragraph}{Purkinje Modelling}{2}{section*.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3}Method}{2}{section.3}\protected@file@percent }
+\newlabel{eq:color_rendering}{{1}{2}{Method}{equation.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}The collection of synthetic eye data and real eye images}{2}{subsection.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}CNN dynamic contrast enhancement}{2}{subsection.3.2}\protected@file@percent }
+\newlabel{sec:contrast_enhancement}{{3.2}{2}{CNN dynamic contrast enhancement}{subsection.3.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Purkinje image reconstruction: From synthetic domain to real domain}{2}{subsection.3.3}\protected@file@percent }
 \bibcite{Bandela2025Photorefraction}{{2}{2025}{{Bandela et~al\mbox  {.}}}{{}}}
 \bibcite{AR_Haploscope_Replication}{{3}{2024}{{Bontha and Arefin}}{{}}}
 \bibcite{Chirre_2015_BOE}{{4}{2015}{{Chirre et~al\mbox  {.}}}{{}}}
@@ -85,12 +83,6 @@
 \bibcite{Lee2017GazeDepth}{{15}{2017}{{Lee et~al\mbox  {.}}}{{}}}
 \bibcite{EyeNeRF}{{16}{2022}{{Li et~al\mbox  {.}}}{{}}}
 \bibcite{Improved_vergence_and_accommodation}{{17}{2020}{{Lu et~al\mbox  {.}}}{{}}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}The collection of synthetic eye data and real eye images}{3}{subsection.4.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}CNN dynamic contrast enhancement}{3}{subsection.4.3}\protected@file@percent }
-\newlabel{sec:contrast_enhancement}{{4.3}{3}{CNN dynamic contrast enhancement}{subsection.4.3}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Purkinje image reconstruction: From synthetic domain to real domain}{3}{subsection.4.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {5}Results and Discussions}{3}{section.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{References}{3}{section*.9}\protected@file@percent }
 \bibcite{RIT-Eyes}{{18}{2020}{{Nair et~al\mbox  {.}}}{{}}}
 \bibcite{Dynamic_accommodation_Purkinje}{{19}{2023}{{Ozhan et~al\mbox  {.}}}{{}}}
 \bibcite{Pijpaert2025Vergence}{{20}{2025}{{Pijpaert et~al\mbox  {.}}}{{}}}
@@ -113,5 +105,7 @@
 \newlabel{tocindent3}{0pt}
 \newlabel{tocindent4}{0pt}
 \newlabel{tocindent5}{0pt}
-\newlabel{TotPages}{{4}{4}{}{page.4}{}}
-\gdef \@abspage@last{4}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Results and Discussions}{3}{section.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{References}{3}{section*.9}\protected@file@percent }
+\newlabel{TotPages}{{3}{3}{}{page.3}{}}
+\gdef \@abspage@last{3}
