@@ -1,44 +1,258 @@
-\documentclass[sigconf, screen, review]{acmart}
+\documentclass[sigconf,screen,review]{acmart}
+
+\citestyle{acmauthoryear}
 
 \usepackage{xspace}
-\usepackage[abbreviations]{glossaries-extra}
 \usepackage{amsmath}
 \usepackage{mathtools}
 \usepackage{wrapfig}
+\usepackage{url}
+\usepackage{xcolor}
+\usepackage{colortbl}
+\usepackage[abbreviations]{glossaries-extra}
+\usepackage{booktabs}
 
-\usepackage{xcolor, colortbl}
 \definecolor{acmgreen}{RGB}{0,128,0}
+
+\AtBeginDocument{%
+  \providecommand\BibTeX{{Bib\TeX}}%
+}
+
+
+
+
+\definecolor{GoodBG}{RGB}{218,242,222}
+\definecolor{MidBG}{RGB}{255,239,196}
+\definecolor{LowBG}{RGB}{248,218,218}
+
+\newcommand{\good}[1]{\colorbox{GoodBG}{\strut #1}}
+\newcommand{\okay}[1]{\colorbox{MidBG}{\strut #1}}
+\newcommand{\poor}[1]{\colorbox{LowBG}{\strut #1}}
+\newcommand{\G}[1]{\cellcolor{GoodBG}#1}
+\newcommand{\M}[1]{\cellcolor{MidBG}#1}
+\newcommand{\R}[1]{\cellcolor{LowBG}#1}
+\newcommand{\grp}[1]{\multicolumn{11}{l}{\textit{#1}}\\}
+\newacronym{VAE}{VAE}{Variational Auto-Encoder}
+\newacronym{INR}{INR}{Implicit Neural Representations}
+\newacronym{PSNR}{PSNR}{Peak Signal-to-Noise Ratio}
+\newacronym{SSIM}{SSIM}{Structural Similarity Index Measure}
+\newacronym{3D}{3D}{Three-Dimensional}
+\newabbreviation{MLP}{MLP}{Multi-Layer Perceptron}
+\newacronym{CGH}{CGH}{Computer-Generated Holography}
+\newacronym{CNN}{CNN}{Convolutional Neural Network}
+\newabbreviation{DCT}{DCT}{Discrete Cosine Transform}
+\newabbreviation{VAC}{VAC}{Vergence-Accommodation Conflict}
+
+
+\global\long\def\CGH{\acrshort{CGH}\xspace}
+\global\long\def\CNN{\acrshort{CNN}\xspace}
+\global\long\def\VAE{\acrshort{VAE}\xspace}
+\global\long\def\INR{\acrshort{INR}\xspace}
+\global\long\def\PSNR{\acrshort{PSNR}\xspace}
+\global\long\def\SSIM{\acrshort{SSIM}\xspace}
+\global\long\def\TAESD{\textcolor{ColorTAESD}{\textbf{TAESD}}\xspace}
+\global\long\def\MLP{\gls{MLP}\xspace} % 修复：改用 \gls
+\global\long\def\SIREN{\textcolor{ColorSIREN}{\textbf{SIREN}}\xspace}
+\global\long\def\FILMSIREN{\textcolor{ColorFILMSIREN}{\textbf{FilmSIREN}}\xspace}
+
+
+\newabbreviation{3DGS}{3DGS}{3D Gaussian Splatting}
+\newabbreviation{SH}{SH}{Spherical Harmonics}
+\newabbreviation{DPI}{DPI}{Dual Purkinje Image}
+\newabbreviation{NIR}{NIR}{Near-Infrared}
+\newabbreviation{IR}{IR}{Infrared}
+\newabbreviation{DOF}{DoF}{Depth of Field}
+\newabbreviation{FOV}{FoV}{Field of View}
+\newabbreviation{AR}{AR}{Augmented Reality}
+\newabbreviation{VR}{VR}{Virtual Reality}
+\newabbreviation{4DGS}{4DGS}{4D Gaussian Splatting}
+
+
+
+\global\long\def\FourDGS{\gls{4DGS}\xspace}
+\global\long\def\GS{\gls{3DGS}\xspace}
+\global\long\def\SH{\gls{SH}\xspace}
+\global\long\def\DPI{\gls{DPI}\xspace}
+\global\long\def\NIR{\gls{NIR}\xspace}
+\global\long\def\IR{\gls{IR}\xspace}
+\global\long\def\DOF{\gls{DOF}\xspace}
+\global\long\def\FOV{\gls{FOV}\xspace}
+\global\long\def\AR{\gls{AR}\xspace}
+\global\long\def\VR{\gls{VR}\xspace}
+\global\long\def\VAC{\gls{VAC}\xspace}
+
+\newcommand{\etal}{~et al.\@\xspace}
+\newcommand{\etc}{etc.\@\xspace}
+\newcommand{\eg}{e.g.\@\xspace}
+\newcommand{\Eg}{E.g.\@\xspace}
+\newcommand{\ie}{i.e.\@\xspace}
+\newcommand{\Ie}{I.e.\@\xspace}
+\newcommand{\Fig}{Fig.\@\xspace}
+\newcommand{\fig}{Fig.\@\xspace}
+\newcommand{\eq}{Eq.\@\xspace}
+\newcommand{\refSec}[1]{Sec.~\ref{sec:#1}}
+\newcommand{\refSupSec}[1]{Sec.~\ref{#1}}
+\newcommand{\refFig}[1]{Fig.~\ref{fig:#1}}
+\newcommand{\refFigFull}[1]{Figure~\ref{fig:#1}}
+\newcommand{\refEq}[1]{Eq.~(\ref{eq:#1})}
+\newcommand{\refTbl}[1]{Tbl.~\ref{tbl:#1}}
+\newcommand{\refObj}[1]{Objective~\ref{obj:#1}}
+\newcommand\paraspace{-2.0mm}
+
+\definecolor{ColorMLP}{rgb}{0.8470588235294118, 0.10588235294117647, 0.3764705882352941}
+\definecolor{ColorSIREN}{rgb}{0.11764705882352941, 0.5333333333333333, 0.8980392156862745}
+\definecolor{ColorFILMSIREN}{rgb}{1, 0.7568627450980392, 0.027450980392156862}
+\definecolor{ColorTAESD}{rgb}{0, 0.30196078431372547, 0.25098039215686274}
+
+\newcommand{\phaseonlyhologram}{P\xspace}
+\newcommand{\wavelengths}{\lambda\xspace}
+\newcommand{\pixelpitch}{px\xspace}
+\newcommand{\bottleneck}{\alpha\xspace}
+
+\newcommand{\colorOutputField}[1]{\textcolor{ColorOutputField}{#1}}
+
+\settopmatter{authorsperrow=4}
 
 \AtBeginDocument{%
   \providecommand\BibTeX{{%
     Bib\TeX}}}
 
-\setcopyright{acmlicensed}
-\copyrightyear{2018}
-\acmYear{2018}
-\acmDOI{XXXXXXX.XXXXXXX}
+\setcopyright{none}
+\settopmatter{printacmref=false}
+\copyrightyear{2025}
+\acmYear{2025}
+\acmConference[SIGGRAPH]{SIGGRAPH}{2025}{}
 
-\acmConference[Conference acronym 'XX]{Make sure to enter the correct
-  conference title from your rights confirmation email}{June 03--05,
-  2018}{Woodstock, NY}
-\acmISBN{978-1-4503-XXXX-X/2018/06}
+
 
 \begin{document}
 
 
 \section*{Supplementary: Assessing Learned Models for Phase-only Hologram Compression}
 
+\subsection{Capturing Purkinje image}
+\DPI{} tracking can provide higher precision than conventional pupil--corneal-reflection tracking by using the relative motion of P1 and P4 rather than the pupil center~\cite{OpenIrisDPI,Dual_Purkinje_Tracker}.
+However, obtaining reliable Purkinje features from real eye images remains challenging. Wu et al.~\shortcite{Wu2023Purkinje} show that P1 and P4 can be imaged together while P3 is out of focus and P2 largely overlaps with P1; similarly, Ahn and Lee~\shortcite{Depth_fixation_DPI} report that P4 is substantially smaller and darker than P1, making its detection less reliable.
+Therefore, the existence of a valid reflection path does not necessarily guarantee a usable image feature, as its visibility further depends on optical focus, reflection strength, occlusion, and imaging noise~\cite{Dual_Purkinje_Tracker,Depth_fixation_DPI}.
+Camera and illumination configuration also affect whether these reflections remain observable across different eye orientations, making Purkinje detectability a joint consequence of ocular geometry and the imaging configuration~\cite{Dual_Purkinje_Tracker,Improved_vergence_and_accommodation}.
+Nevertheless, Purkinje geometry carries useful information about the underlying ocular surfaces, with previous phakometric studies showing that the position and geometry of these reflections can be used to infer ocular surface curvature and alignment~\cite{Purkinje_Surface_Measurement}.
+
+\subsection{Simulation-to-capture pipeline for near-eye Purkinje imaging}
+
+A reliable Purkinje imaging pipeline requires the eye to be modeled as an optical system rather than an appearance object. Since P1--P4 are generated by reflection and refraction at corneal and lenticular surfaces, Arizona/ZEMAX-style schematic eye models are useful because they make accommodation, refractive interfaces, and ray paths physically controllable~\cite{Improved_vergence_and_accommodation,Dynamic_accommodation_Purkinje}. This also explains why eye-rendering methods often keep the eyeball or cornea as an explicit mesh: specular highlights, corneal refraction, and near-field glints are tied to surface geometry, while NeRF-like fields are more suitable for view synthesis, relighting, and periocular appearance modeling~\cite{RIT-Eyes,EyeNeRF,Realistic_nerf_eyes}.
+Existing Purkinje imaging systems also provide practical guidance for hardware geometry. Both Lu et al.~\shortcite{Improved_vergence_and_accommodation} and Ozhan et al.~\shortcite{Dynamic_accommodation_Purkinje} place infrared LEDs close to the camera optical axis to maximize Purkinje visibility while keeping the reflections inside the camera field of view. At the same time, camera positions must balance the visibility of higher-order Purkinje images against eyelid and eyelash occlusions, glint overlap, and sensor saturation. These observations suggest that LED and camera placement is not arbitrary but jointly determines the brightness, separation, and detectability of P1--P4.
+Once the capture geometry is determined, synthetic rendering provides an efficient way to evaluate different configurations before physical experiments. RIT-Eyes~\cite{RIT-Eyes} demonstrates that physically based rendering can generate realistic near-eye images under controllable illumination, while EyeNeRF~\cite{EyeNeRF} and subsequent hybrid eye representations further show that explicit corneal geometry is necessary for reproducing specular reflections and refraction, whereas implicit neural representations are better suited for modeling complex periocular appearance and relighting. These observations motivate the use of explicit optical eye models for Purkinje simulation before subsequent NeRF or 3D Gaussian reconstruction, fall outside the field of view, or become unresolvable at the sensor resolution. Thus, the key background principle is that eye geometry, near-field illumination, camera focus/FOV, resolution, and reconstruction representation must be designed together before reliable Purkinje capture and later NeRF/3D Gaussian reconstruction can be expected~\cite{Gaussian_Splatting}
 
 \section{Experimental Design and Training Protocol}
 
+\begin{table*}[t]
+\centering
+\caption[Comparison of eye models]{Comparison of eye models. Representation refers to how far the model is fitted to an individual eye: geometry and appearance from images, appearance on a template eyeball, or population parameters only. Purkinje refers to which reflections the model reproduces; only lens reflections (P3, P4) carry accommodation information. Input refers to the images needed to personalise the model. Fidelity refers to agreement with real images. Speed refers to rendering rate (real-time: $>$30~fps). Gaze refers to whether eye rotation is a controllable variable. Colours rate entries within each column for an eye model fitted to a real eye that reproduces lens reflections under controlled gaze (green better, red worse).}
+\label{tab:eye_rendering}
 
+\small
+\begin{tabular}{llcccccc}
+\toprule
+Ref. & Method & Representation & Purkinje & Input & Fidelity & Speed & Gaze \\
+\midrule
+\cite{Navarro1985Accommodation} & Navarro schematic eye
+& \R{Optical model} & \G{P1--P4} & \R{Synthetic} & \R{Low} & \M{Interactive} & \G{Yes} \\
+\cite{UnityEyes} & UnityEyes
+& \R{Parametric mesh} & \M{P1} & \R{Synthetic} & \R{Low} & \G{Real-time} & \G{Yes} \\
+\cite{RIT-Eyes} & RIT-Eyes
+& \R{Parametric mesh} & \M{P1} & \R{Synthetic} & \M{Mid} & \R{Offline} & \G{Yes} \\
+\cite{Keratoconus_Purkinje} & Purkinje ray model
+& \R{Optical model} & \M{P1} & \R{Synthetic} & \R{Low} & \M{Interactive} & \R{No} \\
+\cite{EyeNeRF} & EyeNeRF
+& \M{Mesh + NeRF} & \M{P1} & \M{Light stage} & \G{High} & \R{Offline} & \G{Yes} \\
+\cite{GazeNeRF_2023} & GazeNeRF
+& \G{NeRF} & \R{None} & \G{Few images} & \M{Mid} & \R{Offline} & \G{Yes} \\
+\cite{Digital_Eye_Tracker_Prototyper} & NeRF--mesh eye simulator
+& \M{Mesh + NeRF} & \M{P1} & \M{Light stage} & \M{Mid} & \R{Offline} & \M{Partial} \\
+\cite{Realistic_nerf_eyes} & Relightable hybrid eye
+& \M{Mesh + NeRF} & \M{P1} & \M{Light stage} & \G{High} & \R{Offline} & \R{No} \\
+\cite{GazeGaussian_2024} & GazeGaussian
+& \G{Gaussians} & \R{None} & \G{Few images} & \M{Mid} & \G{Real-time} & \G{Yes} \\
+\textbf{Ours} & Purkinje 3DGS
+& \G{Gaussians + deform.} & \G{P1--P4} & \M{Multi-view} & \G{High} & \G{Real-time} & \G{Yes} \\
 
+\bottomrule
+\end{tabular}
+\end{table*}
+% \begin{table*}[t]
+% \centering
+
+% \caption{%
+% Comparison of vergence (V) and accommodation (A) sensing approaches, rated by suitability for compact wearable integration (\G{high}, \M{moderate}, \R{low}) across hardware complexity, sensing principle, and estimation accuracy.
+% }
+
+% \label{tab:literature_review}
+% \small
+% \resizebox{\textwidth}{!}{%
+% \begin{tabular}{lccccccc}
+% \toprule
+% Ref. & Camera & Illum. & Method & Learning & V/A Target & Near-eye & Accuracy \\
+% \midrule
+% \cite{Wu2023Purkinje}
+% & \R{0} & \R{Fixed} & \G{Purkinje} & \M{Physical model} & \R{Gaze} & \R{No} & \G{High (gaze)} \\
+% \cite{Crane_Steele_1978}
+% & \R{0} & \R{Fixed} & \G{Purkinje} & \M{Physical model} & \M{A only} & \R{No} & \G{High (A)} \\
+% \cite{Schaeffel_1987}
+% & \G{1} & \R{Fixed} & \M{Photorefraction} & \M{Physical model} & \G{Both} & \R{No} & \M{Mid (A)} \\
+% \cite{Single_Camera_Two_Lights}
+% & \G{1} & \G{Movable} & \R{Vergence} & \M{Physical model} & \R{Gaze} & \R{No} & \M{Mid (gaze)} \\
+% \cite{Rosales_2006_JOV}
+% & \G{1} & \R{Fixed} & \G{Purkinje} & \M{Physical model} & \M{A only} & \R{No} & \M{Mid (A)} \\
+% \cite{Swirski_2013}
+% & \G{1} & \R{Fixed} & \R{Vergence} & \M{Physical model} & \R{Gaze} & \G{Yes} & \M{Mid (gaze)} \\
+% \cite{Weier_2018}
+% & \G{1} & \R{Fixed} & \R{Vergence} & \G{Regression} & \M{V only} & \G{Yes} & \M{Mid (V)} \\
+% \cite{NVGaze}
+% & \G{1} & \G{Movable} & \R{Vergence} & \G{CNN} & \R{Gaze} & \G{Yes} & \M{Mid (gaze)} \\
+% \cite{Padmanaban_2019}
+% & \G{1} & \R{Fixed} & \R{Vergence} & \R{Formula} & \M{V only} & \G{Yes} & \M{Mid (V)} \\
+% \cite{Improved_vergence_and_accommodation}
+% & \M{2} & \R{Fixed} & \G{Purkinje} & \G{NN regression} & \G{Both} & \G{Yes} & \M{Mid (A)} \\
+% \cite{Angelopoulos_2021}
+% & \G{1} & \R{Fixed} & \R{Vergence} & \M{Physical model} & \R{Gaze} & \G{Yes} & \G{High (gaze)} \\
+% \cite{Wu2023Purkinje}
+% & \G{1} & \R{Fixed} & \G{Purkinje} & \M{Physical model} & \R{Gaze} & \R{No} & \G{High (gaze)} \\
+% \cite{Dynamic_accommodation_Purkinje}
+% & \G{1} & \G{Movable} & \G{Purkinje} & \G{ML regression} & \G{Both} & \R{No} & \G{High (A)} \\
+% \cite{Depth_fixation_DPI}
+% & \G{1} & \R{Fixed} & \G{Purkinje} & \G{Regression} & \M{V only} & \R{No} & \R{Low (V)} \\
+% \cite{AR_Vergence_Depth_OST}
+% & \G{1} & \R{Fixed} & \R{Vergence} & \R{Formula} & \M{V only} & \G{Yes} & \R{Low (V)} \\
+% \cite{OpenIrisDPI}
+% & \G{1} & \R{Fixed} & \G{Purkinje} & \M{Physical model} & \R{Gaze} & \R{No} & \G{High (gaze)} \\
+% \cite{Chen2026GazeSynthesizer}
+% & \R{--} & \R{Fixed} & \R{Vergence} & \G{Diffusion + CNN} & \R{Gaze} & \R{No} & \M{Mid (gaze)} \\ % 原为 \M{--}，若按原论文汇报精度可改为 \M{Mid (gaze)}
+% \cite{Digital_Eye_Tracker_Prototyper}
+% & \R{20} & \R{Fixed} & \R{Vergence} & \G{NeRF + CNN} & \R{Gaze} & \G{Yes} & \G{High (gaze)} \\ % 原为 \M{--}，多相机合成通常为 \G{High (gaze)} 或 \M{Mid (gaze)}
+% \cite{Bandela2025Photorefraction}
+% & \G{1} & \R{Fixed} & \M{Photorefraction} & \M{Physical model} & \M{A only} & \R{No} & \M{Mid (A)} \\ % 原为 \M{--}，偏心摄影验光法通常为 \M{Mid (A)}
+% \midrule
+% \textbf{Ours}
+% & \G{1} & \G{Movable} & \G{Purkinje} & \G{3DGS} & \G{Both} & \G{Yes} & \G{High (A)} \\
+% \bottomrule
+% \end{tabular}%
+% }
+% \end{table*}
 \section{Model Architectures}
+\subsection{Physics-Based Optical Design}
+
+Differentiable optical design provides a possible framework for optimizing the illumination and imaging layout of a Purkinje capture system. Na et al.~\shortcite{Fluidic_Lenses} show that image-domain losses can be propagated through differentiable ray tracing to physical optical parameters. For our system, the same principle could be applied to LED position, camera pose, focal distance, aperture, and field of view.
+
+The optimization criteria should follow the capture behavior of higher-order Purkinje reflections. Lu et al.~\shortcite{Improved_vergence_and_accommodation} show that P3 is weaker than P1, lies on a different focal plane, and may leave the camera field of view as gaze changes; their system therefore uses multiple cameras and infrared LEDs. Ozhan et al.~\shortcite{Dynamic_accommodation_Purkinje} further show that the camera--LED--eye geometry affects the observed P3/P4 locations and configure the system to improve reflection separation while avoiding vignetting. These results suggest optimizing P3/P4 visibility, sharpness, field-of-view coverage, and separation from other reflections.
+
+The selected layout must also remain practical to assemble, calibrate, and evaluate at the sensor level. Prior work on replicating a controllable AR haploscope highlights the implementation challenges of physical optical platforms~\cite{AR_Haploscope_Replication}, and Wu et al.~\shortcite{Wu2023Purkinje} show that reliable P1/P4 measurement depends on sufficient image resolution and accurate reflection localization. These considerations motivate evaluating optical layout, calibration, and sensor-level detectability together.
+
+The present work does not perform end-to-end differentiable optimization. Instead, it uses geometric-optics simulation to compare candidate LED--camera configurations and to predict whether P1--P4 remain visible, sharp, and separable under realizable capture conditions. Differentiable layout optimization and synthetic-to-real adaptation are left as future extensions.
 
 \textbf{Storage Mechanism:}
 
 \section{Additional Experimental}
-
+\nocite{*}
 \bibliographystyle{ACM-Reference-Format}
 \bibliography{references}
 
